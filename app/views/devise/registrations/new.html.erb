@@ -3,7 +3,7 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       
       <div class="form-group">
-        <%= check_box_tag(:anonymous, 1, false, :id => "anonymous") %>
+        <%= f.check_box :anonymous, id: "anonymous" %>
         <%= label_tag(:anonymous, "Sign up Anonymously") %>
       </div>
       
