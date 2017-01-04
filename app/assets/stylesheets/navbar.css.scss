@@ -1,0 +1,34 @@
+$nav-height: 50px;
+$nav-background: #6093e5;
+$nav-font-color: black;
+$link-hover-color: #ffe6d1;
+$brand-font-color: black;
+$breakpoint: 800px;
+
+.navigation {
+  display: table;
+  height: $nav-height;
+  background: $nav-background;
+  width: 100%;
+  a:hover {
+    color: $link-hover-color;
+  }
+  .navbar-brand {
+    color: $brand-font-color;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      background-color: $nav-background;
+      float: left;
+      line-height: $nav-height;
+      a {
+        padding: 0 20px;
+        color: $nav-font-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
