@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228210650) do
+ActiveRecord::Schema.define(version: 20170106050958) do
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "birth_year"
+    t.string   "city"
+    t.string   "administrative_division"
+    t.string   "country"
+    t.integer  "years_in_current_locale"
+    t.string   "ancestral_descent"
+    t.string   "race"
+    t.string   "ethnicity"
+    t.text     "story"
+    t.integer  "age_noticed_symptoms"
+    t.integer  "age_urinary_malfunction"
+    t.integer  "age_bladder_infection"
+    t.boolean  "anonymous"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
