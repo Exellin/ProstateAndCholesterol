@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :psa_history do
     association :profile, factory: :profile
     year { Faker::Date.between(120.years.ago, 18.years.ago).year }
-    month { Faker::Date.between(120.years.ago, 18.years.ago).month }
+    month { Faker::Date.between(120.years.ago, 18.years.ago).strftime('%B') }
     psa { Faker::Number.decimal(1) }
   end
 end
