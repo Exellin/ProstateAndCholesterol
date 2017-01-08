@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106050958) do
+ActiveRecord::Schema.define(version: 20170108030924) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,7 +31,16 @@ ActiveRecord::Schema.define(version: 20170106050958) do
     t.boolean  "anonymous"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "psa_histories", force: :cascade do |t|
+    t.integer  "year"
+    t.string   "month"
+    t.decimal  "psa"
+    t.integer  "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_psa_histories_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
