@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108050037) do
+ActiveRecord::Schema.define(version: 20170109220207) do
 
   create_table "cholesterol_histories", force: :cascade do |t|
     t.integer  "year"
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 20170108050037) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["profile_id"], name: "index_cholesterol_histories_on_profile_id"
+  end
+
+  create_table "medications", force: :cascade do |t|
+    t.string   "type"
+    t.integer  "age_recommended"
+    t.integer  "age_prescribed"
+    t.string   "name"
+    t.integer  "strength"
+    t.integer  "dosage"
+    t.integer  "year_last_used"
+    t.string   "month_last_used"
+    t.boolean  "still_using"
+    t.integer  "profile_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["profile_id"], name: "index_medications_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
