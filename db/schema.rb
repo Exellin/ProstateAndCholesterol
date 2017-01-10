@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110144417) do
+ActiveRecord::Schema.define(version: 20170110150113) do
 
   create_table "cholesterol_histories", force: :cascade do |t|
     t.integer  "year"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20170110144417) do
     t.integer  "age_noticed_symptoms"
     t.integer  "age_urinary_malfunction"
     t.integer  "age_bladder_infection"
-    t.boolean  "anonymous"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

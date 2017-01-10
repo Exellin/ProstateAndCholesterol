@@ -18,8 +18,4 @@ FactoryGirl.define do
     age_urinary_malfunction { Faker::Number.between(0, 120) }
     age_bladder_infection { Faker::Number.between(0, 120) }
   end
-  
-  factory :anonymous_profile, parent: :profile do
-    anonymous true
-  end
 end
