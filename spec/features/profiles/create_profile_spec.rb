@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Profile created upon signup" do
   
-  scenario do
+  before do
     @user = FactoryGirl.build(:user)
+    @profile = FactoryGirl.build(:profile)
     visit "/"
     click_link "Sign up"
     fill_in "Username", with: @user.username
@@ -11,11 +12,36 @@ RSpec.feature "Profile created upon signup" do
     fill_in "Password", with: @user.password
     fill_in "Password Confirmation", with: @user.password
     click_button "Sign up"
+    click_link("Create your profile")
+  end
+  
+  scenario "and filled with valid credentials" do
+    fill_in "First Name", with: @profile.first_name
+    fill_in "Last Name", with: @profile.last_name
+    fill_in "Birth Year", with: @profile.birth_year
+    fill_in "City", with: @profile.city
+    fill_in "State/Province/Region", with: @profile.administrative_division
+    select(@profile.country, from: 'profile_country')
+    fill_in "Years resided within 200 miles/320km of your current residence", 
+    with: @profile.years_in_current_locale
+    select('Caucasian', from: 'profile_race')
+    fill_in "Ancestral Descent", with: @profile.ancestral_descent
+    fill_in "Ethnicity", with: @profile.ethnicity
+    fill_in "Age Noticed Symptoms", with: @profile.age_noticed_symptoms
+    fill_in "Age Urinary Malfunction", with: @profile.age_urinary_malfunction
+    fill_in "Age Bladder Infection", with: @profile.age_bladder_infection
+    fill_in "Your Story", with: @profile.story
     
-    user = User.last
-    expect(page).to have_content("Fill in your profile")
-    profile = Profile.last
-    expect(current_path).to eq(profile_path(profile))
-    expect(profile.user_id).to eq(user.id)
+    click_button "Create Profile"
+    expect(page).to have_content("Your profile has been successfully created")
+  end
+    
+  scenario "with no credentials filled" do
+    click_button "Create Profile"
+    expect(page).to have_content("First Name can't be blank")
+    expect(page).to have_content("Last Name can't be blank")
+    expect(page).to have_content("Birth Year can't be blank")
+    expect(page).to have_content("State/Province/Region can't be blank")
+    expect(page).to have_content("Years resided within 200 miles/320km of your current residence can't be blank")
   end
 end
