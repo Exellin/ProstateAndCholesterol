@@ -21,7 +21,7 @@ RSpec.feature "Profile created upon signup" do
     fill_in "Birth Year", with: @profile.birth_year
     fill_in "City", with: @profile.city
     fill_in "State/Province/Region", with: @profile.administrative_division
-    select(@profile.country, from: 'profile_country')
+    select(@profile.country_name, from: 'profile_country')
     fill_in "Years resided within 200 miles/320km of your current residence", 
     with: @profile.years_in_current_locale
     select('Caucasian', from: 'profile_race')

@@ -31,8 +31,8 @@ class ProfilesController < ApplicationController
   
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :birth_year, :city, :administrative_division,
-    :country, :years_in_current_locale, :ancestral_descent, :race, :ethnicity, :age_noticed_symptoms,
-    :age_bladder_infection, :story)
+    :country, :years_in_current_locale, :ancestral_descent, :race, :ethnicity, :age_noticed_symptoms, 
+    :age_urinary_malfunction, :age_bladder_infection, :story)
   end
   
   def require_same_user

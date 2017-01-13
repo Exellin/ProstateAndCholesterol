@@ -1,3 +1,97 @@
 <% if @profile.empty? && (@profile.user == current_user) %>
   <%= link_to "Create your profile", edit_profile_path(@profile), class: 'btn btn-lg btn-info' %>
+<% else %>
+  <h2><%= @profile.user.username %></h2>
+  <div class="row">
+    <div class="col-xs-3">
+      <h4>Story</h4>
+    </div>
+    <div class="col-xs-8">
+      <%= @profile.story %>
+    </div>
+  </div>
+  
+  
+  <% if !current_user.nil? && (current_user == @profile.user || current_user.admin?) %>
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Name</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= "#{@profile.first_name} #{@profile.last_name}" %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Birth Year</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= @profile.birth_year %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Location</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= "#{@profile.city}, #{@profile.administrative_division}, #{@profile.country_name}" %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Years Within 200miles/320km of current location</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= @profile.years_in_current_locale %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Ancestral Descent</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= @profile.ancestral_descent %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Ethnicity</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= @profile.ethnicity %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Age Noticed Symptoms</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= @profile.age_noticed_symptoms %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Age Urinary Malfunction</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= @profile.age_urinary_malfunction %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-3">
+        <h4>Age Bladder Infection</h4>
+      </div>
+      <div class="col-xs-8">
+        <%= @profile.age_bladder_infection %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

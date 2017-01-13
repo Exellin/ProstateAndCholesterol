@@ -8,12 +8,12 @@ FactoryGirl.define do
     birth_year { Faker::Date.between(120.years.ago, 18.years.ago).year }
     city { Faker::Address.city }
     administrative_division { Faker::Address.state }
-    country { Faker::Address.country }
+    country "CA"
     years_in_current_locale { Faker::Number.between(0, 120) }
     ancestral_descent { Faker::Lorem.word }
     race { Faker::Lorem.word }
     ethnicity { Faker::Lorem.word }
-    story { Faker::Lorem.paragraph }
+    story "This is my story"
     age_noticed_symptoms { Faker::Number.between(0, 120) }
     age_urinary_malfunction { Faker::Number.between(0, 120) }
     age_bladder_infection { Faker::Number.between(0, 120) }
