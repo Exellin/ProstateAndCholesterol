@@ -11,7 +11,6 @@ RSpec.feature "Editing Profle" do
     visit "/"
     click_link(@owner.username)
     click_link "edit"
-    expect(page)
     fill_in "First Name", with: "Joe"
     old_first_name = @profile.first_name
     click_button "Update Profile"
