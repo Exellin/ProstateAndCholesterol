@@ -10,15 +10,14 @@
       <%= @profile.story %>
     </div>
   </div>
-  
-  
+
   <% if !current_user.nil? && (current_user == @profile.user || current_user.admin?) %>
     <div class="row">
       <div class="col-xs-3">
         <h4>Name</h4>
       </div>
       <div class="col-xs-8">
-        <%= "#{@profile.first_name} #{@profile.last_name}" %>
+      <%= "#{@profile.first_name} #{@profile.last_name}" %>
       </div>
     </div>
     
