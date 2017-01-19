@@ -4,6 +4,9 @@ class ProfilesController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
   
   def edit
+    if @profile.psa_histories.nil?
+      @profile.psa_histories.build
+    end
   end
   
   def show
@@ -21,6 +24,7 @@ class ProfilesController < ApplicationController
     else
       render 'edit'
     end
+    
   end
   
   private
@@ -32,7 +36,7 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :birth_year, :city, :administrative_division,
     :country, :years_in_current_locale, :ancestral_descent, :race, :ethnicity, :age_noticed_symptoms, 
-    :age_urinary_malfunction, :age_bladder_infection, :story)
+    :age_urinary_malfunction, :age_bladder_infection, :story, psa_histories_attributes: [:id, :psa, :month, :year, :_destroy])
   end
   
   def require_same_user

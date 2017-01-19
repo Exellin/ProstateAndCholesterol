@@ -10,7 +10,7 @@ RSpec.feature "Editing Profle" do
   scenario "with valid inputs" do
     visit "/"
     click_link(@owner.username)
-    click_link "edit"
+    click_link "edit profile"
     fill_in "First Name", with: "Joe"
     old_first_name = @profile.first_name
     click_button "Update Profile"

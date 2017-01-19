@@ -2,6 +2,15 @@
   <%= link_to "Create your profile", edit_profile_path(@profile), class: 'btn btn-lg btn-info' %>
 <% else %>
   <h2><%= @profile.user.username %></h2>
+  <h3>Profile</h3> 
+  <% if !current_user.nil? && current_user == @profile.user %> 
+    <div class="row">
+      <div class="col-xs-3">
+        <%= link_to "edit profile", edit_profile_path(@profile), class: "btn btn-xs btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+  
   <div class="row">
     <div class="col-xs-3">
       <h4>Story</h4>
@@ -92,11 +101,29 @@
         <%= @profile.age_bladder_infection %>
       </div>
     </div>
-    
+  <% end %>
+  
+  <h3>PSA History</h3>
+  <% if !current_user.nil? && current_user == @profile.user %> 
     <div class="row">
       <div class="col-xs-3">
-        <%= link_to "edit", edit_profile_path(@profile), class: "btn btn-xs btn-primary" %>
+        <%= link_to "edit psa history", "#{edit_profile_path(@profile)}#psa_history", class: "btn btn-xs btn-primary" %>
       </div>
     </div>
   <% end %>
+  
+  <table>
+    <tr>
+      <th>PSA</th>
+      <th>Month</th>
+      <th>Year</th>
+    </tr>
+    <% @profile.psa_histories.each do |psa_history| %>
+      <tr>
+        <td><%= psa_history.psa %></td>
+        <td><%= psa_history.month %></td>
+        <td><%= psa_history.year %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>

@@ -1,8 +1,10 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_many :psa_histories, dependent: :destroy
+  has_many :psa_histories, inverse_of: :profile, dependent: :destroy
   has_many :cholesterol_histories, dependent: :destroy
   has_many :medications, dependent: :destroy
+  
+  accepts_nested_attributes_for :psa_histories, :allow_destroy => true
   
   validates :first_name, presence: :true, on: :update
   validates :last_name, presence: :true, on: :update

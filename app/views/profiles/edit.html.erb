@@ -1,1 +1,48 @@
-<%= render 'form' %>
+<h2><%= @profile.user.username %></h2>
+
+<% if @profile.errors.any? %>
+  <div class="panel panel-danger">
+    There were 1 or more errors in saving your profile.  Please check all tabs
+  </div>
+<% end %>
+    
+
+<%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
+    <li><a data-toggle="tab" href="#psa_history">PSA History</a></li>
+    <li><a data-toggle="tab" href="#cholesterol_history">Cholesterol History</a></li>
+    <li><a data-toggle="tab" href="#medication">Medication History</a></li>
+  </ul>
+    
+  <div class="tab-content">
+    <div id="profile" class="tab-pane fade in active">
+      <%= render 'profile_fields', f: f %>
+    </div>
+    
+    <div id="psa_history" class="tab-pane fade">
+      <%= f.fields_for :psa_histories do |psa_history| %>
+        <%= render 'psa_history_fields', f: psa_history %>
+      <% end %>
+      <%= link_to_add_association 'Add an entry', f, :psa_histories %>
+    </div>
+    
+    <div id="cholesterol_history" class="tab-pane fade">
+      Cholesterol history
+    </div>
+    
+    <div id="medication" class="tab-pane fade">
+      Medication History
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <% if @profile.empty? %>
+        <%= f.submit "Create Profile", class: 'btn btn-primary btn-lg' %>
+      <% else %>
+        <%= f.submit "Update Profile", class: 'btn btn-primary btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
