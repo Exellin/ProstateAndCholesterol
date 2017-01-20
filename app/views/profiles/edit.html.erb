@@ -2,7 +2,7 @@
 
 <% if @profile.errors.any? %>
   <div class="panel panel-danger">
-    There were 1 or more errors in saving your profile.  Please check all tabs
+    <%= render 'shared/errors', obj: @profile %>
   </div>
 <% end %>
     
@@ -24,15 +24,27 @@
       <%= f.fields_for :psa_histories do |psa_history| %>
         <%= render 'psa_history_fields', f: psa_history %>
       <% end %>
-      <%= link_to_add_association 'Add an entry', f, :psa_histories %>
+      <div class="links">
+        <%= link_to_add_association 'Add an entry', f, :psa_histories %>
+      </div>
     </div>
     
     <div id="cholesterol_history" class="tab-pane fade">
-      Cholesterol history
+      <%= f.fields_for :cholesterol_histories do |cholesterol_history| %>
+        <%= render 'cholesterol_history_fields', f: cholesterol_history %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'Add an entry', f, :cholesterol_histories %>
+      </div>
     </div>
     
     <div id="medication" class="tab-pane fade">
-      Medication History
+      <%= f.fields_for :medications do |medication| %>
+        <%= render 'medication_fields', f: medication %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'Add an entry', f, :medications %>
+      </div>
     </div>
   </div>
   

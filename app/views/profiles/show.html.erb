@@ -107,7 +107,8 @@
   <% if !current_user.nil? && current_user == @profile.user %> 
     <div class="row">
       <div class="col-xs-3">
-        <%= link_to "edit psa history", "#{edit_profile_path(@profile)}#psa_history", class: "btn btn-xs btn-primary" %>
+        <%= link_to "edit psa history",
+        "#{edit_profile_path(@profile)}#psa_history", class: "btn btn-xs btn-primary" %>
       </div>
     </div>
   <% end %>
@@ -124,6 +125,76 @@
         <td><%= psa_history.month %></td>
         <td><%= psa_history.year %></td>
       </tr>
+    <% end %>
+  </table>
+  
+  <h3>Cholesterol History</h3>
+  <% if !current_user.nil? && current_user == @profile.user %>
+    <div class="row">
+      <div class="col-xs-3">
+        <%= link_to "edit cholesterol history", 
+        "#{edit_profile_path(@profile)}#cholesterol_history", class: "btn btn-xs btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+  
+  <table>
+    <tr>
+      <th>Total Cholesterol</th>
+      <th>HDL</th>
+      <th>LDL</th>
+      <th>Triglyceride</th>
+      <th>Glucose</th>
+      <th>Month</th>
+      <th>Year</th>
+    </tr>
+    <% @profile.cholesterol_histories.each do |cholesterol_history| %>
+      <tr>
+        <td><%= cholesterol_history.total_cholesterol %></td>
+        <td><%= cholesterol_history.hdl %></td>
+        <td><%= cholesterol_history.ldl %></td>
+        <td><%= cholesterol_history.triglyceride %></td>
+        <td><%= cholesterol_history.glucose %></td>
+        <td><%= cholesterol_history.month %></td>
+        <td><%= cholesterol_history.year %></td>
+      </tr>
+    <% end %>
+  </table>
+  
+  <h3>Medications</h3>
+  <% if !current_user.nil? && current_user == @profile.user %>
+    <div class="row">
+      <div class="col-xs-3">
+        <%= link_to "edit medications",
+        "#{edit_profile_path(@profile)}#medication", class: "btn btn-xs btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+  
+  <table>
+    <tr>
+      <th>Purpose</th>
+      <th>Name</th>
+      <th>Age Recommended</th>
+      <th>Age Prescribed</th>
+      <th>Strength</th>
+      <th>Dosage</th>
+      <th>Month Last Used</th>
+      <th>Year Last Used</th>
+      <th>Still Using</th>
+    </tr>
+    <% @profile.medications.each do |medication| %>
+    <tr>
+      <td><%= medication.purpose %></td>
+      <td><%= medication.name %></td>
+      <td><%= medication.age_recommended%></td>
+      <td><%= medication.age_prescribed %></td>
+      <td><%= medication.strength %></td>
+      <td><%= medication.dosage %></td>
+      <td><%= medication.month_last_used %></td>
+      <td><%= medication.year_last_used %></td>
+      <td><%= medication.still_using? ? "Yes" : "No" %></td>
+    </tr>
     <% end %>
   </table>
 <% end %>

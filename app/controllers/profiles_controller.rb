@@ -7,6 +7,12 @@ class ProfilesController < ApplicationController
     if @profile.psa_histories.nil?
       @profile.psa_histories.build
     end
+    if @profile.cholesterol_histories.nil?
+      @profile.cholesterol_histories.build
+    end
+    if @profile.medications.nil?
+      @profile.medications.build
+    end
   end
   
   def show
@@ -36,7 +42,10 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :birth_year, :city, :administrative_division,
     :country, :years_in_current_locale, :ancestral_descent, :race, :ethnicity, :age_noticed_symptoms, 
-    :age_urinary_malfunction, :age_bladder_infection, :story, psa_histories_attributes: [:id, :psa, :month, :year, :_destroy])
+    :age_urinary_malfunction, :age_bladder_infection, :story, :psa_histories_attributes => [:id, :psa, :month, :year, :_destroy],
+    :cholesterol_histories_attributes => [:id, :total_cholesterol, :hdl, :ldl, :triglyceride, :glucose, :month, :year, :_destroy],
+    :medications_attributes => [:id, :purpose, :age_recommended, :age_prescribed, :name, :strength, :dosage, :month_last_used,
+    :year_last_used, :still_using, :_destroy])
   end
   
   def require_same_user

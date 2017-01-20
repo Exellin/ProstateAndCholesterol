@@ -5,6 +5,8 @@ class Profile < ApplicationRecord
   has_many :medications, dependent: :destroy
   
   accepts_nested_attributes_for :psa_histories, :allow_destroy => true
+  accepts_nested_attributes_for :cholesterol_histories, :allow_destroy => true
+  accepts_nested_attributes_for :medications, :allow_destroy => true
   
   validates :first_name, presence: :true, on: :update
   validates :last_name, presence: :true, on: :update

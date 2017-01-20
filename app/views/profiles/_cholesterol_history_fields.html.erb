@@ -1,0 +1,10 @@
+<div class="nested-fields well">
+  <%= f.number_field :total_cholesterol, class: 'form-control', placeholder: "Total Cholesterol,", autofocus:true %>
+  <%= f.number_field :hdl, class: 'form-control', placeholder: "HDL" %>
+  <%= f.number_field :ldl, class: 'form-control', placeholder: "LDL" %>
+  <%= f.number_field :triglyceride, class: 'form-control', placeholder: "Triglyceride" %>
+  <%= f.number_field :glucose, class: 'form-control', placeholder: "Glucose" %>
+  <%= f.text_field :month, class: 'form-control', placeholder: "Month" %>
+  <%= f.number_field :year, class: 'form-control', placeholder: "Year" %>
+  <%= link_to_remove_association "remove cholesterol history", f %>
+</div>
