@@ -1,9 +1,7 @@
 <h2><%= @profile.user.username %></h2>
 
 <% if @profile.errors.any? %>
-  <div class="panel panel-danger">
-    <%= render 'shared/errors', obj: @profile %>
-  </div>
+  <%= render 'shared/errors', obj: @profile %>
 <% end %>
     
 
