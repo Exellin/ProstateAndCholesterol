@@ -25,9 +25,9 @@ RSpec.feature "Users sign up" do
     fill_in "Password Confirmation", with: @user.password
     click_button "Sign up"
     
-    expect(page).to have_content("Username is too short")
-    expect(page).to have_content("Email can't be blank")
-    expect(page).to have_content("Password is too short")
-    expect(page).to have_content("Password Confirmation doesn't match Password")
+    expect(page).to have_content("is too short (minimum is 3 characters)")
+    expect(page).to have_content("can't be blank")
+    expect(page).to have_content("is too short (minimum is 6 characters)")
+    expect(page).to have_content("doesn't match Password")
   end
 end

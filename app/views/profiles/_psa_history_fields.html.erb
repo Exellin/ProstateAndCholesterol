@@ -1,6 +1,12 @@
-<div class="nested-fields well">
-  <%= f.number_field :psa, class: "form-control", placeholder: "PSA", :step => 0.1, autofocus:true %>
-  <%= f.text_field :month, class: "form-control", placeholder: "Month" %>
-  <%= f.number_field :year, class: "form-control", placeholder: "Year" %>
-  <%= link_to_remove_association "remove psa history", f %>
-</div>
+<tr class="nested-fields">
+  <td><%= f.number_field :psa, class: "form-control", :step => 0.1, autofocus:true %></td>
+  <td><%= f.text_field :month, class: "form-control" %></td>
+  <td><%= f.number_field :year, class: "form-control" %></td>
+  <td>
+    <%= link_to_remove_association(f) do %>
+      <button class="trashcan">
+        <i class="fa fa-trash-o"></i>
+      </button>
+    <% end %>
+  </td>
+</tr>

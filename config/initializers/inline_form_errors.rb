@@ -6,7 +6,7 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
     if e.name.eql? 'label'
       html = %(#{e}).html_safe
     else
-      html = %(<div class="has-error">#{html_tag}<span class="help-block">#{e.values[1]} 
+      html = %(<div class="has-error">#{html_tag}<span class="help-block">
       #{instance.error_message.first}</span></div>).html_safe
     end
   end

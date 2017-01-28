@@ -3,14 +3,13 @@
 <% if @profile.errors.any? %>
   <%= render 'shared/errors', obj: @profile %>
 <% end %>
-    
 
 <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
     <li><a data-toggle="tab" href="#psa_history">PSA History</a></li>
     <li><a data-toggle="tab" href="#cholesterol_history">Cholesterol History</a></li>
-    <li><a data-toggle="tab" href="#medication">Medication History</a></li>
+    <li><a data-toggle="tab" href="#medication">Medication</a></li>
   </ul>
     
   <div class="tab-content">
@@ -19,29 +18,75 @@
     </div>
     
     <div id="psa_history" class="tab-pane fade">
-      <%= f.fields_for :psa_histories do |psa_history| %>
-        <%= render 'psa_history_fields', f: psa_history %>
-      <% end %>
+      <table>
+        <thead>
+          <tr>
+            <th>PSA</th>
+            <th>Month</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody class="psa_histories">
+          <%= f.fields_for :psa_histories do |psa_history| %>
+            <%= render 'psa_history_fields', f: psa_history %>
+          <% end %>
+        </tbody>
+      </table>
       <div class="links">
-        <%= link_to_add_association 'Add an entry', f, :psa_histories %>
+      <%= link_to_add_association 'Add an entry', f, :psa_histories, 
+      data: {"association-insertion-node" => "tbody.psa_histories", "association-insertion-method" => "append" }%>
       </div>
     </div>
     
-    <div id="cholesterol_history" class="tab-pane fade">
-      <%= f.fields_for :cholesterol_histories do |cholesterol_history| %>
-        <%= render 'cholesterol_history_fields', f: cholesterol_history %>
-      <% end %>
+    <div id="cholesterol_history" class="tab-pane fade" style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Total Cholesterol</th>
+            <th>HDL</th>
+            <th>LDL</th>
+            <th>Triglyceride</th>
+            <th>Glucose</th>
+            <th>Month</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody class="cholesterol_histories">
+          <%= f.fields_for :cholesterol_histories do |cholesterol_history| %>
+            <%= render 'cholesterol_history_fields', f: cholesterol_history %>
+          <% end %>
+        </tbody>
+      </table>
       <div class="links">
-        <%= link_to_add_association 'Add an entry', f, :cholesterol_histories %>
+        <%= link_to_add_association 'Add an entry', f, :cholesterol_histories, 
+        data: {"association-insertion-node" => "tbody.cholesterol_histories", "association-insertion-method" => "append" }%>
       </div>
     </div>
     
-    <div id="medication" class="tab-pane fade">
-      <%= f.fields_for :medications do |medication| %>
-        <%= render 'medication_fields', f: medication %>
-      <% end %>
+    <div id="medication" class="tab-pane fade" style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Purpose</th>
+            <th>Name</th>
+            <th>Strength (mg)</th>
+            <th>Dosage (times per day)</th>
+            <th>Age Recommended</th>
+            <th>Age Prescribed</th>
+            <th>Month Last Used</th>
+            <th>Year Last Used</th>
+            <th>Are you still using this drug?</th>
+          </tr>
+        </thead>
+        <tbody class="medications">
+          <%= f.fields_for :medications do |medication| %>
+            <%= render 'medication_fields', f: medication %>
+          <% end %>
+        </tbody>
+      </table>
       <div class="links">
-        <%= link_to_add_association 'Add an entry', f, :medications %>
+        <%= link_to_add_association 'Add an entry', f, :medications, 
+        data: {"association-insertion-node" => "tbody.medications", "association-insertion-method" => "append" }%>
       </div>
     </div>
   </div>

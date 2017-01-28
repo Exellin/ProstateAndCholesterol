@@ -1,15 +1,20 @@
-<div class="nested-fields well">
-  <%= f.select(:purpose, [['Prostate'], ['Cholesterol'], ['Blood Pressure']]) %>
-  <%= f.text_field :name, class: 'form-control', placeholder: "Name of Drug" %>
-  <%= f.number_field :age_recommended, class: 'form-control', placeholder: "Age Recommended", autofocus: true %>
-  <%= f.number_field :age_prescribed, class: 'form-control', placeholder: "Age Prescribed" %>
-  <%= f.number_field :strength, class: 'form-control', placeholder: "Strength" %>
-  <%= f.number_field :dosage, class: 'form-control', placeholder: "Dosage" %>
-  <%= f.text_field :month_last_used, class: 'form-control', placeholder: "Month Last Used" %>
-  <%= f.number_field :year_last_used, class: 'form-control', placeholder: "Year Last Used" %>
-  <div class="form-control">
-    <%= f.label "Are you still using this drug?" %>
+<tr class="nested-fields">
+  <td><%= f.select(:purpose, [['Prostate'], ['Cholesterol'], ['Blood Pressure']]) %></td>
+  <td><%= f.text_field :name, class: 'form-control', autofocus: true %></td>
+  <td><%= f.number_field :strength, class: 'form-control' %></td>
+  <td><%= f.number_field :dosage, class: 'form-control' %></td>
+  <td><%= f.number_field :age_recommended, class: 'form-control' %></td>
+  <td><%= f.number_field :age_prescribed, class: 'form-control' %></td>
+  <td><%= f.text_field :month_last_used, class: 'form-control' %></td>
+  <td><%= f.number_field :year_last_used, class: 'form-control' %></td>
+  <td>
     <%= f.check_box :still_using %>
-  </div>  
-  <%= link_to_remove_association "remove medication", f %>
-</div>
+  </td>  
+  <td>
+    <%= link_to_remove_association(f) do %>
+      <button class="trashcan">
+        <i class="fa fa-trash-o"></i>
+      </button>
+    <% end %>
+  </td>
+</tr>

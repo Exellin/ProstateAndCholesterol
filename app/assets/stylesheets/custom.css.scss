@@ -1,14 +1,37 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
+$error-outline: #A94442;
 
 table {
   border-collapse: collapse;
-  width: 100%;
+  input.form-control {
+    width: auto;
+    max-width: 110px;
+  }
+}
+
+th {
+  padding: 5px;
+  max-width: 110px;
 }
 
 td, th {
-  border: 1px solid black;
   text-align: left;
-  padding: 10px;
+  border: 1px solid black;
 }
 
+.trashcan {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  i {
+    background: black;
+    line-height: 33px;
+    width: 33px;
+    color: white;
+    font-size: 18px;
+    &:hover {
+      color: red;
+    }
+  }
+}
