@@ -122,20 +122,8 @@
     </div>
   <% end %>
   
-  <table>
-    <tr>
-      <th>PSA</th>
-      <th>Month</th>
-      <th>Year</th>
-    </tr>
-    <% @profile.psa_histories.each do |psa_history| %>
-      <tr>
-        <td><%= psa_history.psa %></td>
-        <td><%= psa_history.month %></td>
-        <td><%= psa_history.year %></td>
-      </tr>
-    <% end %>
-  </table>
+  <%= content_tag "div", id: "psa_chart", data: {psa: @psa_histories} do %>
+  <% end %>
   
   <h3>Cholesterol History</h3>
   <% if !current_user.nil? && current_user == @profile.user %>

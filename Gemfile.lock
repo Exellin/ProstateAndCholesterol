@@ -83,6 +83,8 @@ GEM
     cucumber-core (1.5.0)
       gherkin (~> 4.0)
     cucumber-wire (0.0.1)
+    d3-rails (4.3.0)
+      railties (>= 3.1)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -281,6 +283,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   country_select
+  d3-rails
   devise
   factory_girl_rails
   faker

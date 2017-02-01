@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require bootstrap
 //= require bootstrap/tab
 //= require cocoon
+//= require d3
+//= require_tree .

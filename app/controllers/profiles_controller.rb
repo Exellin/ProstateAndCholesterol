@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
   end
   
   def show
+    @psa_histories = @profile.psa_histories
   end
   
   def update
