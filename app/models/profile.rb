@@ -10,13 +10,14 @@ class Profile < ApplicationRecord
   
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
-  validates :birth_year, presence: true, on: :update, :inclusion => { :in => 1900..18.years.ago.year, 
+  validates :birth_year, presence: true, on: :update, :inclusion => { :in => 120.years.ago.year..18.years.ago.year, 
   :message => "must be between 1900 and 18 years ago" }
   validates :city, presence: true, on: :update
   validates :administrative_division, presence: true, on: :update
   validates :country, presence: true, on: :update
   validates :years_in_current_locale, presence: true, on: :update, :inclusion => { :in => 0..120, 
   :message => "must be between 0 and 120" }
+  validates :race, presence: true, on: :update
   validates :age_noticed_symptoms, :inclusion => { :in => 18..120,
   :message => "must be between 18 and 120" }, :allow_blank => true
   validates :age_urinary_malfunction, :inclusion => { :in => 18..120,
