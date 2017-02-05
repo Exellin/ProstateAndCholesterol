@@ -26,7 +26,6 @@ RSpec.feature "Profile created upon signup" do
     with: @profile.years_in_current_locale
     select('Caucasian', from: 'profile_race')
     fill_in "Ancestral Descent", with: @profile.ancestral_descent
-    fill_in "Ethnicity", with: @profile.ethnicity
     fill_in "Age Noticed Symptoms", with: @profile.age_noticed_symptoms
     fill_in "Age Urinary Malfunction", with: @profile.age_urinary_malfunction
     fill_in "Age Bladder Infection", with: @profile.age_bladder_infection
