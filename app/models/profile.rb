@@ -11,7 +11,7 @@ class Profile < ApplicationRecord
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
   validates :birth_year, presence: true, on: :update, :inclusion => { :in => 120.years.ago.year..18.years.ago.year, 
-  :message => "must be between 1900 and 18 years ago" }
+  :message => "must be between 120 and 18 years ago" }
   validates :city, presence: true, on: :update
   validates :administrative_division, presence: true, on: :update
   validates :country, presence: true, on: :update
