@@ -4,16 +4,41 @@
 $(document).ready(function() {
   var regex = /profiles\/\d+$/;
   if($(location).attr('pathname').match(regex)) {
-    drawGraph();
+    var psaField = "psa";
+    var psaAxis = "PSA";
+    
+    var choleterolField = "total_cholesterol";
+    var cholesterolAxis = "Total Cholesterol";
+    var cholesterolData = "total";  //can't be the same as field as passed variables can't have underscores
+    
+    var hdlField = "hdl";
+    var hdlAxis = "HDL";
+    
+    var ldlField = "ldl";
+    var ldlAxis = "LDL";
+    
+    var triglycerideField = "triglyceride";
+    var triglycerideAxis = "Triglyceride";
+    
+    var glucoseField = "glucose";
+    var glucoseAxis = "Glucose";
+    
+    drawGraph(psaField, psaField, psaAxis);
+    drawGraph(cholesterolData, choleterolField, cholesterolAxis);
+    drawGraph(hdlField, hdlField, hdlAxis);
+    drawGraph(ldlField, ldlField, ldlAxis);
+    drawGraph(triglycerideField, triglycerideField, triglycerideAxis);
+    drawGraph(glucoseField, glucoseField, glucoseAxis);
   }
 });
 
-var drawGraph = function() {
+var drawGraph = function(data_field, attribute, axisTitle) {
+  var id = "#" + attribute + "_chart";
   var margin = { top: 100, right: 20, bottom: 100, left: 50 },
-  width = 600 - margin.left - margin.right,
-  height = 450 - margin.top - margin.bottom;
-  var JSONData = $("#psa_chart").data('psa');
-
+      width = 600 - margin.left - margin.right,
+      height = 450 - margin.top - margin.bottom;
+      
+  var JSONData = $(id).data(data_field);
   if (!JSONData) {
     return;
   }
@@ -26,14 +51,14 @@ var drawGraph = function() {
     return a.date-b.date;
   };
   
-    data.forEach(function(d) {
+  data.forEach(function(d) {
     d.date = d.year + "-" + d.month;
-    d.psa = +d.psa;
+    d[attribute] = +d[attribute];
     d.date = parseTime(d.date);
     data = data.sort(sortByDate);
   });
   
-  var psaFn = function(d) { return d.psa };
+  var yFn = function(d) { return d[attribute] };
   var dateFn = function(d) { return parseTime(d.year + "-" + d.month)};
 
   var x = d3.scaleTime()
@@ -42,15 +67,13 @@ var drawGraph = function() {
     
   var y = d3.scaleLinear()
     .range([height, 0])
-    .domain([0, d3.max(data, psaFn)]);
+    .domain([0, d3.max(data, yFn)]);
     
-
-  
-  var psa_line = d3.line()
+  var line = d3.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.psa); });
+    .y(function(d) { return y(d[attribute]); });
   
-  var svg = d3.select("#psa_chart").append("svg")
+  var svg = d3.select(id).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -58,7 +81,7 @@ var drawGraph = function() {
   
   svg.append("path")
     .attr("class", "line")
-  .attr("d", psa_line(data));
+  .attr("d", line(data));
     
   svg.append("g")
     .attr("class", "x axis")
@@ -89,7 +112,7 @@ var drawGraph = function() {
     .attr("x", 0 - (height / 2))
     .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("PSA");
+    .text(axisTitle);
     
   svg.append("text")
     .attr("x", (width / 2))
@@ -97,5 +120,5 @@ var drawGraph = function() {
     .style("text-anchor", "middle")
     .style("font-size", "18px")
     .style("text-decoration", "underline")
-    .text("PSA History");
+    .text(axisTitle + " History");
 };

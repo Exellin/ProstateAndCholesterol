@@ -126,28 +126,22 @@
     </div>
   <% end %>
   
-  <table>
-    <tr>
-      <th>Total Cholesterol</th>
-      <th>HDL</th>
-      <th>LDL</th>
-      <th>Triglyceride</th>
-      <th>Glucose</th>
-      <th>Month</th>
-      <th>Year</th>
-    </tr>
-    <% @profile.cholesterol_histories.each do |cholesterol_history| %>
-      <tr>
-        <td><%= cholesterol_history.total_cholesterol %></td>
-        <td><%= cholesterol_history.hdl %></td>
-        <td><%= cholesterol_history.ldl %></td>
-        <td><%= cholesterol_history.triglyceride %></td>
-        <td><%= cholesterol_history.glucose %></td>
-        <td><%= cholesterol_history.month %></td>
-        <td><%= cholesterol_history.year %></td>
-      </tr>
+  <%= content_tag "div", id: "total_cholesterol_chart", data: {total: @total_cholesterol_histories} do %>
+  <% end %>
+  
+  <%= content_tag "div", id: "hdl_chart", data: {hdl: @hdl_histories} do %>
+  <% end %>
+  
+  <%= content_tag "div", id: "ldl_chart", data: {ldl: @ldl_histories} do %>
+  <% end %>
+  
+  <%= content_tag "div", id: "triglyceride_chart", data: {triglyceride: @triglyceride_histories} do %>
+  <% end %>
+  
+  <% unless @glucose_histories.all? {|glucose_history| glucose_history.glucose.nil?} %>
+    <%= content_tag "div", id: "glucose_chart", data: {glucose: @glucose_histories} do %>
     <% end %>
-  </table>
+  <% end %>
   
   <h3>Medications</h3>
   <% if !current_user.nil? && current_user == @profile.user %>

@@ -4,7 +4,10 @@
   <td><%= f.number_field :ldl, class: 'form-control' %></td>
   <td><%= f.number_field :triglyceride, class: 'form-control' %></td>
   <td><%= f.number_field :glucose, class: 'form-control' %></td>
-  <td><%= f.text_field :month, class: 'form-control' %></td>
+  <td><%= f.select(:month, [["January", "1"], ["February", "2"], ["March", "3"],
+                    ["April", "4",], ["May", "5"], ["June", "6"], ["July", "7"],
+                    ["August", "8"], ["September", "9"], ["October", "10"],
+                    ["November", "11"], ["December", "12"]]) %></td>
   <td><%= f.number_field :year, class: 'form-control' %></td>
   <td>
     <%= link_to_remove_association(f) do %>

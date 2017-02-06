@@ -17,6 +17,11 @@ class ProfilesController < ApplicationController
   
   def show
     @psa_histories = @profile.psa_histories
+    @total_cholesterol_histories = @profile.cholesterol_histories.select(:total_cholesterol, :month, :year)
+    @hdl_histories = @profile.cholesterol_histories.select(:hdl, :month, :year)
+    @ldl_histories = @profile.cholesterol_histories.select(:ldl, :month, :year)
+    @triglyceride_histories = @profile.cholesterol_histories.select(:triglyceride, :month, :year)
+    @glucose_histories = @profile.cholesterol_histories.select(:glucose, :month, :year)
   end
   
   def update
