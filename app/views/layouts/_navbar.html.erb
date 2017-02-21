@@ -10,6 +10,9 @@
       </li>
     <% else %>
       <li>
+        <%= link_to "PSA History", profile_psa_histories_path(current_user.profile) %>
+      </li>
+      <li>
         <%= link_to current_user.username, current_user.profile %>
       </li>
       <li>

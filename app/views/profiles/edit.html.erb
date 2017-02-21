@@ -7,7 +7,6 @@
 <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
-    <li><a data-toggle="tab" href="#psa_history">PSA History</a></li>
     <li><a data-toggle="tab" href="#cholesterol_history">Cholesterol History</a></li>
     <li><a data-toggle="tab" href="#medication">Medication</a></li>
   </ul>
@@ -15,27 +14,6 @@
   <div class="tab-content">
     <div id="profile" class="tab-pane fade in active">
       <%= render 'profile_fields', f: f %>
-    </div>
-    
-    <div id="psa_history" class="tab-pane fade">
-      <table>
-        <thead>
-          <tr>
-            <th>PSA</th>
-            <th>Month</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody class="psa_histories">
-          <%= f.fields_for :psa_histories do |psa_history| %>
-            <%= render 'psa_history_fields', f: psa_history %>
-          <% end %>
-        </tbody>
-      </table>
-      <div class="links">
-      <%= link_to_add_association 'Add an entry', f, :psa_histories, 
-      data: {"association-insertion-node" => "tbody.psa_histories", "association-insertion-method" => "append" }%>
-      </div>
     </div>
     
     <div id="cholesterol_history" class="tab-pane fade" style="overflow-x:auto;">
