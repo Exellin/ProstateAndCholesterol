@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205014805) do
+ActiveRecord::Schema.define(version: 20170324180809) do
 
   create_table "cholesterol_histories", force: :cascade do |t|
     t.integer  "year"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20170205014805) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["profile_id"], name: "index_cholesterol_histories_on_profile_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text    "comment"
+    t.integer "post_id"
+    t.integer "user_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "medications", force: :cascade do |t|
@@ -40,6 +48,15 @@ ActiveRecord::Schema.define(version: 20170205014805) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["profile_id"], name: "index_medications_on_profile_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string  "title"
+    t.text    "content"
+    t.integer "user_id"
+    t.integer "topic_id"
+    t.index ["topic_id"], name: "index_posts_on_topic_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -69,6 +86,10 @@ ActiveRecord::Schema.define(version: 20170205014805) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_psa_histories_on_profile_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
