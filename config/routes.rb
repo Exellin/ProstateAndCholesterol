@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :edit, :update] do
     resources :psa_histories, only: [:index]
   end
+  resources :topics, only: [:create, :new, :index]
 end
 

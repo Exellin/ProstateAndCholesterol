@@ -12,7 +12,7 @@ RSpec.feature "Creating a Topic" do
       login_as(@admin)
       visit "/"
       click_link "Forum"
-      click_button "New Topic"
+      click_link "New Topic"
     end
 
     scenario "with valid inputs" do
@@ -24,6 +24,7 @@ RSpec.feature "Creating a Topic" do
     
     scenario "with invalid inputs" do
       fill_in "Name", with: ""
+      click_button "Create Topic"
       expect(page).to have_content("Name can't be blank")
     end
   end
@@ -39,8 +40,7 @@ RSpec.feature "Creating a Topic" do
       
     scenario "by going directly to the route" do
       visit "/topics/new"
-      fill_in "Name", with: @topic.name
-      expect(page).to have_content("Only administrators can create a new topic")
+      expect(current_path).to eq(root_path)
     end
   end
 end

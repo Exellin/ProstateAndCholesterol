@@ -1,0 +1,8 @@
+<% @topics.each do |topic| %>
+    <%= topic.name %>
+    <br>
+<% end %>
+
+<% if current_user.try(:admin?) %>
+  <%= link_to "New Topic", new_topic_path, class: "btn btn-primary" %>
+<% end %>
