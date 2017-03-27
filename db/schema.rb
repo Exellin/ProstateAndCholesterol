@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324180809) do
+ActiveRecord::Schema.define(version: 20170327170715) do
 
   create_table "cholesterol_histories", force: :cascade do |t|
     t.integer  "year"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20170324180809) do
     t.text    "comment"
     t.integer "post_id"
     t.integer "user_id"
+    t.integer "comment_id"
+    t.index ["comment_id"], name: "index_comments_on_comment_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
