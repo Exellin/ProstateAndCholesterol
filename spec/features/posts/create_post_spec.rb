@@ -17,18 +17,17 @@ RSpec.feature "Creating a Post" do
     end
     
     scenario "with valid inputs" do
-      fill_in "title", with: @post.title
-      fill_in "content", with: @post.content
+      fill_in "Title", with: @post.title
+      fill_in "Content", with: @post.content
       click_button "Create Post"
       expect(page).to have_content("Your post has been successfully created")
       expect(page).to have_content(@post.title)
       expect(page).to have_content(@post.content)
-      expect(@post.user_id).to eq(@user.id)
     end
     
     scenario "with invalid inputs" do
-      fill_in "title", with: ""
-      fill_in "content", with: ""
+      fill_in "Title", with: ""
+      fill_in "Content", with: ""
       click_button "Create Post"
       expect(page).to have_content("Title can't be blank")
       expect(page).to have_content("Content can't be blank")
@@ -41,12 +40,15 @@ RSpec.feature "Creating a Post" do
       visit "/"
       click_link "Forum"
       click_link "#{@topic.name}"
-      expect(page).not_to have_content("New Post")
+      click_link "New Post"
+      expect(page).to have_content("You must sign in or sign up to view this page")
+      expect(current_path).to eq(new_user_registration_path)
     end
     
     scenario "by going directly to the route" do
-      visit "/topics/#{@topic.id}/post/new"
-      expect(current_path).to eq(root_path)
+      visit "/topics/#{@topic.id}/posts/new"
+      expect(page).to have_content("You must sign in or sign up to view this page")
+      expect(current_path).to eq(new_user_registration_path)
     end
   end
 end

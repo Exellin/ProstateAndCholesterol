@@ -1,5 +1,5 @@
 <% @topics.each do |topic| %>
-    <%= topic.name %>
+    <%= link_to "#{topic.name}", topic_path(topic) %>
     <br>
 <% end %>
 
