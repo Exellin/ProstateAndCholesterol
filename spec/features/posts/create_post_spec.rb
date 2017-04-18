@@ -35,7 +35,6 @@ RSpec.feature "Creating a Post" do
   end
       
   feature "as a guest" do
-    
     scenario "through the user interface" do
       visit "/"
       click_link "Forum"
