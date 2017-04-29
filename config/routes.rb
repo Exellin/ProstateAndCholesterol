@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :psa_histories, only: [:index]
   end
   resources :topics, only: [:create, :new, :index, :show] do
-    resources :posts, except: [:index]
+    resources :posts, except: [:index] do
+      resources :comments, except: [:index]
+    end
   end
 end
 

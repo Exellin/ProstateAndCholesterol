@@ -25,7 +25,7 @@ RSpec.feature "Creating a Comment" do
       end
       
       scenario "with valid inputs" do
-        fill_in "content", with: @comment.content
+        fill_in "Content", with: @comment.content
         click_button "Create Comment"
         expect(page).to have_content("Your comment has been successfully created")
         expect(page).to have_content(@post.title)
@@ -33,7 +33,7 @@ RSpec.feature "Creating a Comment" do
       end
       
       scenario "with invalid inputs" do
-        fill_in "content", with: ""
+        fill_in "Content", with: ""
         click_button "Create Comment"
         expect(page).to have_content("Content can't be blank")
       end
@@ -42,7 +42,7 @@ RSpec.feature "Creating a Comment" do
     feature "in reply to a comment" do
       scenario "with valid inputs" do
         click_link "Reply to Comment"
-        fill_in "content", with: @child_comment.content
+        fill_in "Content", with: @child_comment.content
         click_button "Create Comment"
         expect(page).to have_content(@post.title)
         expect(page).to have_content(@parent_comment.content)
