@@ -1,0 +1,5 @@
+<div>
+  <%= comment.content %>
+  <%= link_to "Reply to Comment", new_topic_post_comment_path(@post.topic, @post, :parent_comment_id => comment.id), 
+                                  class: "btn btn-primary btn-xs" %>
+</div>

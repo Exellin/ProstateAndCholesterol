@@ -1,3 +1,23 @@
 <h2><%= @post.title %></h2>
 <%= @post.content %>
 <%= link_to "Reply to Post", new_topic_post_comment_path(@post.topic, @post), class: "btn btn-primary" %>
+
+<% if @comment %>
+  <% if @comment.parent_comment %>
+    <%= render '/comments/show', comment: @comment.parent_comment %>
+  <% end %>
+  <div class="highlight">
+    <%= render '/comments/show', comment: @comment %>
+  </div>
+<% else %>
+  <% @post.comments.each do |comment| %>
+    <% if comment.parent_comment.nil? %>
+      <%= render '/comments/show', comment: comment %>
+    <% end %>
+    <% unless (comment.child_comments.blank?) %>
+      <% comment.child_comments.each do |child_comment| %>
+        <%= render '/comments/show', comment: child_comment %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

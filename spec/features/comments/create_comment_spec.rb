@@ -5,7 +5,7 @@ RSpec.feature "Creating a Comment" do
     @user = FactoryGirl.create(:user)
     @topic = FactoryGirl.create(:topic)
     @post = FactoryGirl.create(:post, topic: @topic)
-    @parent_comment = FactoryGirl.create(:comment)
+    @parent_comment = FactoryGirl.create(:comment, post: @post)
     @comment = FactoryGirl.build(:comment)
     @child_comment = FactoryGirl.build(:child_comment)
   end

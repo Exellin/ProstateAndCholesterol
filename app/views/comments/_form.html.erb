@@ -1,5 +1,6 @@
 <%= render 'shared/errors', obj: @comment %>
 <%= form_for([@topic, @post, @comment], url: topic_post_comments_path) do |f| %>
+  <%= f.hidden_field(:parent_comment_id, :value => params[:parent_comment_id]) %>
   <div class="form-group">
     <%= f.label :content %>
     <%= f.text_area :content, class: "form-control" %>

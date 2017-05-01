@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
   
   def new
     @comment = Comment.new
@@ -24,6 +25,6 @@ class CommentsController < ApplicationController
   end
   
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :parent_comment_id)
   end
 end
