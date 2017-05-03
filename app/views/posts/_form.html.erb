@@ -1,5 +1,5 @@
 <%= render 'shared/errors', obj: @post %>
-<%= form_for([@topic, @post], url: topic_posts_path) do |f| %>
+<%= form_for([@topic, @post], url: url) do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>

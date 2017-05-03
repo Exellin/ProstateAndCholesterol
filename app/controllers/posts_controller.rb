@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!, except: [:show]
+  before_action :set_post, only: [:edit, :show, :update]
+  before_action :require_same_user, only: [:edit, :update]
   
   def new
     @post = Post.new
@@ -18,12 +21,35 @@ class PostsController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @post.update(post_params)
+      @topic = @post.topic
+      flash[:success] = "Post has been updated"
+      redirect_to topic_post_path(@topic, @post)
+    else
+      render 'edit'
+    end
+  end
+  
   def show
-    @post = Post.find(params[:id])
   end
   
   private
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+  
+  def set_post
+    @post = Post.find(params[:id])
+  end
+  
+  def require_same_user
+    if current_user != @post.user
+      flash[:danger] = "You can only edit or delete your own content"
+      redirect_to topic_post_path(@post.topic, @post)
+    end
   end
 end
