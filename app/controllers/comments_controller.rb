@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  before_action :set_comment, only: [:edit, :show, :update]
+  before_action :require_same_user, only: [:edit, :update]
   
   def new
     @comment = Comment.new
@@ -19,12 +21,37 @@ class CommentsController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @comment.update(comment_params)
+      @post = @comment.post
+      @topic = @post.topic
+      flash[:success] = "Comment has been updated"
+      redirect_to topic_post_comment_path(@topic, @post, @comment)
+    else
+      render 'edit'
+    end
+  end
+  
   def show
-    @comment = Comment.find(params[:id])
     @post = @comment.post
   end
   
+  private
   def comment_params
     params.require(:comment).permit(:content, :parent_comment_id)
+  end
+  
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+  
+  def require_same_user
+    if current_user != @comment.user
+      flash[:danger] = "You can only edit or delete your own content"
+      redirect_to topic_post_comment_path(@comment.post.topic, @comment.post, @comment)
+    end
   end
 end

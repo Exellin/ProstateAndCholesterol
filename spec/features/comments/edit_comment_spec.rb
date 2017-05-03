@@ -1,25 +1,26 @@
 require 'rails_helper'
 
-RSpec.feature "Editing a Post" do
+RSpec.feature "Editing a Comment" do
   before do
     @owner = FactoryGirl.create(:user)
     @user = FactoryGirl.create(:user)
     @topic = FactoryGirl.create(:topic)
-    @post = FactoryGirl.create(:post, topic: @topic, user: @owner)
+    @post = FactoryGirl.create(:post, topic: @topic)
+    @comment = FactoryGirl.create(:comment, post: @post, user: @owner)
   end
-
-  scenario "as the owner of the post" do
+  
+  scenario "as the owner of the comment" do
     login_as(@owner)
     visit "/"
     click_link "Forum"
     click_link "#{@topic.name}"
     click_link "#{@post.title}"
-    click_link "edit post"
+    click_link "edit comment"
     fill_in "Content", with: "edited content"
-    click_button "Update Post"
+    click_button "Update Comment"
     expect(page).to have_content("edited content")
-    expect(page).to have_content("Post has been updated")
-    expect(page).not_to have_content(@post.content)
+    expect(page).to have_content("Comment has been updated")
+    expect(page).not_to have_content(@comment.content)
   end
   
   feature "as another user" do
@@ -29,17 +30,16 @@ RSpec.feature "Editing a Post" do
     
     scenario "through the user interface" do
       visit "/"
-      click_link "Forum"
+      click_link("Forum")
       click_link "#{@topic.name}"
       click_link "#{@post.title}"
-      expect(page).not_to have_content("edit post")
+      expect(page).not_to have_content("edit comment")
     end
     
     scenario "by going directly to the route" do
-      visit "/topics/#{@topic.id}/posts/#{@post.id}/edit"
+      visit "/topics/#{@topic.id}/posts/#{@post.id}/comments/#{@comment.id}/edit"
       expect(page).to have_content("You can only edit or delete your own content")
-      expect(current_path).to eq(topic_post_path(@topic, @post))
+      expect(current_path).to eq(topic_post_comment_path(@topic, @post, @comment))
     end
   end
 end
-    
