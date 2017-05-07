@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_post, only: [:edit, :show, :update, :delete]
   before_action :require_same_user, only: [:edit, :update]
+  before_action :check_deleted, only: [:edit, :update, :delete]
   
   def new
     @post = Post.new
@@ -59,6 +60,13 @@ class PostsController < ApplicationController
   def require_same_user
     if current_user != @post.user
       flash[:danger] = "You can only edit or delete your own content"
+      redirect_to topic_post_path(@post.topic, @post)
+    end
+  end
+  
+  def check_deleted
+    if @post.deleted?
+      flash[:danger] = "This post is deleted"
       redirect_to topic_post_path(@post.topic, @post)
     end
   end

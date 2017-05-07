@@ -1,7 +1,7 @@
 <h2><%= @post.title %></h2>
 <%= @post.content %>
 <%= link_to "Reply to Post", new_topic_post_comment_path(@post.topic, @post), class: "btn btn-primary" %>
-<% if @post.user == current_user %>
+<% if @post.user == current_user && !@post.deleted? %>
   <%= link_to "edit post", edit_topic_post_path(@post.topic, @post), class: "btn btn-primary btn-xs" %>
   <%= link_to "delete post", delete_topic_post_path(@post.topic, @post), 
                              method: :patch, data: { confirm: "Are you sure?" },
