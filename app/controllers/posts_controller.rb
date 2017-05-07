@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!, except: [:show]
-  before_action :set_post, only: [:edit, :show, :update]
+  before_action :set_post, only: [:edit, :show, :update, :delete]
   before_action :require_same_user, only: [:edit, :update]
   
   def new
@@ -35,6 +35,16 @@ class PostsController < ApplicationController
   end
   
   def show
+  end
+  
+  def delete
+    @topic = @post.topic
+    @post.title = "[deleted]"
+    @post.content = "[deleted]"
+    @post.deleted = true
+    @post.save
+    flash[:danger] = "Your post has been successfully deleted"
+    redirect_to topic_post_path(@topic, @post)
   end
   
   private
