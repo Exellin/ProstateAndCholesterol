@@ -61,6 +61,8 @@ end
 group :test do
   gem 'capybara'
   gem 'faker'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
