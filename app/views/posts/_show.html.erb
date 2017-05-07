@@ -3,6 +3,9 @@
 <%= link_to "Reply to Post", new_topic_post_comment_path(@post.topic, @post), class: "btn btn-primary" %>
 <% if @post.user == current_user %>
   <%= link_to "edit post", edit_topic_post_path(@post.topic, @post), class: "btn btn-primary btn-xs" %>
+  <%= link_to "delete post", delete_topic_post_path(@post.topic, @post), 
+                             method: :patch, data: { confirm: "Are you sure?" },
+                             class: "btn btn-primary btn-xs", confirm: "are you sure?" %>
 <% end %>
 
 <% if @comment %>

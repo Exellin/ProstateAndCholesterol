@@ -16,8 +16,9 @@ RSpec.feature "Deleting a Post" do
     click_link "Forum"
     click_link "#{@topic.name}"
     click_link "#{@post.title}"
-    click_link "delete post"
-    page.driver.browser.switch_to.alert.accept
+    accept_confirm_from do
+      click_link "delete post"
+    end
     expect(page).not_to have_content(@title)
     expect(page).not_to have_content(@content)
     expect(page).to have_content("[deleted]")
