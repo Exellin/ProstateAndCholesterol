@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!, except: [:show]
   before_action :set_post, only: [:edit, :show, :update, :delete]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :delete]
   before_action :check_deleted, only: [:edit, :update, :delete]
   
   def new

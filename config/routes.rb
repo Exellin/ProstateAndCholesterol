@@ -10,8 +10,11 @@ Rails.application.routes.draw do
       member do
         patch :delete
       end
-      resources :comments, except: [:index]
+      resources :comments, except: [:index, :destroy] do
+        member do 
+          patch :delete
+        end
+      end
     end
   end
 end
-

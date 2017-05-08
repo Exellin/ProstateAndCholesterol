@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_comment, only: [:edit, :show, :update]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :set_comment, only: [:edit, :show, :update, :delete]
+  before_action :require_same_user, only: [:edit, :update, :delete]
+  before_action :check_deleted, only: [:edit, :update, :delete]
   
   def new
     @comment = Comment.new
@@ -39,6 +40,16 @@ class CommentsController < ApplicationController
     @post = @comment.post
   end
   
+  def delete
+    @post = @comment.post
+    @topic = @post.topic
+    @comment.content = "[deleted]"
+    @comment.deleted = true
+    @comment.save
+    flash[:danger] = "Your comment has been successfully deleted"
+    redirect_to topic_post_comment_path(@topic, @post, @comment)
+  end
+  
   private
   def comment_params
     params.require(:comment).permit(:content, :parent_comment_id)
@@ -51,6 +62,13 @@ class CommentsController < ApplicationController
   def require_same_user
     if current_user != @comment.user
       flash[:danger] = "You can only edit or delete your own content"
+      redirect_to topic_post_comment_path(@comment.post.topic, @comment.post, @comment)
+    end
+  end
+  
+  def check_deleted
+    if @comment.deleted?
+      flash[:danger] = "This comment is deleted"
       redirect_to topic_post_comment_path(@comment.post.topic, @comment.post, @comment)
     end
   end

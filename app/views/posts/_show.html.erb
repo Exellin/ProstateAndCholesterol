@@ -5,7 +5,7 @@
   <%= link_to "edit post", edit_topic_post_path(@post.topic, @post), class: "btn btn-primary btn-xs" %>
   <%= link_to "delete post", delete_topic_post_path(@post.topic, @post), 
                              method: :patch, data: { confirm: "Are you sure?" },
-                             class: "btn btn-primary btn-xs", confirm: "are you sure?" %>
+                             class: "btn btn-primary btn-xs" %>
 <% end %>
 
 <% if @comment %>

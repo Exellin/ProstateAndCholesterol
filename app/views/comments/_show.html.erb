@@ -2,8 +2,11 @@
   <%= comment.content %>
   <%= link_to "Reply to Comment", new_topic_post_comment_path(@post.topic, @post, :parent_comment_id => comment.id), 
                                   class: "btn btn-primary btn-xs" %>
-  <% if comment.user == current_user %>
+  <% if comment.user == current_user && !comment.deleted %>
     <%= link_to "edit comment", edit_topic_post_comment_path(@post.topic, @post, comment), 
                                 class: "btn btn-primary btn-xs" %>
+    <%= link_to "delete comment", delete_topic_post_comment_path(@post.topic, @post, comment),
+                                  method: :patch, data: { confirm: "Are you sure?" },
+                                  class: "btn btn-primary btn-xs" %>
   <% end %>
 </div>
