@@ -27,9 +27,8 @@ class PostsController < ApplicationController
   
   def update
     if @post.update(post_params)
-      @topic = @post.topic
       flash[:success] = "Post has been updated"
-      redirect_to topic_post_path(@topic, @post)
+      redirect_to topic_post_path(@post)
     else
       render 'edit'
     end
@@ -39,13 +38,12 @@ class PostsController < ApplicationController
   end
   
   def delete
-    @topic = @post.topic
     @post.title = "[deleted]"
     @post.content = "[deleted]"
     @post.deleted = true
     @post.save
     flash[:danger] = "Your post has been successfully deleted"
-    redirect_to topic_post_path(@topic, @post)
+    redirect_to topic_post_path(@post)
   end
   
   private
@@ -60,14 +58,14 @@ class PostsController < ApplicationController
   def require_same_user
     if current_user != @post.user
       flash[:danger] = "You can only edit or delete your own content"
-      redirect_to topic_post_path(@post.topic, @post)
+      redirect_to topic_post_path(@post)
     end
   end
   
   def check_deleted
     if @post.deleted?
       flash[:danger] = "This post is deleted"
-      redirect_to topic_post_path(@post.topic, @post)
+      redirect_to topic_post_path(@post)
     end
   end
 end

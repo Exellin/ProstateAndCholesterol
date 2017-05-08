@@ -27,10 +27,8 @@ class CommentsController < ApplicationController
   
   def update
     if @comment.update(comment_params)
-      @post = @comment.post
-      @topic = @post.topic
       flash[:success] = "Comment has been updated"
-      redirect_to topic_post_comment_path(@topic, @post, @comment)
+      redirect_to topic_post_comment_path(@comment)
     else
       render 'edit'
     end
@@ -41,13 +39,11 @@ class CommentsController < ApplicationController
   end
   
   def delete
-    @post = @comment.post
-    @topic = @post.topic
     @comment.content = "[deleted]"
     @comment.deleted = true
     @comment.save
     flash[:danger] = "Your comment has been successfully deleted"
-    redirect_to topic_post_comment_path(@topic, @post, @comment)
+    redirect_to topic_post_comment_path(@comment)
   end
   
   private
@@ -62,14 +58,14 @@ class CommentsController < ApplicationController
   def require_same_user
     if current_user != @comment.user
       flash[:danger] = "You can only edit or delete your own content"
-      redirect_to topic_post_comment_path(@comment.post.topic, @comment.post, @comment)
+      redirect_to topic_post_comment_path(@comment)
     end
   end
   
   def check_deleted
     if @comment.deleted?
       flash[:danger] = "This comment is deleted"
-      redirect_to topic_post_comment_path(@comment.post.topic, @comment.post, @comment)
+      redirect_to topic_post_comment_path(@comment)
     end
   end
 end
