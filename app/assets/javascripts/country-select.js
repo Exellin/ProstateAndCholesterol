@@ -31,7 +31,7 @@ var setCountry = function() {
   var country_select = document.getElementById('profile_country');
   var country_check = ($('#country_data').data('country'));
   if (!country_check) {
-      country_select.selectedIndex = 230; // United States
+      country_select.selectedIndex = 235; // United States
   }
 };
 
@@ -50,17 +50,12 @@ var setDropdown = function(input_id, query) {
       },  
       success: function(result) {
         dropdown.empty();
+        console.log(result);
         result.forEach(function(result) {
-          if (query === "administrative_division") {
-            option = '<option value='+ result[0] +'>' + result[1] + '</option>';
-          } else if (query === "city") {
-            option = '<option value='+ result +'>' + result + '</option>';
-          }
+          option = '<option value='+ result[0] +'>' + result[1] + '</option>';
           dropdown.append(option);
         });
       }
     });
   }
 };
-
-

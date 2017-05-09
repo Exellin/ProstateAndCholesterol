@@ -30,6 +30,31 @@ class Profile < ApplicationRecord
     self.attributes.all?{|key, value| value.blank? || ignored_attrs[key]}
   end
   
+  def set_countries
+    countries_array = CS.countries.to_a.sort_by { |a| a[1] }
+    remove_index = countries_array.index(countries_array.detect{|country| country.include?('country_name')})
+    countries_array.delete_at(remove_index)
+    countries_array.collect {|country| [country[1], country[0]]}
+  end
+  
+  def set_administrative_divisions
+    if country
+      administrative_divisions = CS.states(country.to_sym).sort_by { |a| a[1] }
+      administrative_divisions.collect {|state| [state[1], state[0]]}
+    else
+      administrative_divisions = CS.states(:us).sort_by { |a| a[1] }
+      administrative_divisions.collect {|state| [state[1], state[0]]}
+    end
+  end
+  
+  def set_cities
+    if administrative_division
+      CS.cities(administrative_division.to_sym).collect {|city| [city, city]}
+    else
+      CS.cities(:al).collect {|city| [city, city]}
+    end
+  end
+  
   def country_name
     unless country.nil?
       CS.countries[country.to_sym]
