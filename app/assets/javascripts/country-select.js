@@ -1,4 +1,3 @@
-
 /*global $*/
 /*global location*/
 $(document).ready(function() {
@@ -8,27 +7,23 @@ $(document).ready(function() {
   }
   
   $('#profile_country').change(function() {
-    var input_country_id = $(this).val();
-    var administrative_division_select = $("#profile_administrative_division");
-    if (input_country_id == "") {
-      administrative_division_select.html("");
-    } else {
-      $.ajax({
-        url: "/find_administrative_divisions",
-        type: 'GET',
-        dataType: 'json',
-        data: {
-          country_id: input_country_id
-        },
-        success: function(result) {
-          administrative_division_select.empty();
-          result.forEach(function(i) {
-            var option = '<option value='+ i[0] +'>' + i[1] + '</option>';
-            administrative_division_select.append(option);
-          });
-        }
-      });
-    }
+    var input_id = $(this).val();
+    setDropdown(input_id, "administrative_division");
+    $.ajax({
+      url: "/find_administrative_division",
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        id: input_id,
+      },  
+      success: function(result) {
+        setDropdown(result[0][0], "city");
+      }
+    });
+  });
+  
+  $('#profile_administrative_division').change(function() {
+    setDropdown($(this).val(), "city");
   });
 });
   
@@ -37,6 +32,34 @@ var setCountry = function() {
   var country_check = ($('#country_data').data('country'));
   if (!country_check) {
       country_select.selectedIndex = 230; // United States
+  }
+};
+
+var setDropdown = function(input_id, query) {
+  var dropdown = $("#profile_" + query);
+  var option;
+  if (input_id == "") {
+      dropdown.html("");
+  } else {
+      $.ajax({
+      url: "/find_" + query,
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        id: input_id,
+      },  
+      success: function(result) {
+        dropdown.empty();
+        result.forEach(function(result) {
+          if (query === "administrative_division") {
+            option = '<option value='+ result[0] +'>' + result[1] + '</option>';
+          } else if (query === "city") {
+            option = '<option value='+ result +'>' + result + '</option>';
+          }
+          dropdown.append(option);
+        });
+      }
+    });
   }
 };
 

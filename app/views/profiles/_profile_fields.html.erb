@@ -34,15 +34,6 @@
     
     <div class="form-group">
       <div class="control-label col-sm-3">
-        <%= f.label :city, "City" %>
-      </div>
-      <div class="col-sm-8">
-        <%= f.text_field :city, class: "form-control", placeholder: "City" %>
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <div class="control-label col-sm-3">
         <%= f.label :country, "Country" %>
       </div>
       <div class="col-sm-8">
@@ -59,6 +50,20 @@
           <%= f.select(:administrative_division, CS.states(@profile.country.to_sym).collect {|state| [state[1], state[0]]}) %>
         <% else %>
           <%= f.select(:administrative_division, CS.states(:us).collect {|state| [state[1], state[0]]}) %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="control-label col-sm-3">
+        <%= f.label :city, "City" %>
+      </div>
+      <div class="col-sm-8">
+        <% if @profile.country && @profile.administrative_division %>
+          <%= f.select(:city, CS.cities(@profile.administrative_division, 
+                                                 @profile.country.to_sym).collect {|city| [city, city]}) %>
+        <% else %>
+          <%= f.select(:city, CS.cities(:ak, :us).collect {|state| [city, city]}) %>
         <% end %>
       </div>
     </div>
