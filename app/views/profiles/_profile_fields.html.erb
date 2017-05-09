@@ -55,7 +55,11 @@
         <%= f.label :administrative_division, "State/Province/Region" %>
       </div>
       <div class="col-sm-8">
-        <%= f.select(:administrative_division, CS.states(:us).collect {|state| [state[1], state[0]]}) %>
+        <% if @profile.country %>
+          <%= f.select(:administrative_division, CS.states(@profile.country.to_sym).collect {|state| [state[1], state[0]]}) %>
+        <% else %>
+          <%= f.select(:administrative_division, CS.states(:us).collect {|state| [state[1], state[0]]}) %>
+        <% end %>
       </div>
     </div>
     
