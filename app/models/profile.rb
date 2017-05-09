@@ -32,8 +32,7 @@ class Profile < ApplicationRecord
   
   def country_name
     unless country.nil?
-      country_hash = ISO3166::Country[country]
-      country_hash.translations[I18n.locale.to_s] || country_hash.name
+      CS.countries[country.to_sym]
     end
   end
 end

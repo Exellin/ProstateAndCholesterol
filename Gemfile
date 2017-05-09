@@ -33,10 +33,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'devise'
 gem 'nokogiri'
-gem 'country_select'
 gem 'cocoon'
 gem 'font-awesome-rails'
 gem 'd3-rails'
+gem 'city-state'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -43,19 +43,19 @@
     
     <div class="form-group">
       <div class="control-label col-sm-3">
-        <%= f.label :administrative_division, "State/Province/Region" %>
+        <%= f.label :country, "Country" %>
       </div>
       <div class="col-sm-8">
-        <%= f.text_field :administrative_division, class: "form-control", placeholder: "State/Province/Region" %>
+        <%= f.select(:country, CS.countries.collect {|country| [country[1], country[0]]}) %>
       </div>
     </div>
     
     <div class="form-group">
       <div class="control-label col-sm-3">
-        <%= f.label :country, "Country" %>
+        <%= f.label :administrative_division, "State/Province/Region" %>
       </div>
       <div class="col-sm-8">
-        <%= f.country_select :country %>
+        <%= f.select(:administrative_division, CS.states(:us).collect {|state| [state[1], state[0]]}) %>
       </div>
     </div>
     

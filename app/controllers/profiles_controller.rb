@@ -38,11 +38,9 @@ class ProfilesController < ApplicationController
     else
       render render_path
     end
-    
   end
   
   private
-  
   def set_profile
     @profile = Profile.find(params[:id])
   end
