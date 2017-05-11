@@ -19,8 +19,6 @@ RSpec.feature "Profile created upon signup" do
     fill_in "First Name", with: @profile.first_name
     fill_in "Last Name", with: @profile.last_name
     fill_in "Birth Year", with: @profile.birth_year
-    fill_in "City", with: @profile.city
-    fill_in "State/Province/Region", with: @profile.administrative_division
     select(@profile.country_name, from: 'profile_country')
     fill_in "Years resided within 200 miles/320km of your current residence", 
     with: @profile.years_in_current_locale
@@ -40,7 +38,6 @@ RSpec.feature "Profile created upon signup" do
     expect(page).to have_content("First Name can't be blank")
     expect(page).to have_content("Last Name can't be blank")
     expect(page).to have_content("Birth Year can't be blank")
-    expect(page).to have_content("State/Province/Region can't be blank")
     expect(page).to have_content("Years resided within 200 miles/320km of your current residence can't be blank")
   end
 end
