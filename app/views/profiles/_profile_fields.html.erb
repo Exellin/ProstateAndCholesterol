@@ -37,7 +37,7 @@
         <%= f.label :country, "Country" %>
       </div>
       <div class="col-sm-8">
-        <%= f.select(:country, @profile.set_countries) %>
+        <%= f.select(:country, @profile.set_countries, {}, { class: "form-control" }) %>
       </div>
     </div>
     
@@ -46,7 +46,7 @@
         <%= f.label :administrative_division, "State/Province/Region" %>
       </div>
       <div class="col-sm-8">
-        <%= f.select(:administrative_division, @profile.set_administrative_divisions) %>
+        <%= f.select(:administrative_division, @profile.set_administrative_divisions, {}, { class: "form-control" }) %>
       </div>
     </div>
     
@@ -55,7 +55,7 @@
         <%= f.label :city, "City" %>
       </div>
       <div class="col-sm-8">
-        <%= f.select(:city, @profile.set_cities) %>
+        <%= f.select(:city, @profile.set_cities, {}, { class: "form-control" }) %>
       </div>
     </div>
     
@@ -75,7 +75,7 @@
       </div>
       <div class="col-sm-8">
         <%= f.select(:race, [['Caucasian'], ['Black'], ['Latino'], ['Middle Eastern'], 
-        ['Asian'], ['Native Australian'], ['Native American']]) %>
+        ['Asian'], ['Native Australian'], ['Native American']], {}, { class: "form-control" }) %>
       </div>
     </div>
     

@@ -1,5 +1,5 @@
 <tr class="nested-fields">
-  <td><%= f.select(:purpose, [['Prostate'], ['Cholesterol'], ['Blood Pressure']]) %></td>
+  <td><%= f.select(:purpose, [['Prostate'], ['Cholesterol'], ['Blood Pressure']], {}, { class: "form-control" }) %></td>
   <td><%= f.text_field :name, class: 'form-control', autofocus: true %></td>
   <td><%= f.number_field :strength, class: 'form-control' %></td>
   <td><%= f.number_field :dosage, class: 'form-control' %></td>
