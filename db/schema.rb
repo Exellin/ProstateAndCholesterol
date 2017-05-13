@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507195633) do
+ActiveRecord::Schema.define(version: 20170513160906) do
 
   create_table "cholesterol_histories", force: :cascade do |t|
     t.integer  "year"
@@ -27,11 +27,13 @@ ActiveRecord::Schema.define(version: 20170507195633) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text    "content"
-    t.integer "post_id"
-    t.integer "user_id"
-    t.integer "parent_comment_id"
-    t.boolean "deleted",           default: false
+    t.text     "content"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.integer  "parent_comment_id"
+    t.boolean  "deleted",           default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["parent_comment_id"], name: "index_comments_on_parent_comment_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -54,11 +56,13 @@ ActiveRecord::Schema.define(version: 20170507195633) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string  "title"
-    t.text    "content"
-    t.integer "user_id"
-    t.integer "topic_id"
-    t.boolean "deleted",  default: false
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.boolean  "deleted",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["topic_id"], name: "index_posts_on_topic_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -93,7 +97,9 @@ ActiveRecord::Schema.define(version: 20170507195633) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string "name"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

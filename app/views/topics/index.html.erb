@@ -1,6 +1,16 @@
 <% @topics.each do |topic| %>
-    <%= link_to "#{topic.name}", topic_path(topic) %>
-    <br>
+  <div class="topics">
+    <p><%= link_to "#{topic.name}", topic_path(topic) %></p>
+    <p><%= pluralize(topic.posts.count, "post") %></p>
+    <% unless topic.posts.empty? %>
+      <p>
+        last post: <%= link_to "#{topic.posts.last.title}", topic_post_path(topic, topic.posts.last) %>
+        by <%= link_to "#{topic.posts.last.user.username}", profile_path(topic.posts.last.user.profile) %>
+        <%= time_ago_in_words(topic.posts.last.created_at) %> ago
+      </p>
+    <% end %>
+  </div>
+  </div>
 <% end %>
 
 <% if current_user.try(:admin?) %>
