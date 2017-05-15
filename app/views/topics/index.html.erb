@@ -1,6 +1,6 @@
 <% @topics.each do |topic| %>
   <div class="topics">
-    <p><%= link_to "#{topic.name}", topic_path(topic) %></p>
+    <h2><%= link_to "#{topic.name}", topic_path(topic) %></h2>
     <p><%= pluralize(topic.posts.count, "post") %></p>
     <% unless topic.posts.empty? %>
       <p>
@@ -9,7 +9,6 @@
         <%= time_ago_in_words(topic.posts.last.created_at) %> ago
       </p>
     <% end %>
-  </div>
   </div>
 <% end %>
 
