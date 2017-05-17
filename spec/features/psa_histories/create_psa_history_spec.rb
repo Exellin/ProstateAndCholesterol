@@ -43,7 +43,7 @@ RSpec.feature "Creating PSA History" do
     
     scenario "through the user interface" do
       visit "/profiles/#{@profile.id}"
-      expect(page).not_to have_content("edit profile")
+      expect(page).not_to have_content("edit psa history")
     end
     
     scenario "by going directly to the route" do
@@ -56,7 +56,7 @@ RSpec.feature "Creating PSA History" do
   feature "as a guest" do
     scenario "through the user interface" do
       visit "/profiles/#{@profile.id}"
-      expect(page).not_to have_content("edit profile")
+      expect(page).not_to have_content("edit psa history")
     end
     
     scenario "by going directly to the route" do
