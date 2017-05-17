@@ -7,38 +7,12 @@
 <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
-    <li><a data-toggle="tab" href="#cholesterol_history">Cholesterol History</a></li>
     <li><a data-toggle="tab" href="#medication">Medication</a></li>
   </ul>
     
   <div class="tab-content">
     <div id="profile" class="tab-pane fade in active">
       <%= render 'profile_fields', f: f %>
-    </div>
-    
-    <div id="cholesterol_history" class="tab-pane fade" style="overflow-x:auto;">
-      <table>
-        <thead>
-          <tr>
-            <th>Total Cholesterol</th>
-            <th>HDL</th>
-            <th>LDL</th>
-            <th>Triglyceride</th>
-            <th>Glucose</th>
-            <th>Month</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody class="cholesterol_histories">
-          <%= f.fields_for :cholesterol_histories do |cholesterol_history| %>
-            <%= render 'cholesterol_history_fields', f: cholesterol_history %>
-          <% end %>
-        </tbody>
-      </table>
-      <div class="links">
-        <%= link_to_add_association 'Add an entry', f, :cholesterol_histories, 
-        data: {"association-insertion-node" => "tbody.cholesterol_histories", "association-insertion-method" => "append" }%>
-      </div>
     </div>
     
     <div id="medication" class="tab-pane fade" style="overflow-x:auto;">

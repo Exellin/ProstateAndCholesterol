@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'find_city', to: 'country_state#find_cities'
   resources :profiles, only: [:show, :edit, :update] do
     resources :psa_histories, only: [:index]
+    resources :cholesterol_histories, only: [:index]
   end
   resources :topics, only: [:create, :new, :index, :show] do
     resources :posts, except: [:index, :destroy] do
