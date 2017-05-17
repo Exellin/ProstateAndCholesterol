@@ -48,7 +48,7 @@ RSpec.feature "Creating PSA History" do
     
     scenario "by going directly to the route" do
       visit "/profiles/#{@profile.id}/psa_histories/"
-      expect(page).to have_content("You can only edit or delete your own profile")
+      expect(page).to have_content("You can only edit or delete your own content")
       expect(current_path).to eq(root_path)
     end
   end

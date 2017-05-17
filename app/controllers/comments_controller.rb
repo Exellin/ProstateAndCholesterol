@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
+  include UserAccess
   before_action :authenticate_user!, except: [:show]
   before_action :set_comment, only: [:edit, :show, :update, :delete]
-  before_action :require_same_user, only: [:edit, :update, :delete]
+  before_action only: [:edit, :update, :delete] {require_same_user(@comment)}
   before_action :check_deleted, only: [:edit, :update, :delete]
   
   def new
@@ -53,13 +54,6 @@ class CommentsController < ApplicationController
   
   def set_comment
     @comment = Comment.find(params[:id])
-  end
-  
-  def require_same_user
-    if current_user != @comment.user
-      flash[:danger] = "You can only edit or delete your own content"
-      redirect_to topic_post_comment_path(@comment)
-    end
   end
   
   def check_deleted

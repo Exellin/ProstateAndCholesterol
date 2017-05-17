@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
+  include UserAccess
   before_action :set_profile, only: [:edit, :show, :update]
   before_action :authenticate_user!, except: [:show]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action only: [:edit, :update] {require_same_user(@profile)}
   
   def edit
     if @profile.cholesterol_histories.nil?
@@ -41,6 +42,7 @@ class ProfilesController < ApplicationController
   end
   
   private
+  
   def set_profile
     @profile = Profile.find(params[:id])
   end
@@ -53,12 +55,4 @@ class ProfilesController < ApplicationController
     :medications_attributes => [:id, :purpose, :age_recommended, :age_prescribed, :name, :strength, :dosage, :month_last_used,
     :year_last_used, :still_using, :_destroy])
   end
-  
-  def require_same_user
-    if current_user != @profile.user and !current_user.admin?
-      flash[:danger] = "You can only edit or delete your own profile"
-      redirect_to root_path
-    end
-  end
-  
 end

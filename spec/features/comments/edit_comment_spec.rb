@@ -39,7 +39,7 @@ RSpec.feature "Editing a Comment" do
     scenario "by going directly to the route" do
       visit "/topics/#{@topic.id}/posts/#{@post.id}/comments/#{@comment.id}/edit"
       expect(page).to have_content("You can only edit or delete your own content")
-      expect(current_path).to eq(topic_post_comment_path(@topic, @post, @comment))
+      expect(current_path).to eq(root_path)
     end
   end
 end
