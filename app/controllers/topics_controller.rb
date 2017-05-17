@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  include ApplicationHelper
+  include UserAccess
   before_action :require_admin, except: [:show, :index]
   
   def show
