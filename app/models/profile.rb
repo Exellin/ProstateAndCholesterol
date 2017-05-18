@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_many :psa_histories, inverse_of: :profile, dependent: :destroy
+  has_many :psa_histories, dependent: :destroy
   has_many :cholesterol_histories, dependent: :destroy
   has_many :medications, dependent: :destroy
   
