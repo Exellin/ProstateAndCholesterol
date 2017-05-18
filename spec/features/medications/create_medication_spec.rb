@@ -29,11 +29,11 @@ RSpec.feature "Creating Medication" do
       click_button "Update Medications"
       expect(page).to have_content("Your Medications have been successfully updated")
       click_link "edit medications"
-      expect(find("select[name$='[purpose]']").find('option[selected]').text).to eq @psa_history.purpose
+      expect(find("select[name$='[purpose]']").find('option[selected]').text).to eq @medication.purpose
       expect(find("input[name$='[name]']").value).to eq @medication.name
-      expect(find("input[name$='[strength]']").value).to eq @medication.stength
-      expect(find("input[name$='[dosage]']").value).to eq @medication.dosage
-      expect(find("input[name$='[age_recommended]']").value).to eq @medication.age_recommened.to_s
+      expect(find("input[name$='[strength]']").value).to eq @medication.strength.to_s
+      expect(find("input[name$='[dosage]']").value).to eq @medication.dosage.to_s
+      expect(find("input[name$='[age_recommended]']").value).to eq @medication.age_recommended.to_s
       expect(find("input[name$='[month_last_used]']").value).to eq @medication.month_last_used
       expect(find("input[name$='[year_last_used]']").value).to eq @medication.year_last_used.to_s
       if @medication.still_using

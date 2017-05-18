@@ -5,9 +5,6 @@ class ProfilesController < ApplicationController
   before_action only: [:edit, :update] {require_same_user(@profile)}
   
   def edit
-    if @profile.medications.nil?
-      @profile.medications.build
-    end
   end
   
   def show
@@ -26,6 +23,9 @@ class ProfilesController < ApplicationController
     elsif params[:profile][:cholesterol_histories_attributes]
       message = "Your Cholesterol History has been successfully updated"
       render_path = 'cholesterol_histories/index'
+    elsif params[:profile][:medications_attributes]
+      message = "Your Medications have been successfully updated"
+      render_path = 'medications/index'
     elsif @profile.empty?
       message = "Your profile has been successfully created"
       render_path = 'edit'
