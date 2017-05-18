@@ -7,24 +7,26 @@
 <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
   <%= f.hidden_field :id %>
   
-  <table>
-    <thead>
-      <tr>
-        <th>Total Cholesterol</th>
-        <th>HDL</th>
-        <th>LDL</th>
-        <th>Triglyceride</th>
-        <th>Glucose</th>
-        <th>Month</th>
-        <th>Year</th>
-      </tr>
-    </thead>
-    <tbody class="cholesterol_histories">
-      <%= f.fields_for :cholesterol_histories do |cholesterol_history| %>
-        <%= render '/cholesterol_histories/cholesterol_history_fields', f: cholesterol_history %>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Total Cholesterol</th>
+          <th>HDL</th>
+          <th>LDL</th>
+          <th>Triglyceride</th>
+          <th>Glucose</th>
+          <th>Month</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody class="cholesterol_histories">
+        <%= f.fields_for :cholesterol_histories do |cholesterol_history| %>
+          <%= render '/cholesterol_histories/cholesterol_history_fields', f: cholesterol_history %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   
   <div class="links">
     <%= link_to_add_association 'Add an entry', f, :cholesterol_histories, partial: 'cholesterol_histories/cholesterol_history_fields',

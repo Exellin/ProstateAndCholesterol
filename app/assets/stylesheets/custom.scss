@@ -2,11 +2,16 @@
 @import "bootstrap-sprockets";
 $error-outline: #A94442;
 
+.table-scroll {
+  overflow-x: auto;
+}
+
 table {
   border-collapse: collapse;
-  input.form-control {
+  .form-control {
     width: auto;
     max-width: 110px;
+    margin-bottom: 0;
   }
 }
 
@@ -47,8 +52,4 @@ td, th {
 
 .form-control {
   margin-bottom: 5px;
-}
-
-td .form-control {
-  margin-bottom: 0;
 }

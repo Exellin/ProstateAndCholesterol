@@ -7,20 +7,22 @@
 <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
   <%= f.hidden_field :id %>
   
-  <table>
-    <thead>
-      <tr>
-        <th>PSA</th>
-        <th>Month</th>
-        <th>Year</th>
-      </tr>
-    </thead>
-    <tbody class="psa_histories">
-      <%= f.fields_for :psa_histories do |psa_history| %>
-        <%= render '/psa_histories/psa_history_fields', f: psa_history %>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>PSA</th>
+          <th>Month</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody class="psa_histories">
+        <%= f.fields_for :psa_histories do |psa_history| %>
+          <%= render '/psa_histories/psa_history_fields', f: psa_history %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   
   <div class="links">
     <%= link_to_add_association 'Add an entry', f, :psa_histories, partial: '/psa_histories/psa_history_fields',
