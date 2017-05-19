@@ -5,13 +5,13 @@
       <%= render 'shared/errors', obj: @profile %>
     <% end %>
     
+    <% if @profile.empty? %>
+      <h2 align="center">Create Your Profile</h2>
+    <% else %>
+      <h2 align="center">Edit Your Profile</h2>
+    <% end %>
+    
     <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
-      <% if @profile.empty? %>
-        <h2>Create Your Profile</h2>
-      <% else %>
-        <h2 align="center">Edit Your Profile</h2>
-      <% end %>
-      
       <%= f.label :first_name, "First Name", class: "control-label" %>
       <%= f.text_field :first_name, class: "form-control", placeholder: "First Name", autofocus:true %>
     
