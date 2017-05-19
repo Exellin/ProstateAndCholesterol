@@ -1,14 +1,14 @@
 <div class="flex-row">
   <%= render 'shared/dashboard' %>
   <div class="flex-main">
-    <% if @profile.errors.any? %>
-      <%= render 'shared/errors', obj: @profile %>
-    <% end %>
-    
     <% if @profile.empty? %>
       <h2 align="center">Create Your Profile</h2>
     <% else %>
       <h2 align="center">Edit Your Profile</h2>
+    <% end %>
+    
+    <% if @profile.errors.any? %>
+      <%= render 'shared/errors', obj: @profile %>
     <% end %>
     
     <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>

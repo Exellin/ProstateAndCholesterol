@@ -1,11 +1,11 @@
 <div class="flex-row">
   <%= render 'shared/dashboard' %>
   <div class="flex-main">
+    <h2 align="center" >Medications</h2>
+    
     <% if @profile.errors.any? %>
       <%= render 'shared/errors', obj: @profile %>
     <% end %>
-    
-    <h2 align="center" >Medications</h2>
     
     <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
       <%= f.hidden_field :id %>
@@ -27,7 +27,7 @@
           </thead>
           <tbody class="medications">
             <%= f.fields_for :medications do |medication| %>
-              <%= render 'medication_fields', f: medication %>
+              <%= render '/medications/medication_fields', f: medication %>
             <% end %>
           </tbody>
         </table>
