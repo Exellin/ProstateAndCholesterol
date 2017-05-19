@@ -1,6 +1,8 @@
-<section class="navigation">
-  <%= link_to "Prostate and Cholesterol", root_path, class: "navbar-brand" %>
+<nav>
   <ul>
+    <li>
+      <%= link_to "Prostate and Cholesterol", root_path, class: "navbar-brand" %>
+    </li>
     <li>
       <%= link_to "Forum", topics_path %>
     </li>
@@ -13,9 +15,6 @@
       </li>
     <% else %>
       <li>
-        <%= link_to "PSA History", profile_psa_histories_path(current_user.profile) %>
-      </li>
-      <li>
         <%= link_to current_user.username, current_user.profile %>
       </li>
       <li>
@@ -23,4 +22,4 @@
       </li>
     <% end %>
   </ul>
-</section>
+</nav>

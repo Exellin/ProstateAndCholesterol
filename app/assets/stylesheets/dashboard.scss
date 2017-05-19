@@ -1,0 +1,33 @@
+.flex-row {
+  display: flex;
+}
+
+.flex-main {
+  flex: 1
+}
+
+#dashboard {
+  background-color: #5673a2;
+  margin-right: 10px;
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        display: block;
+        color: white;
+        padding: 20px;
+        text-decoration: none;
+      }
+      &:hover {
+        background-color: #506a94;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #dashboard ul li a {
+    padding: 20px 5px;
+  }
+}

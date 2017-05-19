@@ -1,0 +1,16 @@
+<aside id="dashboard">
+  <ul>
+    <li>
+      <%= link_to "Edit Your Profile", edit_profile_path(current_user.profile) %>
+    </li>
+    <li>
+      <%= link_to "PSA History", profile_psa_histories_path(current_user.profile) %>
+    </li>
+    <li>
+      <%= link_to "Cholesterol History", profile_cholesterol_histories_path(current_user.profile) %>
+    </li>
+    <li>
+      <%= link_to "Medications", profile_medications_path(current_user.profile) %>
+    </li>
+  </ul>
+</aside>
