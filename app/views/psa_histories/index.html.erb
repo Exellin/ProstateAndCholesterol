@@ -1,6 +1,8 @@
-<div class="flex-row">
-  <%= render 'shared/dashboard' %>
-  <div class="flex-main">
+<div class="row">
+  <div class="col-sm-3">
+    <%= render 'shared/dashboard' %>
+  </div>
+  <div class="col-sm-9">
     <h2 align="center">PSA History</h2>
     
     <% if @profile.errors.any? %>

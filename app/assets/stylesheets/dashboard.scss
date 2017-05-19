@@ -1,14 +1,8 @@
-.flex-row {
-  display: flex;
-}
-
-.flex-main {
-  flex: 1
-}
-
 #dashboard {
   background-color: #5673a2;
   margin-right: 10px;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
   ul {
     padding: 0;
     li {
@@ -26,8 +20,13 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #dashboard ul li a {
     padding: 20px 5px;
+  }
+  
+  #dashboard {
+    margin: 0;
+    padding: 0;
   }
 }

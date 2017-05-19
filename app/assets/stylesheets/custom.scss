@@ -2,6 +2,15 @@
 @import "bootstrap-sprockets";
 $error-outline: #A94442;
 
+html, body { 
+  height: 100%; 
+}
+
+.container {
+  min-height: 100%;
+  overflow: hidden;
+}
+
 .table-scroll {
   overflow-x: auto;
 }
