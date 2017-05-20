@@ -8,7 +8,7 @@ module UserAccess
   end
   
   def require_same_user(object)
-    if current_user != object.user and !current_user.admin?
+    if current_user != object.user
       flash[:danger] = "You can only edit or delete your own content"
       redirect_to root_path
     end
