@@ -1,8 +1,10 @@
 class ProfilesController < ApplicationController
   include UserAccess
+  include ProfileAccess
   before_action :set_profile, only: [:edit, :show, :update]
   before_action :authenticate_user!, except: [:show]
   before_action only: [:edit, :update] {require_same_user(@profile)}
+  before_action :require_filled_profile, only: [:show]
   
   def edit
   end

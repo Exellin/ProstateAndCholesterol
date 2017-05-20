@@ -1,5 +1,5 @@
-<% if @profile.empty? && (@profile.user == current_user) %>
-  <%= link_to "Create your profile", edit_profile_path(@profile), class: 'btn btn-lg btn-info' %>
+<% if @profile.empty? %>
+  <h2 align="center">This user hasn't created a profile yet</h2>
 <% else %>
   <h2><%= @profile.user.username %></h2>
   <h3>Profile</h3> 
