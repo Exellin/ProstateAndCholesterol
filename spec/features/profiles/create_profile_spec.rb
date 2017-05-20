@@ -12,7 +12,6 @@ RSpec.feature "Profile created upon signup" do
     fill_in "Password", with: @user.password
     fill_in "Password Confirmation", with: @user.password
     click_button "Sign up"
-    click_link("Create your profile")
   end
   
   scenario "and filled with valid credentials" do

@@ -15,7 +15,7 @@ RSpec.feature "Users sign up" do
     fill_in "Password Confirmation", with: @user.password
     click_button "Sign up"
     expect(page).to have_content("You have signed up successfully")
-    expect(page).to have_content(@user.username)
+    expect(page).to have_content("Create Your Profile")
   end
   
   scenario "fail with invalid credentials" do
