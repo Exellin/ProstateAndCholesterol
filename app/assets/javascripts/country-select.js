@@ -13,14 +13,14 @@ $(document).ready(function() {
   }
   
   $('#profile_country').change(function() {
-    var input_id = $(this).val();
-    getData(input_id, "administrative_division");
+    var country_key = $(this).val();
+    getData(country_key, "administrative_division");
     $.ajax({
       url: "/find_administrative_division",
       type: 'GET',
       dataType: 'json',
       data: {
-        id: input_id,
+        id: country_key,
       },  
       success: function(result) {
         if (result[0] != undefined) {
@@ -57,14 +57,14 @@ function setFields() {
   }
 }
 
-function getData(input_id, query) {
+function getData(key, query) {
   var inputField = $("#profile_" + query);
   $.ajax({
     url: "/find_" + query,
     type: 'GET',
     dataType: 'json',
     data: {
-      id: input_id,
+      id: key,
     },  
     success: function(result) {
       if (result.length === 0) {
@@ -91,7 +91,7 @@ function replaceDropdownWithTextField(dropdown, query) {
 function buildDropdown(inputField, query, result) {
   var option;
   var dropdown;
-  var html ='<select class="chosen-select" name="profile[' + query + ']" id="profile_' + query + '">';
+  var html ='<select class="chosen-select" name="profile[' + query + ']" id="profile_' + query + '" ></select>';
   if (inputField.prop('type') === 'text') {
     inputField.replaceWith(html);
     dropdown = $("#profile_" + query);
