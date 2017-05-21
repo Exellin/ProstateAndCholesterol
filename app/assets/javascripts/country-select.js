@@ -4,6 +4,11 @@ $(document).ready(function() {
   var regex = /\/profiles\/\d+\/edit/;
   if ($(location).attr('pathname').match(regex)) {
     setCountry();
+    
+    $('.chosen-select').chosen({
+      no_results_text: "No resulted matched",
+      width: '100%'
+    });
   }
   
   $('#profile_country').change(function() {
@@ -31,7 +36,7 @@ var setCountry = function() {
   var country_select = document.getElementById('profile_country');
   var country_check = ($('#country_data').data('country'));
   if (!country_check) {
-      country_select.selectedIndex = 235; // United States
+    country_select.selectedIndex = 235; // United States
   }
 };
 
@@ -39,9 +44,9 @@ var setDropdown = function(input_id, query) {
   var dropdown = $("#profile_" + query);
   var option;
   if (input_id == "") {
-      dropdown.html("");
+    dropdown.html("");
   } else {
-      $.ajax({
+    $.ajax({
       url: "/find_" + query,
       type: 'GET',
       dataType: 'json',
@@ -55,6 +60,7 @@ var setDropdown = function(input_id, query) {
           option = '<option value='+ result[0] +'>' + result[1] + '</option>';
           dropdown.append(option);
         });
+        dropdown.trigger("chosen:updated")
       }
     });
   }

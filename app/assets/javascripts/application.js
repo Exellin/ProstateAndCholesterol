@@ -16,4 +16,5 @@
 //= require bootstrap/tab
 //= require cocoon
 //= require d3
+//= require chosen-jquery
 //= require_tree .

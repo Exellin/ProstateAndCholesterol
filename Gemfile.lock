@@ -55,6 +55,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chosen-rails (1.5.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     city-state (0.0.13)
       rubyzip (~> 1.1)
     cliver (0.3.2)
@@ -274,6 +278,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara
+  chosen-rails
   city-state
   cocoon
   coffee-rails (~> 4.2)

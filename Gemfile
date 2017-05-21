@@ -37,6 +37,7 @@ gem 'cocoon'
 gem 'font-awesome-rails'
 gem 'd3-rails'
 gem 'city-state'
+gem 'chosen-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
