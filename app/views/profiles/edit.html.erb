@@ -56,7 +56,9 @@
       <%= f.label :story, "Your Story", class: "control-label" %>
       <%= f.text_area :story, class: "form-control", placeholder: "Tell us your story" %>
     
-      <%= content_tag "div", id: "country_data", data: {country: @profile.country} do %>
+      <%= content_tag "div", id: "country_data", data: {country: @profile.country,
+                                                        administrative_division: @profile.administrative_division,
+                                                        city: @profile.city} do %>
       <% end %>
       
       <% if @profile.empty? %>
