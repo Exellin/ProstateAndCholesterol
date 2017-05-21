@@ -99,9 +99,11 @@ function buildDropdown(inputField, query, result) {
       no_results_text: "No resulted matched",
       width: '100%'
     });
-    dropdown.change(function() {
+    if (query === "administrative_division") {
+      dropdown.change(function() {
       getData($(this).val(), "city");
-    });
+      });
+    }
   } else {
     dropdown = inputField;
     dropdown.empty();
