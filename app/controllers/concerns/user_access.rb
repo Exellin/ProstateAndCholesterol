@@ -3,8 +3,10 @@ module UserAccess
   private
   
   def require_admin
-    flash[:danger] = "You must be an administrator to view this page"
-    current_user.nil? ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
+    unless current_user.try(:admin)
+      flash[:danger] = "You must be an administrator to view this page"
+      redirect_to root_path
+    end
   end
   
   def require_same_user(object)
