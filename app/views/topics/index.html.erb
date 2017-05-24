@@ -1,5 +1,5 @@
 <% @topics.each do |topic| %>
-  <div class="topics">
+  <div class="topic">
     <h2><%= link_to "#{topic.name}", topic_path(topic) %></h2>
     <p><%= pluralize(topic.posts.count, "post") %></p>
     <% unless topic.posts.empty? %>
