@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   
   def show
     @topic = Topic.find(params[:id])
+    @posts = @topic.posts.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
   end
   
   def index
