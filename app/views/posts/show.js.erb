@@ -1,0 +1,5 @@
+/*global $*/
+var element = document.createElement("div");
+element.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
+var postDiv = $("a[href='/topics/<%= @post.topic.id %>/posts/<%= @post.id %>']").parent();
+postDiv.append("<%=j render 'content' %>");

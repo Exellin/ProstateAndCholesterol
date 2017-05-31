@@ -22,12 +22,15 @@ RSpec.feature "Listing Posts" do
   end
   
   scenario "has a toggle to show content for each post", js: true do
-    post_content_toggle = find(:css, "#expand_post_#{@last_post.id}")
-    post_content = find(:css, "content_for_post_#{@last_post.id}")
-    post_content_toggle.click
-    post_content.should be_visible
-    post_content_toggle.click
-    post_content.should_not be_visible
+    expect(page).not_to have_content(@last_post.content)
+    expand_link = "a[data-remote='true'][href='/topics/#{@topic.id}/posts/#{@last_post.id}']"
+    find(expand_link).click
+    expect(page).to have_content(@last_post.content)
+    click_button "collapse"
+    last_post_content = find(:css, ".content")
+    last_post_content.should_not be_visible
+    find(expand_link).click
+    last_post_content.should be_visible
   end
     
   scenario "shows basic information for each post" do

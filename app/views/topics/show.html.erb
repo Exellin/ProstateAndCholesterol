@@ -1,8 +1,9 @@
 <% unless @topic.posts.blank? %>
   <% @posts.each do |post| %>
     <% unless post.deleted? %>
-      <div class="row">
-        <%= link_to post.title, topic_post_path(post) %>
+      <div class="post">
+        <%= link_to post.title, topic_post_path(@topic, post) %>
+        <%= link_to "expand", topic_post_path(@topic, post), remote: true %>
       </div>
     <% end %>
   <% end %>
