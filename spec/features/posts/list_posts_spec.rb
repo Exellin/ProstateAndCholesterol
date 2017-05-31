@@ -26,11 +26,11 @@ RSpec.feature "Listing Posts" do
     expand_link = "a[data-remote='true'][href='/topics/#{@topic.id}/posts/#{@last_post.id}']"
     find(expand_link).click
     expect(page).to have_content(@last_post.content)
-    click_button "collapse"
     last_post_content = find(:css, ".content")
-    last_post_content.should_not be_visible
-    find(expand_link).click
-    last_post_content.should be_visible
+    click_button "collapse"
+    expect(last_post_content).not_to be_visible
+    find(:css, "button").click
+    expect(last_post_content).to be_visible
   end
     
   scenario "shows basic information for each post" do

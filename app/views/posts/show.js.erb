@@ -1,5 +1,18 @@
 /*global $*/
-var element = document.createElement("div");
-element.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
-var postDiv = $("a[href='/topics/<%= @post.topic.id %>/posts/<%= @post.id %>']").parent();
+var expandElement = $("a[data-remote='true'][href='/topics/<%= @post.topic.id %>/posts/<%= @post.id %>']");
+var postDiv = expandElement.parent();
+var collapseElementHTML = '<button class="btn btn-default">collapse</button>';
 postDiv.append("<%=j render 'content' %>");
+expandElement.replaceWith(collapseElementHTML);
+
+var collapseElement = postDiv.children('button:first');
+collapseElement.on("click", function() {
+  collapseElement = $(this);
+  var contentDiv = collapseElement.siblings('div:first');
+  contentDiv.toggle();
+  if (collapseElement.text() === "collapse") {
+    collapseElement.html("expand");
+  } else {
+    collapseElement.html("collapse");
+  }
+});
