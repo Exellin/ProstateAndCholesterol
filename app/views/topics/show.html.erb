@@ -2,15 +2,7 @@
 <% unless @topic.posts.blank? %>
   <% @posts.each do |post| %>
     <% unless post.deleted? %>
-      <div class="post">
-        <h2><%= link_to post.title, topic_post_path(@topic, post) %></h2>
-        <p><%= pluralize(post.comments.count, "comment") %></p>
-        <p>
-          created <%= time_ago_in_words(post.created_at) %> ago by
-          <%= link_to "#{post.user.username}", profile_path(post.user.profile) %>
-        </p>
-        <%= link_to "expand", topic_post_path(@topic, post), remote: true, class: "btn btn-default" %>
-      </div>
+      <%= render(post) %>
     <% end %>
   <% end %>
   <%= will_paginate(@posts) %>
