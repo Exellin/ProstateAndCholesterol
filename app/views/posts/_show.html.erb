@@ -1,4 +1,4 @@
-<h2><%= @post.topic.name %></h2>
+<h1><%= link_to @post.topic.name, topic_path(@post.topic) %></h1>
 
 <%= render(@post) %>
 
