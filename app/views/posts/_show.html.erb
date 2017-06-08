@@ -12,7 +12,7 @@
   <% @comment.children_tree(4).each do |child_comment| %>
     <%= render(child_comment) %>
     <% if child_comment.has_hidden_replies(@comment, 4) %>
-      <%= link_to "see additional replies", topic_post_comment_path(@post.topic, @post, child_comment) %>
+      <%= link_to "see additional replies", topic_post_comment_path(@post.topic, @post, child_comment), class: "margin-level-5" %>
     <% end %>
   <% end %>
 <% else %>
@@ -21,7 +21,7 @@
     <% comment.children_tree(5).each do |child_comment| %>
       <%= render(child_comment) %>
       <% if child_comment.has_hidden_replies(comment, 5) %>
-        <%= link_to "see additional replies", topic_post_comment_path(@post.topic, @post, child_comment) %>
+        <%= link_to "see additional replies", topic_post_comment_path(@post.topic, @post, child_comment), class: "margin-level-5" %>
       <% end %>
     <% end %>
   <% end %>

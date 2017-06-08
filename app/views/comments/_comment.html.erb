@@ -1,4 +1,8 @@
-<div class="comment">
+<% if @comment && @comment.parent_comment %>
+  <div class="comment margin-level-<%= comment.ancestor_count - @comment.parent_comment.ancestor_count %>">
+<% else %>
+  <div class="comment margin-level-<%= comment.ancestor_count %>">
+<% end %>
   <p>
     <%= link_to "#{comment.user.username}", profile_path(comment.user.profile) %> -
     <%= time_ago_in_words(comment.created_at) %> ago
