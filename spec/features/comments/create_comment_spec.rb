@@ -21,7 +21,7 @@ RSpec.feature "Creating a Comment" do
     
     feature "in reply to a post" do
       before do
-        click_link "Reply to Post"
+        click_link "reply to post"
       end
       
       scenario "with valid inputs" do
@@ -57,7 +57,7 @@ RSpec.feature "Creating a Comment" do
       click_link "Forum"
       click_link "#{@topic.name}"
       click_link "#{@post.title}"
-      click_link "Reply to Post"
+      click_link "reply to post"
       expect(page).to have_content("You must sign in or sign up to view this page")
       expect(current_path).to eq(new_user_registration_path)
     end

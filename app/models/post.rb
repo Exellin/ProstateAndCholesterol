@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: {minimum: 2, maximum: 40000}
   validates :user_id, presence: true
   validates :topic_id, presence: true
+  
+  def direct_replies
+    self.comments.select { |comment| comment.parent_comment.nil? }
+  end
 end

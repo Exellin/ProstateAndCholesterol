@@ -9,15 +9,14 @@
   <div class="highlight">
     <%= render '/comments/show', comment: @comment %>
   </div>
+  <% @comment.children_tree(4).each do |child_comment| %>
+    <%= render '/comments/show', comment: child_comment %>
+  <% end %>
 <% else %>
-  <% @post.comments.each do |comment| %>
-    <% if comment.parent_comment.nil? %>
-      <%= render '/comments/show', comment: comment %>
-    <% end %>
-    <% unless (comment.child_comments.blank?) %>
-      <% comment.child_comments.each do |child_comment| %>
-        <%= render '/comments/show', comment: child_comment %>
-      <% end %>
+  <% @post.direct_replies.each do |comment| %>
+    <%= render '/comments/show', comment: comment %>
+    <% comment.children_tree(5).each do |child_comment| %>
+      <%= render '/comments/show', comment: child_comment %>
     <% end %>
   <% end %>
 <% end %>

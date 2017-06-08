@@ -9,7 +9,7 @@
     <%= link_to "expand", topic_post_path(@topic, post), remote: true, class: "btn btn-default" %>
   <% else %>
     <%= render 'posts/content' %>
-    <%= link_to "Reply to Post", new_topic_post_comment_path(@post.topic, @post), class: "btn btn-primary btn-xs" %>
+    <%= link_to "reply to post", new_topic_post_comment_path(@post.topic, @post), class: "btn btn-primary btn-xs" %>
     <% if @post.user == current_user && !@post.deleted? %>
       <%= link_to "edit post", edit_topic_post_path(@post.topic, @post), class: "btn btn-info btn-xs" %>
       <%= link_to "delete post", delete_topic_post_path(@post.topic, @post), 
