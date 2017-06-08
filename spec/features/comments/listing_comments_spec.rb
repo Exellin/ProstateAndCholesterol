@@ -16,11 +16,20 @@ RSpec.feature "Listing Comments" do
     click_link @post.title
   end
   
-  scenario "shows up to 5 child comments deep" do
+  scenario "shows up to 5 child comments deep when viewing a post" do
     expect(page).to have_content(@comment1.content)
     expect(page).not_to have_content(@comment7.content)
     click_link "see additional replies"
     expect(page).not_to have_content(@comment1.content)
+    expect(page).to have_content(@comment7.content)
+  end
+  
+  scenario "shows up to 4 child comments deep when viewing a comment" do
+    visit "/topics/#{@topic.id}/posts/#{@post.id}/comments/#{@comment2.id}"
+    expect(page).to have_content(@comment2.content)
+    expect(page).not_to have_content(@comment7.content)
+    click_link "see additional replies"
+    expect(page).not_to have_content(@comment2.content)
     expect(page).to have_content(@comment7.content)
   end
   
