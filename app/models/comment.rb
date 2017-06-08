@@ -8,14 +8,14 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
   validates :post_id, presence: true
   
-  def get_ancestors(comment)
+  def get_ancestors_count(comment)
     @ancestors ||= 0
     
     if comment.parent_comment.nil?
       return @ancestors
     else
       @ancestors += 1
-      get_ancestors(comment.parent_comment)
+      get_ancestors_count(comment.parent_comment)
     end
   end
   
@@ -34,11 +34,15 @@ class Comment < ApplicationRecord
   end
   
   def ancestor_count
-    @ancestors = get_ancestors(self)
+    @ancestors ||= get_ancestors_count(self)
   end
   
   def children_tree(depth)
     @root = self
-    @children_tree = get_children_tree(self, depth)
+    @children_tree ||= get_children_tree(self, depth)
+  end
+  
+  def has_hidden_replies(ancestor, depth)
+    (self.ancestor_count - ancestor.ancestor_count) >= depth && !self.child_comments.empty?
   end
 end

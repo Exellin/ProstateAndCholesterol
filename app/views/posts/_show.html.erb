@@ -11,12 +11,18 @@
   </div>
   <% @comment.children_tree(4).each do |child_comment| %>
     <%= render '/comments/show', comment: child_comment %>
+    <% if child_comment.has_hidden_replies(@comment, 4) %>
+      <%= link_to "see additional replies", topic_post_comment_path(@post.topic, @post, child_comment) %>
+    <% end %>
   <% end %>
 <% else %>
   <% @post.direct_replies.each do |comment| %>
     <%= render '/comments/show', comment: comment %>
     <% comment.children_tree(5).each do |child_comment| %>
       <%= render '/comments/show', comment: child_comment %>
+        <% if child_comment.has_hidden_replies(comment, 5) %>
+          <%= link_to "see additional replies", topic_post_comment_path(@post.topic, @post, child_comment) %>
+        <% end %>
     <% end %>
   <% end %>
 <% end %>
