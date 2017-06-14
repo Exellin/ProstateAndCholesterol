@@ -46,15 +46,15 @@
  in one ancestry like Spanish, Italian, French, German, Cambodian, Brazilian, Nigerian, etc. Please enter it here" %>
       
       <%= f.label :age_noticed_symptoms, "Age Noticed Symptoms", class: "control-label" %>
-      <%= f.select(:age_noticed_symptoms, years_ago_select_array.unshift(""), {}, 
+      <%= f.select(:age_noticed_symptoms, age_select_array.unshift(""), {}, 
       { class: "chosen-single chosen-single-with-deselect", data: {placeholder: "Age Noticed Symptoms"} }) %>
       
       <%= f.label :age_urinary_malfunction, "Age Urinary Malfunction", class: "control-label" %>
-      <%= f.select(:age_urinary_malfunction, years_ago_select_array.unshift(""), {}, 
+      <%= f.select(:age_urinary_malfunction, age_select_array.unshift(""), {}, 
       { class: "chosen-single chosen-single-with-deselect", data: {placeholder: "Age Urinary Malfunction"} }) %>
       
       <%= f.label :age_bladder_infection, "Age Bladder Infection", class: "control-label" %>
-      <%= f.select(:age_bladder_infection, years_ago_select_array.unshift(""), {}, 
+      <%= f.select(:age_bladder_infection, age_select_array.unshift(""), {}, 
       { class: "chosen-single chosen-single-with-deselect", data: {placeholder: "Age Bladder Infection"} }) %>
       
       <%= f.label :story, "Your Story", class: "control-label" %>
