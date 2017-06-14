@@ -18,14 +18,22 @@ table {
   border-collapse: collapse;
   .form-control {
     width: auto;
-    max-width: 110px;
     margin-bottom: 0;
+    border: none;
   }
+  input[type="checkbox"] {
+    margin: 4px 45px 0 45px;
+    height: 15px;
+    width: 15px;
+  }
+}
+
+table .form-control, th{
+  max-width: 120px;
 }
 
 th {
   padding: 5px;
-  max-width: 110px;
 }
 
 td, th {
@@ -35,12 +43,11 @@ td, th {
 
 .trashcan {
   border: 0;
-  outline: 0;
-  background: transparent;
+  padding: 0;
   i {
     background: black;
-    line-height: 33px;
-    width: 33px;
+    line-height: 34px;
+    width: 34px;
     color: white;
     font-size: 18px;
     &:hover {
