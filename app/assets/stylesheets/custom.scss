@@ -51,8 +51,8 @@ td, th {
 }
 
 .line {
-   fill: none;
-   stroke: black;
+  fill: none;
+  stroke: black;
 }
 
 .form-control, .chosen-container {
@@ -64,6 +64,5 @@ td, th {
 }
 
 label.required:after {
-    content: " *";
+  content: " *";
 }
-

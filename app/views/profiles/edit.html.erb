@@ -42,7 +42,9 @@
       ['Asian'], ['Native Australian'], ['Native American']], {}, { class: "form-control" }) %>
     
       <%= f.label :ancestral_descent, "Ancestral Descent", class: "control-label" %>
-      <%= f.text_field :ancestral_descent, class: "form-control", placeholder: "Ancestral Descent" %>
+      <%= f.text_field :ancestral_descent, class: "form-control", placeholder: "Ancestral Descent",
+      data: {toggle: "tooltip", placement: "top"}, title: "If you are aware of your ancestral descent being strong\
+ in one ancestry like Spanish, Italian, French, German, Cambodian, Brazilian, Nigerian, etc. Please enter it here" %>
       
       <%= f.label :age_noticed_symptoms, "Age Noticed Symptoms", class: "control-label" %>
       <%= f.number_field :age_noticed_symptoms, class: "form-control", placeholder: "Age Noticed Symptoms" %>
