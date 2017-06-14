@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require bootstrap/tab
 //= require cocoon
 //= require d3
 //= require chosen-jquery
