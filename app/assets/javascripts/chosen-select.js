@@ -1,12 +1,18 @@
 /*global $*/
 /*global location*/
 $(document).ready(function() {
-  var regex = /\/profiles\/\d+\/edit/;
-  if ($(location).attr('pathname').match(regex)) {
+  var regex = /\/profiles\/\d/;
+  if ($(location).attr('pathname').match(regex) && document.querySelector('.chosen-select')) {
     
     $('.chosen-select').chosen({
       no_results_text: "No resulted matched",
       width: '100%'
+    });
+    
+    $('.chosen-single-with-deselect').chosen({
+      no_results_text: "No resulted matched",
+      width: '100%',
+      allow_single_deselect: true
     });
     
     setFields();

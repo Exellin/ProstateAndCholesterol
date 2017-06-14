@@ -17,15 +17,14 @@ RSpec.feature "Profile created upon signup" do
   scenario "and filled with valid credentials" do
     fill_in "First Name", with: @profile.first_name
     fill_in "Last Name", with: @profile.last_name
-    fill_in "Birth Year", with: @profile.birth_year
+    select(@profile.birth_year, from: 'profile_birth_year')
     select(@profile.country_name, from: 'profile_country')
-    fill_in "Years resided within 200 miles/320km of your current residence", 
-    with: @profile.years_in_current_locale
+    select(@profile.years_in_current_locale, from: 'profile_years_in_current_locale')
     select('Caucasian', from: 'profile_race')
     fill_in "Ancestral Descent", with: @profile.ancestral_descent
-    fill_in "Age Noticed Symptoms", with: @profile.age_noticed_symptoms
-    fill_in "Age Urinary Malfunction", with: @profile.age_urinary_malfunction
-    fill_in "Age Bladder Infection", with: @profile.age_bladder_infection
+    select(@profile.age_noticed_symptoms, from: 'profile_age_noticed_symptoms')
+    select(@profile.age_urinary_malfunction, from: 'profile_age_urinary_malfunction')
+    select(@profile.age_bladder_infection, from: 'profile_age_bladder_infection')
     fill_in "Your Story", with: @profile.story
     
     click_button "Create Profile"
@@ -36,7 +35,5 @@ RSpec.feature "Profile created upon signup" do
     click_button "Create Profile"
     expect(page).to have_content("First Name can't be blank")
     expect(page).to have_content("Last Name can't be blank")
-    expect(page).to have_content("Birth Year can't be blank")
-    expect(page).to have_content("Years resided within 200 miles/320km of your current residence can't be blank")
   end
 end
