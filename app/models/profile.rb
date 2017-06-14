@@ -60,4 +60,10 @@ class Profile < ApplicationRecord
       CS.countries[country.to_sym]
     end
   end
+  
+  def state_name
+    unless country.nil? || administrative_division.nil?
+      CS.states(country)[administrative_division.to_sym]
+    end
+  end
 end
