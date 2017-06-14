@@ -5,7 +5,7 @@
   <td><%= f.number_field :dosage, class: 'form-control' %></td>
   <td><%= f.number_field :age_recommended, class: 'form-control' %></td>
   <td><%= f.number_field :age_prescribed, class: 'form-control' %></td>
-  <td><%= f.text_field :month_last_used, class: 'form-control' %></td>
+  <td><%= f.select(:month_last_used, months_select_array, {}, { class: "form-control" }) %></td>
   <td><%= f.number_field :year_last_used, class: 'form-control' %></td>
   <td>
     <%= f.check_box :still_using %>
