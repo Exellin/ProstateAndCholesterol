@@ -15,15 +15,15 @@
         <table>
           <thead>
             <tr>
-              <th>Purpose</th>
-              <th>Name</th>
-              <th>Strength (mg)</th>
-              <th>Dosage (times per day)</th>
-              <th>Age Recommended</th>
-              <th>Age Prescribed</th>
-              <th>Month Last Used</th>
-              <th>Year Last Used</th>
-              <th>Are you still using this drug?</th>
+              <th><%= f.label :purpose, "Purpose", nested_object_class: "Medication" %></th>
+              <th><%= f.label :name, "Name", nested_object_class: "Medication" %></th>
+              <th><%= f.label :strength, "Strength (mg)", nested_object_class: "Medication" %></th>
+              <th><%= f.label :dosage, "Dosage (times per day)", nested_object_class: "Medication" %></th>
+              <th><%= f.label :age_recommended, "Age Recommended", nested_object_class: "Medication" %></th>
+              <th><%= f.label :age_prescribed, "Age Prescribed", nested_object_class: "Medication" %></th>
+              <th><%= f.label :month_last_used, "Month Last Used", nested_object_class: "Medication" %></th>
+              <th><%= f.label :year_last_used, "Year Last Used", nested_object_class: "Medication" %></th>
+              <th><%= f.label :still_using, "Are you still using this drug?", nested_object_class: "Medication" %></th>
             </tr>
           </thead>
           <tbody class="medications">

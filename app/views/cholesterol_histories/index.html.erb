@@ -9,19 +9,19 @@
       <%= render 'shared/errors', obj: @profile %>
     <% end %>
     
-    <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
+    <%= fields_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
       
       <div class="table-scroll">
         <table>
           <thead>
             <tr>
-              <th>Total Cholesterol</th>
-              <th>HDL</th>
-              <th>LDL</th>
-              <th>Triglyceride</th>
-              <th>Glucose</th>
-              <th>Month</th>
-              <th>Year</th>
+              <th><%= f.label :total_cholesterol, "Total Cholesterol", nested_object_class: "CholesterolHistory" %></th>
+              <th><%= f.label :hdl, "HDL", nested_object_class: "CholesterolHistory" %></th>
+              <th><%= f.label :ldl, "LDL", nested_object_class: "CholesterolHistory" %></th>
+              <th><%= f.label :triglyceride, "Triglyceride", nested_object_class: "CholesterolHistory" %></th>
+              <th><%= f.label :glucose, "Glucose", nested_object_class: "CholesterolHistory" %></th>
+              <th><%= f.label :month, "Month", nested_object_class: "CholesterolHistory" %></th>
+              <th><%= f.label :year, "Year", nested_object_class: "CholesterolHistory" %></th>
             </tr>
           </thead>
           <tbody class="cholesterol_histories">

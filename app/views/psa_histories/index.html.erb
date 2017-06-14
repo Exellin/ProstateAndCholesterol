@@ -15,9 +15,9 @@
         <table>
           <thead>
             <tr>
-              <th>PSA</th>
-              <th>Month</th>
-              <th>Year</th>
+              <th><%= f.label :psa, "PSA", nested_object_class: "PsaHistory" %></th>
+              <th><%= f.label :month, "Month", nested_object_class: "PsaHistory" %></th>
+              <th><%= f.label :psa, "Year", nested_object_class: "PsaHistory" %></th>
             </tr>
           </thead>
           <tbody class="psa_histories">

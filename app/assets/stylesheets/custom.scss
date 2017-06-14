@@ -63,3 +63,7 @@ td, th {
   margin: 0;
 }
 
+label.required:after {
+    content: " *";
+}
+
