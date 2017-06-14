@@ -65,3 +65,7 @@ td, th {
 label.required:after {
   content: " *";
 }
+
+.chosen-select, .chosen-single {
+  width: 100%;
+}

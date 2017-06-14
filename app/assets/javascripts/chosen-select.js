@@ -5,13 +5,11 @@ $(document).ready(function() {
   if ($(location).attr('pathname').match(regex) && document.querySelector('.chosen-select')) {
     
     $('.chosen-select').chosen({
-      no_results_text: "No resulted matched",
-      width: '100%'
+      no_results_text: "No resulted matched"
     });
     
     $('.chosen-single-with-deselect').chosen({
       no_results_text: "No resulted matched",
-      width: '100%',
       allow_single_deselect: true
     });
     
