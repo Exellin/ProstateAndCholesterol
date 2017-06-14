@@ -7,10 +7,6 @@ class PsaHistoriesController < ApplicationController
   before_action :require_filled_profile
     
   def index
-    if @profile.psa_histories.nil?
-      @profile.psa_histories.build
-    end
-    @psa_histories = @profile.psa_histories
   end
   
   private

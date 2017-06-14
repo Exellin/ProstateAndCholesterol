@@ -7,10 +7,6 @@ class MedicationsController < ApplicationController
   before_action :require_filled_profile
   
   def index
-    if @profile.medications.nil?
-      @profile.medications.build
-    end
-      @medications = @profile.medications
   end
   
   private

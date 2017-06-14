@@ -7,10 +7,6 @@ class CholesterolHistoriesController < ApplicationController
   before_action :require_filled_profile
   
   def index
-    if @profile.cholesterol_histories.nil?
-      @profile.cholesterol_histories.build
-    end
-    @cholesterol_histories = @profile.cholesterol_histories
   end
   
   private
