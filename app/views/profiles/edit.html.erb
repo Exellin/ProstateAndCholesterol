@@ -13,8 +13,8 @@
       <%= render 'shared/errors', obj: @profile %>
     <% end %>
     
-    <%= form_for(@profile, :html => {class: "form-horizontal"}) do |f| %>
-      <%= f.label :first_name, "First Name", class: "control-label" %>
+    <%= form_for(@profile) do |f| %>
+      <%= f.label :first_name, "First Name" %>
       <%= f.text_field :first_name, class: "form-control", placeholder: "First Name", autofocus:true %>
     
       <%= f.label :last_name, "Last Name", class: "control-label" %>
