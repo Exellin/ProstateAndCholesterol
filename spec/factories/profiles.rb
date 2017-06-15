@@ -7,7 +7,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     birth_year { Faker::Date.between(120.years.ago.year, 18.years.ago.year) }
     city { Faker::Address.city }
-    administrative_division { Faker::Address.state }
+    administrative_division "AB"
     country "CA"
     years_in_current_locale { Faker::Number.between(0, 120) }
     ancestral_descent { Faker::Lorem.word }
