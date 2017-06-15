@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   resources :topics, only: [:create, :new, :index, :show] do
     resources :posts, except: [:index, :destroy] do
       member do
-        patch :delete
+        put :delete
       end
       resources :comments, except: [:index, :destroy] do
         member do 
-          patch :delete
+          put :delete
         end
       end
     end

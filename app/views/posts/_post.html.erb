@@ -13,7 +13,7 @@
     <% if @post.user == current_user && !@post.deleted? %>
       <%= link_to "edit post", edit_topic_post_path(@post.topic, @post), class: "btn btn-info btn-xs" %>
       <%= link_to "delete post", delete_topic_post_path(@post.topic, @post), 
-                                 method: :patch, data: { confirm: "Are you sure?" },
+                                 method: :put, data: { confirm: "Are you sure?" },
                                  class: "btn btn-danger btn-xs" %>
     <% end %>
   <% end %>
