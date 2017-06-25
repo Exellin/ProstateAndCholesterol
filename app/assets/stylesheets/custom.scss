@@ -1,8 +1,8 @@
 @import "bootstrap";
 $error-outline: #A94442;
 
-html, body { 
-  height: 100%; 
+html, body {
+  height: 100%;
 }
 
 .container {
@@ -62,6 +62,10 @@ table {
 
 .form-control, .chosen-container {
   margin-bottom: 15px;
+}
+
+.has-error .form-control {
+  margin-bottom: 0
 }
 
 .alert {
