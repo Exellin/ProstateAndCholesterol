@@ -3,13 +3,11 @@
   <td><%= f.text_field :name, class: 'form-control', autofocus: true %></td>
   <td><%= f.number_field :strength, class: 'form-control' %></td>
   <td><%= f.number_field :dosage, class: 'form-control' %></td>
-  <td><%= f.number_field :age_recommended, class: 'form-control' %></td>
-  <td><%= f.number_field :age_prescribed, class: 'form-control' %></td>
-  <td><%= f.select(:month_last_used, months_select_array, {}, { class: "form-control" }) %></td>
-  <td><%= f.number_field :year_last_used, class: 'form-control' %></td>
-  <td>
-    <%= f.check_box :still_using %>
-  </td>  
+  <td><%= f.select(:age_recommended, age_select_array.unshift(""), {}, { class: "form-control" }) %></td>
+  <td><%= f.select(:age_prescribed, age_select_array.unshift(""), {}, { class: "form-control" }) %></td>
+  <td><%= f.select(:month_last_used, months_select_array.unshift(""), {}, { class: "form-control" }) %></td>
+  <td><%= f.select(:year_last_used, year_select_array.unshift(""), {}, { class: "form-control" }) %></td>
+  <td><%= f.check_box :still_using %></td>
   <td>
     <%= link_to_remove_association(f) do %>
       <button class="trashcan">

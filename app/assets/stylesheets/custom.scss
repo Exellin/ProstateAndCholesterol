@@ -1,6 +1,5 @@
 @import "bootstrap";
 $error-outline: #A94442;
-$min-width: 80px;
 $row-height: 34px;
 
 html, body {
@@ -17,29 +16,31 @@ html, body {
 }
 
 table {
+  th {
+    padding: 5px;
+  }
+  td, th {
+    border: 1px solid black;
+  }
   .form-control {
     width: auto;
     margin-bottom: 0;
     border: 0;
+    max-width: 140px;
+  }
+  .has-error .form-control {
+    border: 1px solid $error-outline;
+  }
+  select, input[type="number"] {
+    min-width: 100%;
+  }
+  input[type="number"] {
+    max-width: 80px;
   }
   input[type="checkbox"] {
     margin: 4px 45px 0 45px;
     height: 15px;
     width: 15px;
-  }
-  .has-error .form-control {
-    border: 1px solid $error-outline;
-  }
-  .form-control, th {
-    max-width: 120px;
-    min-width: $min-width;
-  }
-  th {
-    padding: 5px;
-  }
-  td, th {
-    text-align: left;
-    border: 1px solid black;
   }
 }
 
