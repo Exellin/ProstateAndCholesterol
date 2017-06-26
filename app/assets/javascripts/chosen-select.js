@@ -3,19 +3,19 @@
 $(document).ready(function() {
   var regex = /\/profiles\/\d/;
   if ($(location).attr('pathname').match(regex) && document.querySelector('.chosen-select')) {
-    
+
     $('.chosen-select').chosen({
       no_results_text: "No resulted matched"
     });
-    
+
     $('.chosen-single-with-deselect').chosen({
       no_results_text: "No resulted matched",
       allow_single_deselect: true
     });
-    
+
     setFields();
   }
-  
+
   $('#profile_country').change(function() {
     var country_key = $(this).val();
     getData(country_key, "administrative_division");
@@ -25,7 +25,7 @@ $(document).ready(function() {
       dataType: 'json',
       data: {
         id: country_key,
-      },  
+      },
       success: function(result) {
         if (result[0] != undefined) {
           getData(result[0][0], "city");
@@ -36,26 +36,26 @@ $(document).ready(function() {
       }
     });
   });
-  
+
   $('#profile_administrative_division').change(function() {
     getData($(this).val(), "city");
   });
 });
-  
+
 function setFields() {
   var country_select = $("#profile_country");
   var administrative_division_select = $('#profile_administrative_division');
   var city_select = $("#profile_city");
   var country = ($('#country_data').data('country'));
-  
+
   if (!country) {
-    country_select.selectedIndex = 235; // United States
+    country_select.val("US").trigger("chosen:updated") // United States
   }
-  
+
   if (administrative_division_select[0].length === 0) {
     replaceDropdownWithTextField(administrative_division_select, "administrative_division");
   }
-  
+
   if (city_select[0].length === 0) {
     replaceDropdownWithTextField(city_select, "city");
   }
@@ -69,7 +69,7 @@ function getData(key, query) {
     dataType: 'json',
     data: {
       id: key,
-    },  
+    },
     success: function(result) {
       if (result.length === 0) {
         replaceDropdownWithTextField(inputField, query);
@@ -78,7 +78,7 @@ function getData(key, query) {
       }
     }
   });
-} 
+}
 
 function replaceDropdownWithTextField(dropdown, query) {
   var value;
@@ -116,5 +116,5 @@ function buildDropdown(inputField, query, result) {
     option = '<option value='+ result[0] +'>' + result[1] + '</option>';
     dropdown.append(option);
   });
-  dropdown.trigger("chosen:updated");    
+  dropdown.trigger("chosen:updated");
 }
