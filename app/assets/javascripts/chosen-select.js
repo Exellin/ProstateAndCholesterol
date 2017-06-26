@@ -40,15 +40,6 @@ $(document).ready(function() {
   $('#profile_administrative_division').change(function() {
     getData($(this).val(), "city");
   });
-
-  $('.add_fields').click(function() {
-    setTimeout(function() {
-      var chosen_array = $('.chosen-select');
-      $(chosen_array[chosen_array.length-1]).chosen({
-        no_results_text: "No resulted matched"
-      });
-    }, 1);
-  });
 });
 
 function setFields() {
@@ -58,7 +49,7 @@ function setFields() {
   var country = ($('#country_data').data('country'));
 
   if (!country) {
-    country_select.val("US").trigger("chosen:updated") // United States
+    country_select.val("US").trigger("chosen:updated"); // United States
   }
 
   if (administrative_division_select[0] !== undefined && administrative_division_select[0].length === 0) {
