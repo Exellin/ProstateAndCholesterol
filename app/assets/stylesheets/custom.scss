@@ -70,8 +70,8 @@ table {
   padding: 0;
   i {
     background: black;
-    line-height: 34px;
-    width: 34px;
+    line-height: $row-height;
+    width: $row-height;
     color: white;
     font-size: 18px;
     &:hover {
