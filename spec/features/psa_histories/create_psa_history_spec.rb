@@ -7,7 +7,7 @@ RSpec.feature "Creating PSA History" do
     @profile = FactoryGirl.create(:profile, user: @owner)
     @psa_history = FactoryGirl.build(:psa_history, profile: @profile)
   end
-  
+
   feature "as the owner", js: true do
     before do
       login_as(@owner)
@@ -19,46 +19,43 @@ RSpec.feature "Creating PSA History" do
 
     scenario "with valid inputs" do
       find("input[name$='[psa]']").set(@psa_history.psa)
-      find("input[name$='[year]']").set(@psa_history.year)
       find("select[name$='[month]']").select(@psa_history.month)
       click_button "Update PSA History"
       expect(page).to have_content("Your PSA History has been successfully updated")
       click_link "edit psa history"
       expect(find("input[name$='[psa]']").value).to eq @psa_history.psa.to_s
-      expect(find("input[name$='[year]']").value).to eq @psa_history.year.to_s
       expect(find("select[name$='[month]']").find('option[selected]').text).to eq @psa_history.month
     end
-    
+
     scenario "with invalid inputs" do
       click_button "Update PSA History"
       expect(page).to have_content("Psa histories psa can't be blank")
-      expect(page).to have_content("Psa histories year can't be blank")
     end
   end
-  
+
   feature "as another user" do
     before do
       login_as(@user)
     end
-    
+
     scenario "through the user interface" do
       visit "/profiles/#{@profile.id}"
       expect(page).not_to have_content("edit psa history")
     end
-    
+
     scenario "by going directly to the route" do
       visit "/profiles/#{@profile.id}/psa_histories/"
       expect(page).to have_content("You can only edit or delete your own content")
       expect(current_path).to eq(root_path)
     end
   end
-  
+
   feature "as a guest" do
     scenario "through the user interface" do
       visit "/profiles/#{@profile.id}"
       expect(page).not_to have_content("edit psa history")
     end
-    
+
     scenario "by going directly to the route" do
       visit "/profiles/#{@profile.id}/psa_histories/"
       expect(page).to have_content("You must sign in or sign up to view this page")

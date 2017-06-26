@@ -40,6 +40,15 @@ $(document).ready(function() {
   $('#profile_administrative_division').change(function() {
     getData($(this).val(), "city");
   });
+
+  $('.add_fields').click(function() {
+    setTimeout(function() {
+      var chosen_array = $('.chosen-select');
+      $(chosen_array[chosen_array.length-1]).chosen({
+        no_results_text: "No resulted matched"
+      });
+    }, 1);
+  });
 });
 
 function setFields() {
@@ -52,11 +61,11 @@ function setFields() {
     country_select.val("US").trigger("chosen:updated") // United States
   }
 
-  if (administrative_division_select[0].length === 0) {
+  if (administrative_division_select[0] !== undefined && administrative_division_select[0].length === 0) {
     replaceDropdownWithTextField(administrative_division_select, "administrative_division");
   }
 
-  if (city_select[0].length === 0) {
+  if (city_select[0] !== undefined && city_select[0].length === 0) {
     replaceDropdownWithTextField(city_select, "city");
   }
 }
@@ -100,8 +109,7 @@ function buildDropdown(inputField, query, result) {
     inputField.replaceWith(html);
     dropdown = $("#profile_" + query);
     dropdown.chosen({
-      no_results_text: "No resulted matched",
-      width: '100%'
+      no_results_text: "No resulted matched"
     });
     if (query === "administrative_division") {
       dropdown.change(function() {

@@ -1,7 +1,11 @@
 <tr class="nested-fields">
   <td><%= f.number_field :psa, class: "form-control", :step => 0.1, autofocus:true %></td>
   <td><%= f.select(:month, months_select_array, {}, { class: "form-control" }) %></td>
-  <td><%= f.number_field :year, class: "form-control" %></td>
+  <td>
+    <div class="table-select">
+      <%= f.select(:year, year_select_array, {}, { class: "chosen-select" }) %>
+    </div>
+  </td>
   <td>
     <%= link_to_remove_association(f) do %>
       <button class="trashcan">

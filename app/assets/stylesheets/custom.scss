@@ -1,5 +1,7 @@
 @import "bootstrap";
 $error-outline: #A94442;
+$min-width: 80px;
+$row-height: 34px;
 
 html, body {
   height: 100%;
@@ -26,10 +28,11 @@ table {
     width: 15px;
   }
   .has-error .form-control {
-    border: 1px solid $error-outline
+    border: 1px solid $error-outline;
   }
   .form-control, th {
     max-width: 120px;
+    min-width: $min-width;
   }
   th {
     padding: 5px;
@@ -37,6 +40,28 @@ table {
   td, th {
     text-align: left;
     border: 1px solid black;
+  }
+  .table-select {
+    position: absolute;
+    width: $min-width;
+    .chosen-container {
+      margin: 0;
+      position: relative;
+      bottom: 17px;
+      height: $row-height;
+      right: 1px;
+      .chosen-single {
+        border: 0;
+        background-image: none;
+        height: 100%
+      }
+      span {
+        line-height: $row-height;
+      }
+      span + div {
+        top: 4px;
+      }
+    }
   }
 }
 
