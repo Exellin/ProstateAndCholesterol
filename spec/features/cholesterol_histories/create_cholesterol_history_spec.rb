@@ -14,10 +14,10 @@ RSpec.feature "Creating Cholesterol History" do
       visit "/"
       click_link @owner.username
       click_link "edit cholesterol history"
-      click_link "Add an entry"
     end
 
     scenario "with valid inputs" do
+      click_link "Add an entry"
       find("input[name$='[total_cholesterol]']").set(@cholesterol_history.total_cholesterol)
       find("input[name$='[hdl]']").set(@cholesterol_history.hdl)
       find("input[name$='[ldl]']").set(@cholesterol_history.ldl)
@@ -38,11 +38,17 @@ RSpec.feature "Creating Cholesterol History" do
     end
 
     scenario "with invalid inputs" do
+      click_link "Add an entry"
       click_button "Update Cholesterol History"
       expect(page).to have_content("Cholesterol histories total cholesterol can't be blank")
       expect(page).to have_content("Cholesterol histories hdl can't be blank")
       expect(page).to have_content("Cholesterol histories ldl can't be blank")
       expect(page).to have_content("Cholesterol histories triglyceride can't be blank")
+    end
+
+    scenario "with no inputs" do
+      click_button "Update Cholesterol History"
+      expect(page).to have_content("Your profile has been successfully updated")
     end
   end
 

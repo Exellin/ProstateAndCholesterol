@@ -14,10 +14,10 @@ RSpec.feature "Creating Medication" do
       visit "/"
       click_link @owner.username
       click_link "edit medications"
-      click_link "Add an entry"
     end
 
     scenario "with valid inputs" do
+      click_link "Add an entry"
       find("select[name$='[purpose]']").select(@medication.purpose)
       find("input[name$='[name]']").set(@medication.name)
       find("input[name$='[strength]']").set(@medication.strength)
@@ -43,6 +43,19 @@ RSpec.feature "Creating Medication" do
       else
         expect(find("input[name$='[still_using]']")).not_to be_checked
       end
+    end
+
+    scenario "with invalid inputs" do
+      click_link "Add an entry"
+      click_button "Update Medications"
+      expect(page).to have_content("Medications name can't be blank")
+      expect(page).to have_content("Medications strength can't be blank")
+      expect(page).to have_content("Medications dosage can't be blank")
+    end
+
+    scenario "with no inputs" do
+      click_button "Update Medications"
+      expect(page).to have_content("Your profile has been successfully updated")
     end
   end
 

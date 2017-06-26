@@ -14,10 +14,10 @@ RSpec.feature "Creating PSA History" do
       visit "/"
       click_link @owner.username
       click_link "edit psa history"
-      click_link "Add an entry"
     end
 
     scenario "with valid inputs" do
+      click_link "Add an entry"
       find("input[name$='[psa]']").set(@psa_history.psa)
       find("select[name$='[year]']").select(@psa_history.year)
       find("select[name$='[month]']").select(@psa_history.month)
@@ -30,8 +30,14 @@ RSpec.feature "Creating PSA History" do
     end
 
     scenario "with invalid inputs" do
+      click_link "Add an entry"
       click_button "Update PSA History"
       expect(page).to have_content("Psa histories psa can't be blank")
+    end
+
+    scenario "with no inputs" do
+      click_button "Update PSA History"
+      expect(page).to have_content("Your profile has been successfully updated")
     end
   end
 
