@@ -16,7 +16,7 @@ RSpec.feature "Creating Cholesterol History" do
       click_link "edit cholesterol history"
       click_link "Add an entry"
     end
-    
+
     scenario "with valid inputs" do
       find("input[name$='[total_cholesterol]']").set(@cholesterol_history.total_cholesterol)
       find("input[name$='[hdl]']").set(@cholesterol_history.hdl)
@@ -24,7 +24,7 @@ RSpec.feature "Creating Cholesterol History" do
       find("input[name$='[triglyceride]']").set(@cholesterol_history.triglyceride)
       find("input[name$='[glucose]']").set(@cholesterol_history.glucose)
       find("select[name$='[month]']").select(@cholesterol_history.month)
-      find("input[name$='[year]']").set(@cholesterol_history.year)
+      find("select[name$='[year]']").select(@cholesterol_history.year)
       click_button "Update Cholesterol History"
       expect(page).to have_content("Your Cholesterol History has been successfully updated")
       click_link "edit cholesterol history"
@@ -34,42 +34,41 @@ RSpec.feature "Creating Cholesterol History" do
       expect(find("input[name$='[triglyceride]']").value).to eq @cholesterol_history.triglyceride.to_s
       expect(find("input[name$='[glucose]']").value).to eq @cholesterol_history.glucose.to_s
       expect(find("select[name$='[month]']").find('option[selected]').text).to eq @cholesterol_history.month
-      expect(find("input[name$='[year]']").value).to eq @cholesterol_history.year.to_s
+      expect(find("select[name$='[year]']").find('option[selected]').text).to eq @cholesterol_history.year.to_s
     end
-    
+
     scenario "with invalid inputs" do
       click_button "Update Cholesterol History"
-      expect(page).to have_content("Cholesterol histories year can't be blank")
       expect(page).to have_content("Cholesterol histories total cholesterol can't be blank")
       expect(page).to have_content("Cholesterol histories hdl can't be blank")
       expect(page).to have_content("Cholesterol histories ldl can't be blank")
       expect(page).to have_content("Cholesterol histories triglyceride can't be blank")
     end
   end
-  
+
   feature "as another user" do
     before do
       login_as(@user)
     end
-    
+
     scenario "through the user interface" do
       visit "/profiles/#{@profile.id}"
       expect(page).not_to have_content("edit cholesterol history")
     end
-    
+
     scenario "by going directly to the route" do
       visit "/profiles/#{@profile.id}/cholesterol_histories/"
       expect(page).to have_content("You can only edit or delete your own content")
       expect(current_path).to eq(root_path)
     end
   end
-  
+
   feature "as a guest" do
     scenario "through the user interface" do
       visit "/profiles/#{@profile.id}"
       expect(page).not_to have_content("edit psa history")
     end
-    
+
     scenario "by going directly to the route" do
       visit "/profiles/#{@profile.id}/cholesterol_histories/"
       expect(page).to have_content("You must sign in or sign up to view this page")
