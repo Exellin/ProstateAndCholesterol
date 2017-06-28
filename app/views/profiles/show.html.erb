@@ -113,7 +113,7 @@
     </div>
   <% end %>
   
-  <%= content_tag "div", id: "psa_chart", data: {psa: @psa_histories} do %>
+  <%= content_tag "canvas", id: "psa_chart", data: {psa: @psa_histories} do %>
   <% end %>
   
   <h3>Cholesterol History</h3>
@@ -126,21 +126,19 @@
     </div>
   <% end %>
   
-  <%= content_tag "div", id: "total_cholesterol_chart", data: {total: @total_cholesterol_histories} do %>
+  <%= content_tag "canvas", id: "total_cholesterol_chart", data: {totalcholesterol: @total_cholesterol_histories} do %>
   <% end %>
   
-  <%= content_tag "div", id: "hdl_chart", data: {hdl: @hdl_histories} do %>
+  <%= content_tag "canvas", id: "hdl_chart", data: {hdl: @hdl_histories} do %>
   <% end %>
   
-  <%= content_tag "div", id: "ldl_chart", data: {ldl: @ldl_histories} do %>
+  <%= content_tag "canvas", id: "ldl_chart", data: {ldl: @ldl_histories} do %>
   <% end %>
   
-  <%= content_tag "div", id: "triglyceride_chart", data: {triglyceride: @triglyceride_histories} do %>
+  <%= content_tag "canvas", id: "triglyceride_chart", data: {triglyceride: @triglyceride_histories} do %>
   <% end %>
   
-  <% unless @glucose_histories.all? {|glucose_history| glucose_history.glucose.nil?} %>
-    <%= content_tag "div", id: "glucose_chart", data: {glucose: @glucose_histories} do %>
-    <% end %>
+  <%= content_tag "canvas", id: "glucose_chart", data: {glucose: @glucose_histories} do %>
   <% end %>
   
   <h3>Medications</h3>

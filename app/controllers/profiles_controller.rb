@@ -10,12 +10,12 @@ class ProfilesController < ApplicationController
   end
   
   def show
-    @psa_histories = @profile.psa_histories
-    @total_cholesterol_histories = @profile.cholesterol_histories.select(:total_cholesterol, :month, :year)
-    @hdl_histories = @profile.cholesterol_histories.select(:hdl, :month, :year)
-    @ldl_histories = @profile.cholesterol_histories.select(:ldl, :month, :year)
-    @triglyceride_histories = @profile.cholesterol_histories.select(:triglyceride, :month, :year)
-    @glucose_histories = @profile.cholesterol_histories.select(:glucose, :month, :year)
+    @psa_histories = @profile.psa_histories.select(:psa, :month, :year).as_json(except: :id)
+    @total_cholesterol_histories = @profile.cholesterol_histories.select(:total_cholesterol, :month, :year).as_json(except: :id)
+    @hdl_histories = @profile.cholesterol_histories.select(:hdl, :month, :year).as_json(except: :id)
+    @ldl_histories = @profile.cholesterol_histories.select(:ldl, :month, :year).as_json(except: :id)
+    @triglyceride_histories = @profile.cholesterol_histories.select(:triglyceride, :month, :year).as_json(except: :id)
+    @glucose_histories = @profile.cholesterol_histories.select(:glucose, :month, :year).as_json(except: :id)
   end
   
   def update

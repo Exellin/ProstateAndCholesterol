@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require cocoon
-//= require d3
+//= require moment
+//= require Chart.min
 //= require chosen-jquery
 //= require_tree .
