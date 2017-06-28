@@ -78,3 +78,11 @@ label.required:after {
 .chosen-select, .chosen-single {
   width: 100%;
 }
+
+.medication_table {
+  font-size: 14px;
+  td {
+    color: #555555;
+    padding: 6px 12px;
+  }
+}

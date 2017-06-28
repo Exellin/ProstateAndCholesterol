@@ -151,30 +151,32 @@
     </div>
   <% end %>
   
-  <table>
-    <tr>
-      <th>Purpose</th>
-      <th>Name</th>
-      <th>Strength (mg)</th>
-      <th>Dosage (times per day)</th>
-      <th>Age Recommended</th>
-      <th>Age Prescribed</th>
-      <th>Month Last Used</th>
-      <th>Year Last Used</th>
-      <th>Still Using</th>
-    </tr>
-    <% @profile.medications.each do |medication| %>
-    <tr>
-      <td><%= medication.purpose %></td>
-      <td><%= medication.name %></td>
-      <td><%= medication.strength %></td>
-      <td><%= medication.dosage %></td>
-      <td><%= medication.age_recommended%></td>
-      <td><%= medication.age_prescribed %></td>
-      <td><%= months_select_array[medication.month_last_used.to_i][0] %></td>
-      <td><%= medication.year_last_used %></td>
-      <td><%= medication.still_using? ? "Yes" : "No" %></td>
-    </tr>
-    <% end %>
-  </table>
+  <div class="table-scroll">
+    <table class="medication_table">
+      <tr>
+        <th>Purpose</th>
+        <th>Name</th>
+        <th>Strength (mg)</th>
+        <th>Dosage (times per day)</th>
+        <th>Age Recommended</th>
+        <th>Age Prescribed</th>
+        <th>Month Last Used</th>
+        <th>Year Last Used</th>
+        <th>Still Using</th>
+      </tr>
+      <% @profile.medications.each do |medication| %>
+      <tr>
+        <td><%= medication.purpose %></td>
+        <td><%= medication.name %></td>
+        <td><%= medication.strength %></td>
+        <td><%= medication.dosage %></td>
+        <td><%= medication.age_recommended%></td>
+        <td><%= medication.age_prescribed %></td>
+        <td><%= months_select_array[medication.month_last_used.to_i][0] %></td>
+        <td><%= medication.year_last_used %></td>
+        <td><%= medication.still_using? ? "Yes" : "No" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 <% end %>
