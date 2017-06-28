@@ -155,10 +155,10 @@
     <tr>
       <th>Purpose</th>
       <th>Name</th>
+      <th>Strength (mg)</th>
+      <th>Dosage (times per day)</th>
       <th>Age Recommended</th>
       <th>Age Prescribed</th>
-      <th>Strength</th>
-      <th>Dosage</th>
       <th>Month Last Used</th>
       <th>Year Last Used</th>
       <th>Still Using</th>
@@ -167,11 +167,11 @@
     <tr>
       <td><%= medication.purpose %></td>
       <td><%= medication.name %></td>
-      <td><%= medication.age_recommended%></td>
-      <td><%= medication.age_prescribed %></td>
       <td><%= medication.strength %></td>
       <td><%= medication.dosage %></td>
-      <td><%= medication.month_last_used %></td>
+      <td><%= medication.age_recommended%></td>
+      <td><%= medication.age_prescribed %></td>
+      <td><%= months_select_array[medication.month_last_used.to_i][0] %></td>
       <td><%= medication.year_last_used %></td>
       <td><%= medication.still_using? ? "Yes" : "No" %></td>
     </tr>
