@@ -13,9 +13,12 @@ html, body {
 
 .table-scroll {
   overflow-x: auto;
+  table {
+    margin-bottom: 0
+  }
 }
 
-table {
+form table {
   th {
     padding: 5px;
   }
@@ -79,10 +82,16 @@ label.required:after {
   width: 100%;
 }
 
-#medication_table {
-  font-size: 14px;
-  td {
-    color: #555555;
-    padding: 6px 12px;
+.card {
+  padding: 10px 40px;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 1px 0 rgba(0,0,0,.25);
+  margin-bottom: 20px
+}
+
+.panel-heading {
+  h3 {
+    margin-top: 10px;
   }
 }

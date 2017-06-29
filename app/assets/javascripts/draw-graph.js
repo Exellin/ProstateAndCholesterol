@@ -12,6 +12,9 @@ $(document).ready(function() {
 
 function drawGraph(attribute, dataKey, title) {
   var canvas = $('#' + attribute + '_chart');
+  if (canvas[0] === undefined) {
+    return;
+  }
   var data = canvas.data(dataKey);
   var context = canvas[0].getContext('2d');
   var coordinates = [];
