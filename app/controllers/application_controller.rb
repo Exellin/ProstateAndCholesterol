@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.profile.empty?
-      redirect_path = root_path
+      redirect_path = edit_profile_path(resource.profile)
     else
       redirect_path = profile_path(resource.profile)
     end
