@@ -14,7 +14,7 @@
       <p><%= @profile.story %></p>
     <% end %>
 
-    <% if !current_user.nil? && (current_user == @profile.user || current_user.admin?) %>
+    <% if current_user && (current_user == @profile.user || current_user.admin?) %>
       <ul class="list-group">
         <li class="list-group-item">
           <strong>Name:</strong> <%= "#{@profile.first_name} #{@profile.last_name}" %>
