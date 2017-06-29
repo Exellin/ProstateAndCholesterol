@@ -2,7 +2,7 @@
   <h2 align="center">This user hasn't created a profile yet</h2>
 <% else %>
   <div class="card">
-    <h1><%= @profile.user.username %>'s Profile</h1>
+    <h1><%= @profile.user.username %> Profile</h1>
     <% if current_user == @profile.user %> 
       <%= link_to "edit profile", edit_profile_path(@profile), class: "btn btn-xs btn-primary" %>
     <% end %>
