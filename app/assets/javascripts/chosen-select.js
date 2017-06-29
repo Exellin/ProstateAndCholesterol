@@ -54,10 +54,14 @@ function setFields() {
 
   if (administrative_division_select[0] !== undefined && administrative_division_select[0].length === 0) {
     replaceDropdownWithTextField(administrative_division_select, "administrative_division");
+  } else {
+    buildErrorTextField("administrative_division");
   }
 
   if (city_select[0] !== undefined && city_select[0].length === 0) {
     replaceDropdownWithTextField(city_select, "city");
+  } else {
+    buildErrorTextField("city");
   }
 }
 
@@ -92,7 +96,28 @@ function replaceDropdownWithTextField(dropdown, query) {
   dropdown.replaceWith(html);
 }
 
+function buildErrorTextField(query) {
+  var container = $('#' + query + '_error_container')[0];
+  var textField = document.createElement('input');
+  textField.setAttribute('class', 'form-control');
+  textField.setAttribute('type', 'text');
+  textField.setAttribute('name', 'profile[' + query + ']');
+  textField.setAttribute('id', 'profile_' + query);
+  container.appendChild(textField);
+
+  var errorSpan = document.createElement('span');
+  errorSpan.setAttribute('class', 'help-block');
+  errorSpan.setAttribute('id', query + '_error');
+  errorSpan.innerText= "can't be blank";
+  container.appendChild(errorSpan);
+}
+
 function buildDropdown(inputField, query, result) {
+  var errorField = ($('#' + query + '_error'))[0];
+  if (errorField) {
+    errorField.parentNode.removeAttribute("class");
+    errorField.parentNode.removeChild(errorField);
+  }
   var option;
   var dropdown;
   var html ='<select class="chosen-select" name="profile[' + query + ']" id="profile_' + query + '" ></select>';
