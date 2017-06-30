@@ -52,16 +52,16 @@ function setFields() {
     country_select.val("US").trigger("chosen:updated"); // United States
   }
 
-  if (administrative_division_select[0] !== undefined && administrative_division_select[0].length === 0) {
-    replaceDropdownWithTextField(administrative_division_select, "administrative_division");
-  } else {
+  if (administrative_division_select[0] === undefined) {
     buildErrorTextField("administrative_division");
+  } else if (administrative_division_select[0].length === 0) {
+    replaceDropdownWithTextField(administrative_division_select, "administrative_division");
   }
 
-  if (city_select[0] !== undefined && city_select[0].length === 0) {
-    replaceDropdownWithTextField(city_select, "city");
-  } else {
+  if (city_select[0] === undefined) {
     buildErrorTextField("city");
+  } else if (city_select[0].length === 0) {
+    replaceDropdownWithTextField(city_select, "city");
   }
 }
 
