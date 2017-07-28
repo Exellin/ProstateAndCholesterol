@@ -92,6 +92,9 @@ function replaceDropdownWithTextField(dropdown, query) {
     value = ($('#country_data').data('city'));
   }
   dropdown.chosen("destroy");
+  if (value === undefined) {
+    value = '';
+  }
   var html = '<input class="form-control" type="text" value="' + value + '" name="profile[' + query + ']" id="profile_' + query + '">';
   dropdown.replaceWith(html);
 }
