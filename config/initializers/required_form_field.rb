@@ -10,7 +10,7 @@ class ActionView::Helpers::FormBuilder
     end
     
     if class_variable.validators_on(method).map(&:class).include?(ActiveRecord::Validations::PresenceValidator)
-      options[:class] = ((options[:class] || "") + " required").split(" ").uniq.join(" ")
+      options[:class] = ((options[:class] || '') + ' required').split(' ').uniq.join(' ')
     end
 
     self.orig_label(method, text, options, &block)

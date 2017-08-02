@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Creating Medication" do
+RSpec.feature 'Creating Medication' do
   before do
     @owner = FactoryGirl.create(:user)
     @user = FactoryGirl.create(:user)
@@ -8,16 +8,16 @@ RSpec.feature "Creating Medication" do
     @medication = FactoryGirl.build(:medication, profile: @profile)
   end
 
-  feature "as the owner", js: true do
+  feature 'as the owner', js: true do
     before do
       login_as(@owner)
-      visit "/"
+      visit '/'
       click_link @owner.username
-      click_link "edit medications"
+      click_link 'edit medications'
     end
 
-    scenario "with valid inputs" do
-      click_link "Add an entry"
+    scenario 'with valid inputs' do
+      click_link 'Add an entry'
       find("select[name$='[purpose]']").select(@medication.purpose)
       find("input[name$='[name]']").set(@medication.name)
       find("input[name$='[strength]']").set(@medication.strength)
@@ -27,9 +27,9 @@ RSpec.feature "Creating Medication" do
       find("select[name$='[month_last_used]']").select(@medication.month_last_used)
       find("select[name$='[year_last_used]']").select(@medication.year_last_used)
       find("input[name$='[still_using]']").set(@medication.still_using)
-      click_button "Update Medications"
-      expect(page).to have_content("Your Medications have been successfully updated")
-      click_link "edit medications"
+      click_button 'Update Medications'
+      expect(page).to have_content('Your Medications have been successfully updated')
+      click_link 'edit medications'
       expect(find("select[name$='[purpose]']").find('option[selected]').text).to eq @medication.purpose
       expect(find("input[name$='[name]']").value).to eq @medication.name
       expect(find("input[name$='[strength]']").value).to eq @medication.strength.to_s
@@ -45,46 +45,46 @@ RSpec.feature "Creating Medication" do
       end
     end
 
-    scenario "with invalid inputs" do
-      click_link "Add an entry"
-      click_button "Update Medications"
+    scenario 'with invalid inputs' do
+      click_link 'Add an entry'
+      click_button 'Update Medications'
       expect(page).to have_content("Medications name can't be blank")
       expect(page).to have_content("Medications strength can't be blank")
       expect(page).to have_content("Medications dosage can't be blank")
     end
 
-    scenario "with no inputs" do
-      click_button "Update Medications"
-      expect(page).to have_content("Your profile has been successfully updated")
+    scenario 'with no inputs' do
+      click_button 'Update Medications'
+      expect(page).to have_content('Your profile has been successfully updated')
     end
   end
 
-  feature "as another user" do
+  feature 'as another user' do
     before do
       login_as(@user)
     end
 
-    scenario "through the user interface" do
+    scenario 'through the user interface' do
       visit "/profiles/#{@profile.id}"
-      expect(page).not_to have_content("edit medications")
+      expect(page).not_to have_content('edit medications')
     end
 
-    scenario "by going directly to the route" do
+    scenario 'by going directly to the route' do
       visit "/profiles/#{@profile.id}/medications/"
-      expect(page).to have_content("You can only edit or delete your own content")
+      expect(page).to have_content('You can only edit or delete your own content')
       expect(current_path).to eq(root_path)
     end
   end
 
-  feature "as a guest" do
-    scenario "through the user interface" do
+  feature 'as a guest' do
+    scenario 'through the user interface' do
       visit "/profiles/#{@profile.id}"
-      expect(page).not_to have_content("edit medications")
+      expect(page).not_to have_content('edit medications')
     end
 
-    scenario "by going directly to the route" do
+    scenario 'by going directly to the route' do
       visit "/profiles/#{@profile.id}/medications/"
-      expect(page).to have_content("You must sign in or sign up to view this page")
+      expect(page).to have_content('You must sign in or sign up to view this page')
       expect(current_path).to eq(new_user_registration_path)
     end
   end

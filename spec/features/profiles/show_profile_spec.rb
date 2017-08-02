@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.feature "Viewing a users profile" do
+RSpec.feature 'Viewing a users profile' do
   
   before do
     @owner = FactoryGirl.create(:user)
     @profile = FactoryGirl.create(:profile, user: @owner)
   end
   
-  scenario "as the owner of the profile" do
+  scenario 'as the owner of the profile' do
     login_as(@owner)
-    visit "/"
+    visit '/'
     click_link(@owner.username)
     expect(page).to have_content(@profile.story)
     expect(page).to have_content(@profile.first_name)
@@ -25,7 +25,7 @@ RSpec.feature "Viewing a users profile" do
     expect(page).to have_content(@profile.age_bladder_infection)
   end
   
-  scenario "as a guest to the website" do
+  scenario 'as a guest to the website' do
     visit "/profiles/#{@profile.id}"
     expect(page).to have_content(@owner.username)
     expect(page).to have_content(@profile.story)

@@ -3,7 +3,7 @@ require 'faker'
 FactoryGirl.define do
   factory :medication do
     association :profile, factory: :profile
-    purpose { ["Prostate", "Cholesterol", "Blood Pressure"].sample }
+    purpose { ['Prostate', 'Cholesterol', 'Blood Pressure'].sample }
     age_recommended { Faker::Number.between(18, 120) }
     age_prescribed { Faker::Number.between(18, 120) }
     name { Faker::Lorem.word }

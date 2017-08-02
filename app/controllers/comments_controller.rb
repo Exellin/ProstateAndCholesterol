@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
-      flash[:success] = "Your comment has been successfully created"
+      flash[:success] = 'Your comment has been successfully created'
       redirect_to topic_post_comment_path(@topic, @post, @comment)
     else
       render 'new'
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   
   def update
     if @comment.update(comment_params)
-      flash[:success] = "Comment has been updated"
+      flash[:success] = 'Comment has been updated'
       redirect_to topic_post_comment_path(@comment)
     else
       render 'edit'
@@ -40,10 +40,10 @@ class CommentsController < ApplicationController
   end
   
   def delete
-    @comment.content = "[deleted]"
+    @comment.content = '[deleted]'
     @comment.deleted = true
     @comment.save
-    flash[:danger] = "Your comment has been successfully deleted"
+    flash[:danger] = 'Your comment has been successfully deleted'
     redirect_to topic_post_comment_path(@comment)
   end
   
@@ -58,7 +58,7 @@ class CommentsController < ApplicationController
   
   def check_deleted
     if @comment.deleted?
-      flash[:danger] = "This comment is deleted"
+      flash[:danger] = 'This comment is deleted'
       redirect_to topic_post_comment_path(@comment)
     end
   end

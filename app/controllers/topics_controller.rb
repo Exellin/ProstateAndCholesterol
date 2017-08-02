@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
-      flash[:success] = "A new topic has been successfully created"
+      flash[:success] = 'A new topic has been successfully created'
       redirect_to topics_path
     else
       render 'new'

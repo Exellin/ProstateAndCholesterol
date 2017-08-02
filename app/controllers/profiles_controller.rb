@@ -20,19 +20,19 @@ class ProfilesController < ApplicationController
   
   def update
     if params[:profile][:psa_histories_attributes]
-      message = "Your PSA History has been successfully updated"
+      message = 'Your PSA History has been successfully updated'
       render_path = 'psa_histories/index'
     elsif params[:profile][:cholesterol_histories_attributes]
-      message = "Your Cholesterol History has been successfully updated"
+      message = 'Your Cholesterol History has been successfully updated'
       render_path = 'cholesterol_histories/index'
     elsif params[:profile][:medications_attributes]
-      message = "Your Medications have been successfully updated"
+      message = 'Your Medications have been successfully updated'
       render_path = 'medications/index'
     elsif @profile.empty?
-      message = "Your profile has been successfully created"
+      message = 'Your profile has been successfully created'
       render_path = 'edit'
     else
-      message = "Your profile has been successfully updated"
+      message = 'Your profile has been successfully updated'
       render_path = 'edit'
     end
     if @profile.update(profile_params)
