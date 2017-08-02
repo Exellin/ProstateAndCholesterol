@@ -3,7 +3,7 @@ class CholesterolHistoriesController < ApplicationController
   include ProfileAccess
   before_action :authenticate_user!
   before_action :set_profile
-  before_action {require_same_user(@profile)}
+  before_action { require_same_user(@profile) }
   before_action :require_filled_profile
   
   def index

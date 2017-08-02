@@ -154,39 +154,11 @@ Layout/SpaceBeforeComment:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 33
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SupportedStylesForEmptyBraces, SpaceBeforeBlockParameters.
-# SupportedStyles: space, no_space
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideBlockBraces:
-  Exclude:
-    - 'app/controllers/cholesterol_histories_controller.rb'
-    - 'app/controllers/comments_controller.rb'
-    - 'app/controllers/medications_controller.rb'
-    - 'app/controllers/profiles_controller.rb'
-    - 'app/controllers/psa_histories_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/profile.rb'
-    - 'spec/factories/topics.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Layout/SpaceInsideBrackets:
   Exclude:
     - 'config/environments/production.rb'
-
-# Offense count: 10
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SupportedStylesForEmptyBraces.
-# SupportedStyles: space, no_space, compact
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideHashLiteralBraces:
-  Exclude:
-    - 'app/models/comment.rb'
-    - 'app/models/post.rb'
-    - 'app/models/profile.rb'
-    - 'config/routes.rb'
 
 # Offense count: 39
 # Cop supports --auto-correct.
@@ -310,22 +282,6 @@ Style/GuardClause:
     - 'app/controllers/posts_controller.rb'
     - 'app/models/comment.rb'
 
-# Offense count: 51
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
-# SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
-Style/HashSyntax:
-  Exclude:
-    - 'app/controllers/country_state_controller.rb'
-    - 'app/controllers/profiles_controller.rb'
-    - 'app/models/cholesterol_history.rb'
-    - 'app/models/comment.rb'
-    - 'app/models/medication.rb'
-    - 'app/models/profile.rb'
-    - 'app/models/psa_history.rb'
-    - 'config/routes.rb'
-    - 'db/migrate/20170513160906_add_timestamps_to_topics_posts_comments.rb'
-
 # Offense count: 2
 Style/IdenticalConditionalBranches:
   Exclude:
@@ -398,13 +354,6 @@ Style/Semicolon:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 17
-# Cop supports --auto-correct.
-# Configuration parameters: MinSize, SupportedStyles.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  EnforcedStyle: brackets
 
 # Offense count: 1
 # Cop supports --auto-correct.

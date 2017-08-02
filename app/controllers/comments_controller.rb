@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   include UserAccess
   before_action :authenticate_user!, except: [:show]
   before_action :set_comment, only: [:edit, :show, :update, :delete]
-  before_action only: [:edit, :update, :delete] {require_same_user(@comment)}
+  before_action only: [:edit, :update, :delete] { require_same_user(@comment) }
   before_action :check_deleted, only: [:edit, :update, :delete]
   
   def new

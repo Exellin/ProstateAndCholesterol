@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   include ProfileAccess
   before_action :set_profile, only: [:edit, :show, :update]
   before_action :authenticate_user!, except: [:show]
-  before_action only: [:edit, :update] {require_same_user(@profile)}
+  before_action only: [:edit, :update] { require_same_user(@profile) }
   before_action :require_filled_profile, only: [:show]
   
   def edit
@@ -52,9 +52,9 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :birth_year, :city, :administrative_division,
     :country, :years_in_current_locale, :ancestral_descent, :race, :ethnicity, :age_noticed_symptoms, 
-    :age_urinary_malfunction, :age_bladder_infection, :story, :psa_histories_attributes => [:id, :psa, :month, :year, :_destroy],
-    :cholesterol_histories_attributes => [:id, :total_cholesterol, :hdl, :ldl, :triglyceride, :glucose, :month, :year, :_destroy],
-    :medications_attributes => [:id, :purpose, :age_recommended, :age_prescribed, :name, :strength, :dosage, :month_last_used,
+    :age_urinary_malfunction, :age_bladder_infection, :story, psa_histories_attributes: [:id, :psa, :month, :year, :_destroy],
+    cholesterol_histories_attributes: [:id, :total_cholesterol, :hdl, :ldl, :triglyceride, :glucose, :month, :year, :_destroy],
+    medications_attributes: [:id, :purpose, :age_recommended, :age_prescribed, :name, :strength, :dosage, :month_last_used,
     :year_last_used, :still_using, :_destroy])
   end
 end

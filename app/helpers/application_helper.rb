@@ -14,18 +14,18 @@ module ApplicationHelper
   end
 
   def birth_year_select_array
-    (120.years.ago.year..18.years.ago.year).collect {|year| [year]}.reverse
+    (120.years.ago.year..18.years.ago.year).collect { |year| [year] }.reverse
   end
 
   def age_select_array
-    (18..120).collect {|year| [year]}
+    (18..120).collect { |year| [year] }
   end
 
   def years_ago_select_array
-    (0..120).collect {|year| [year]}
+    (0..120).collect { |year| [year] }
   end
 
   def year_select_array
-    (120.years.ago.year..0.years.ago.year).collect {|year| [year]}.reverse
+    (120.years.ago.year..0.years.ago.year).collect { |year| [year] }.reverse
   end
 end

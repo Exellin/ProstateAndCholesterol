@@ -1,1 +1,14 @@
 inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/**
+
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
+  Exclude:
+   - 'config/initializers/devise.rb'
+
+Style/SymbolArray:
+  EnforcedStyle: brackets

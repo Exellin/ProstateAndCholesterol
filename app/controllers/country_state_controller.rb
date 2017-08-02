@@ -3,7 +3,7 @@ class CountryStateController < ApplicationController
   def find_administrative_divisions
     administrative_divisions = CS.states(params[:id]).sort_by { |a| a[1] }
     respond_to do |format|
-      format.json { render :json => administrative_divisions.to_a }
+      format.json { render json: administrative_divisions.to_a }
     end
   end
   
@@ -14,7 +14,7 @@ class CountryStateController < ApplicationController
       cities_array.push([city, city])
     end
     respond_to do |format|
-      format.json { render :json => cities_array }
+      format.json { render json: cities_array }
     end
   end
 end
