@@ -59,6 +59,7 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-cucumber'
+  gem 'rubocop', require: false
 end
 
 group :test do
