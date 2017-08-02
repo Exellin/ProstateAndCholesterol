@@ -15,8 +15,8 @@ RSpec.feature 'Creating a Comment' do
       login_as(@user)
       visit '/'
       click_link 'Forum'
-      click_link "#{@topic.name}"
-      click_link "#{@post.title}"
+      click_link @topic.name
+      click_link @post.title
     end
     
     feature 'in reply to a post' do
@@ -55,8 +55,8 @@ RSpec.feature 'Creating a Comment' do
     scenario 'through the user interface' do
       visit '/'
       click_link 'Forum'
-      click_link "#{@topic.name}"
-      click_link "#{@post.title}"
+      click_link @topic.name
+      click_link @post.title
       click_link 'reply to post'
       expect(page).to have_content('You must sign in or sign up to view this page')
       expect(current_path).to eq(new_user_registration_path)

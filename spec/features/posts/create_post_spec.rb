@@ -12,7 +12,7 @@ RSpec.feature 'Creating a Post' do
       login_as(@user)
       visit '/'
       click_link 'Forum'
-      click_link "#{@topic.name}"
+      click_link @topic.name
       click_link 'New Post'
     end
     
@@ -38,7 +38,7 @@ RSpec.feature 'Creating a Post' do
     scenario 'through the user interface' do
       visit '/'
       click_link 'Forum'
-      click_link "#{@topic.name}"
+      click_link @topic.name
       click_link 'New Post'
       expect(page).to have_content('You must sign in or sign up to view this page')
       expect(current_path).to eq(new_user_registration_path)

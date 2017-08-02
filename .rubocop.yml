@@ -12,3 +12,7 @@ Style/ConditionalAssignment:
 
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'

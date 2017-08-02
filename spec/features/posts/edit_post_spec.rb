@@ -12,8 +12,8 @@ RSpec.feature 'Editing a Post' do
     login_as(@owner)
     visit '/'
     click_link 'Forum'
-    click_link "#{@topic.name}"
-    click_link "#{@post.title}"
+    click_link @topic.name
+    click_link @post.title
     click_link 'edit post'
     fill_in 'Content', with: 'edited content'
     click_button 'Update Post'
@@ -30,8 +30,8 @@ RSpec.feature 'Editing a Post' do
     scenario 'through the user interface' do
       visit '/'
       click_link 'Forum'
-      click_link "#{@topic.name}"
-      click_link "#{@post.title}"
+      click_link @topic.name
+      click_link @post.title
       expect(page).not_to have_content('edit post')
     end
     

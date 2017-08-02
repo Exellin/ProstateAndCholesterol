@@ -1,17 +1,18 @@
+# From https://gist.github.com/michaelglass/8610317
 module AlertConfirmer
-  def reject_confirm_from &block
+  def reject_confirm_from(&block)
     handle_js_modal 'confirm', false, &block
   end
 
-  def accept_confirm_from &block
+  def accept_confirm_from(&block)
     handle_js_modal 'confirm', true, &block
   end
 
-  def accept_alert_from &block
+  def accept_alert_from(&block)
     handle_js_modal 'alert', true, &block
   end
 
-  def get_alert_text_from &block
+  def get_alert_text_from(&block)
     handle_js_modal 'alert', true, true, &block
     get_modal_text 'alert'
   end
@@ -22,15 +23,15 @@ module AlertConfirmer
 
   private
 
-  def handle_js_modal name, return_val, wait_for_call = false, &block
+  def handle_js_modal(name, return_val, wait_for_call = false)
     modal_called = "window.#{name}.called"
     page.execute_script "
     window.original_#{name}_function = window.#{name};
-    window.#{name} = function(msg) { window.#{name}Msg = msg; window.#{name}.called = true; return #{!!return_val}; };
+    window.#{name} = function(msg) { window.#{name}Msg = msg; window.#{name}.called = true; return #{return_val}; };
     #{modal_called} = false;
     window.#{name}Msg = null;"
 
-    block.call
+    yield
 
     if wait_for_call
       timed_out = false

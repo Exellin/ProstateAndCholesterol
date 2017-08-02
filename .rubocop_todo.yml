@@ -154,12 +154,6 @@ Layout/SpaceBeforeComment:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Layout/SpaceInsideBrackets:
-  Exclude:
-    - 'config/environments/production.rb'
-
 # Offense count: 39
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
@@ -177,11 +171,6 @@ Layout/TrailingWhitespace:
 Lint/AssignmentInCondition:
   Exclude:
     - 'bin/spring'
-
-# Offense count: 2
-Lint/UselessAssignment:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
 
 # Offense count: 6
 Metrics/AbcSize:
@@ -207,26 +196,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 8
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Performance/RedundantBlockCall:
-  Exclude:
-    - 'spec/support/alert_confirmer.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: prefer_alias, prefer_alias_method
-Style/Alias:
-  Exclude:
-    - 'config/initializers/required_form_field.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
-
 # Offense count: 3
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: nested, compact
@@ -241,22 +210,9 @@ Style/ClassVars:
   Exclude:
     - 'spec/support/share_db_connection.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, SingleLineConditionsOnly, IncludeTernaryExpressions.
-# SupportedStyles: assign_to_condition, assign_inside_condition
-Style/ConditionalAssignment:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-
 # Offense count: 39
 Style/Documentation:
   Enabled: false
-
-# Offense count: 1
-Style/DoubleNegation:
-  Exclude:
-    - 'spec/support/alert_confirmer.rb'
 
 # Offense count: 7
 # Cop supports --auto-correct.
@@ -281,19 +237,6 @@ Style/GuardClause:
     - 'app/controllers/concerns/user_access.rb'
     - 'app/controllers/posts_controller.rb'
     - 'app/models/comment.rb'
-
-# Offense count: 2
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/models/profile.rb'
-
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: require_parentheses, require_no_parentheses, require_no_parentheses_except_multiline
-Style/MethodDefParentheses:
-  Exclude:
-    - 'spec/support/alert_confirmer.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -355,19 +298,6 @@ Style/Semicolon:
 Style/TrailingCommaInLiteral:
   Exclude:
     - 'app/helpers/application_helper.rb'
-
-# Offense count: 21
-# Cop supports --auto-correct.
-Style/UnneededInterpolation:
-  Exclude:
-    - 'config/initializers/inline_form_errors.rb'
-    - 'spec/features/comments/create_comment_spec.rb'
-    - 'spec/features/comments/delete_comment_spec.rb'
-    - 'spec/features/comments/edit_comment_spec.rb'
-    - 'spec/features/comments/listing_comments_spec.rb'
-    - 'spec/features/posts/create_post_spec.rb'
-    - 'spec/features/posts/delete_post_spec.rb'
-    - 'spec/features/posts/edit_post_spec.rb'
 
 # Offense count: 12
 # Cop supports --auto-correct.

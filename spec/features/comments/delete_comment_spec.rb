@@ -13,8 +13,8 @@ RSpec.feature 'Deleting a Comment' do
     login_as(@owner)
     visit '/'
     click_link 'Forum'
-    click_link "#{@topic.name}"
-    click_link "#{@post.title}"
+    click_link @topic.name
+    click_link @post.title
     accept_confirm_from do
       click_link 'delete comment'
     end

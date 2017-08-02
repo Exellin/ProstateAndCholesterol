@@ -1,5 +1,5 @@
 class ActionView::Helpers::FormBuilder
-  alias :orig_label :label
+  alias orig_label label
 
   def label(method, text = nil, options = {}, &block)
     

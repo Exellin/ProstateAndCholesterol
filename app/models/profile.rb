@@ -40,11 +40,10 @@ class Profile < ApplicationRecord
   def set_administrative_divisions
     if country
       administrative_divisions = CS.states(country.to_sym).sort_by { |a| a[1] }
-      administrative_divisions.collect { |state| [state[1], state[0]] }
     else
       administrative_divisions = CS.states(:us).sort_by { |a| a[1] }
-      administrative_divisions.collect { |state| [state[1], state[0]] }
     end
+    administrative_divisions.collect { |state| [state[1], state[0]] }
   end
   
   def set_cities

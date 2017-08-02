@@ -13,8 +13,8 @@ RSpec.feature 'Editing a Comment' do
     login_as(@owner)
     visit '/'
     click_link 'Forum'
-    click_link "#{@topic.name}"
-    click_link "#{@post.title}"
+    click_link @topic.name
+    click_link @post.title
     click_link 'edit comment'
     fill_in 'Content', with: 'edited content'
     click_button 'Update Comment'
@@ -31,8 +31,8 @@ RSpec.feature 'Editing a Comment' do
     scenario 'through the user interface' do
       visit '/'
       click_link('Forum')
-      click_link "#{@topic.name}"
-      click_link "#{@post.title}"
+      click_link @topic.name
+      click_link @post.title
       expect(page).not_to have_content('edit comment')
     end
     
