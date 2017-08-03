@@ -40,9 +40,8 @@ module AlertConfirmer
         if page.evaluate_script(modal_called).nil?
           raise 'appears that page has changed since this method has been called, please assert on page before calling this'
         end
-        
-        break if page.evaluate_script(modal_called) || 
-          (timed_out = Time.now > timeout_after)
+
+        break if page.evaluate_script(modal_called) || (timed_out = Time.now > timeout_after)
 
         sleep 0.001
       end

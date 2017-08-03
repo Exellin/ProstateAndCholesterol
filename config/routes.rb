@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         put :delete
       end
       resources :comments, except: [:index, :destroy] do
-        member do 
+        member do
           put :delete
         end
       end

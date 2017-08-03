@@ -8,7 +8,7 @@ RSpec.feature 'Deleting a Comment' do
     @post = FactoryGirl.create(:post, topic: @topic)
     @comment = FactoryGirl.create(:comment, post: @post, user: @owner)
   end
-  
+
   scenario 'as the owner of the post', js: true do
     login_as(@owner)
     visit '/'
@@ -22,7 +22,7 @@ RSpec.feature 'Deleting a Comment' do
     expect(page).not_to have_content(@comment.content)
     expect(page).to have_content('[deleted]')
   end
-  
+
   scenario 'as another user' do
     login_as(@user)
     visit topic_post_comment_path(@topic, @post, @comment)

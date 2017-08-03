@@ -7,7 +7,7 @@ RSpec.feature 'Listing Topics' do
     @topic2 = FactoryGirl.create(:topic)
     @post1 = FactoryGirl.create(:post, user: @admin, topic: @topic1)
   end
-  
+
   scenario 'shows all topics' do
     visit '/'
     click_link 'Forum'

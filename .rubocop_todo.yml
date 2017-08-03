@@ -154,18 +154,6 @@ Layout/SpaceBeforeComment:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 39
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: final_newline, final_blank_line
-Layout/TrailingBlankLines:
-  Enabled: false
-
-# Offense count: 155
-# Cop supports --auto-correct.
-Layout/TrailingWhitespace:
-  Enabled: false
-
 # Offense count: 1
 # Configuration parameters: AllowSafeAssignment.
 Lint/AssignmentInCondition:

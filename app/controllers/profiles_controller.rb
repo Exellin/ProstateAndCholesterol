@@ -5,10 +5,10 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action only: [:edit, :update] { require_same_user(@profile) }
   before_action :require_filled_profile, only: [:show]
-  
+
   def edit
   end
-  
+
   def show
     @psa_histories = @profile.psa_histories.select(:psa, :month, :year).as_json(except: :id)
     @total_cholesterol_histories = @profile.cholesterol_histories.select(:total_cholesterol, :month, :year).as_json(except: :id)
@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
     @triglyceride_histories = @profile.cholesterol_histories.select(:triglyceride, :month, :year).as_json(except: :id)
     @glucose_histories = @profile.cholesterol_histories.select(:glucose, :month, :year).as_json(except: :id)
   end
-  
+
   def update
     if params[:profile][:psa_histories_attributes]
       message = 'Your PSA History has been successfully updated'
@@ -42,16 +42,16 @@ class ProfilesController < ApplicationController
       render render_path
     end
   end
-  
+
   private
-  
+
   def set_profile
     @profile = Profile.find(params[:id])
   end
-  
+
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :birth_year, :city, :administrative_division,
-    :country, :years_in_current_locale, :ancestral_descent, :race, :ethnicity, :age_noticed_symptoms, 
+    :country, :years_in_current_locale, :ancestral_descent, :race, :ethnicity, :age_noticed_symptoms,
     :age_urinary_malfunction, :age_bladder_infection, :story, psa_histories_attributes: [:id, :psa, :month, :year, :_destroy],
     cholesterol_histories_attributes: [:id, :total_cholesterol, :hdl, :ldl, :triglyceride, :glucose, :month, :year, :_destroy],
     medications_attributes: [:id, :purpose, :age_recommended, :age_prescribed, :name, :strength, :dosage, :month_last_used,

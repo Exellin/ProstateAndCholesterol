@@ -1,7 +1,6 @@
 module ProfileAccess
-  
   private
-  
+
   def require_filled_profile
     if current_user == @profile.user && @profile.empty?
       flash[:danger] = 'You have to create your profile before you can view this page'

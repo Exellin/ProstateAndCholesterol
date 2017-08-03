@@ -21,12 +21,12 @@ RSpec.feature 'Editing a Post' do
     expect(page).to have_content('Post has been updated')
     expect(page).not_to have_content(@post.content)
   end
-  
+
   feature 'as another user' do
     before do
       login_as(@user)
     end
-    
+
     scenario 'through the user interface' do
       visit '/'
       click_link 'Forum'
@@ -34,7 +34,7 @@ RSpec.feature 'Editing a Post' do
       click_link @post.title
       expect(page).not_to have_content('edit post')
     end
-    
+
     scenario 'by going directly to the route' do
       visit "/topics/#{@topic.id}/posts/#{@post.id}/edit"
       expect(page).to have_content('You can only edit or delete your own content')
@@ -42,4 +42,3 @@ RSpec.feature 'Editing a Post' do
     end
   end
 end
-    

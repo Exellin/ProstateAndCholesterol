@@ -20,7 +20,7 @@ RSpec.feature 'Listing Posts' do
     expect(page).not_to have_content(@last_post.title)
     expect(page).to have_content(@first_post.title)
   end
-  
+
   scenario 'has a toggle to show content for each post', js: true do
     expect(page).not_to have_content(@last_post.content)
     expand_link = "a[data-remote='true'][href='/topics/#{@topic.id}/posts/#{@last_post.id}']"
@@ -32,7 +32,7 @@ RSpec.feature 'Listing Posts' do
     find(:css, 'button').click
     expect(last_post_content).to be_visible
   end
-    
+
   scenario 'shows basic information for each post' do
     expect(page).to have_content(@topic.name)
     expect(page).to have_content('0 comments')
@@ -40,4 +40,3 @@ RSpec.feature 'Listing Posts' do
     expect(page).to have_content("created less than a minute ago by #{@user.username}")
   end
 end
-    

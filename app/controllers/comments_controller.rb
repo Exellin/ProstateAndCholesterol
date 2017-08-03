@@ -4,11 +4,11 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :show, :update, :delete]
   before_action only: [:edit, :update, :delete] { require_same_user(@comment) }
   before_action :check_deleted, only: [:edit, :update, :delete]
-  
+
   def new
     @comment = Comment.new
   end
-  
+
   def create
     @comment = Comment.new(comment_params)
     @topic = Topic.find(params[:topic_id])
@@ -22,10 +22,10 @@ class CommentsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if @comment.update(comment_params)
       flash[:success] = 'Comment has been updated'
@@ -34,11 +34,11 @@ class CommentsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def show
     @post = @comment.post
   end
-  
+
   def delete
     @comment.content = '[deleted]'
     @comment.deleted = true
@@ -46,16 +46,16 @@ class CommentsController < ApplicationController
     flash[:danger] = 'Your comment has been successfully deleted'
     redirect_to topic_post_comment_path(@comment)
   end
-  
+
   private
   def comment_params
     params.require(:comment).permit(:content, :parent_comment_id)
   end
-  
+
   def set_comment
     @comment = Comment.find(params[:id])
   end
-  
+
   def check_deleted
     if @comment.deleted?
       flash[:danger] = 'This comment is deleted'

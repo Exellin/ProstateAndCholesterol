@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Profile created upon signup' do
-  
   before do
     @user = FactoryGirl.build(:user)
     @profile = FactoryGirl.build(:profile)
@@ -13,7 +12,7 @@ RSpec.feature 'Profile created upon signup' do
     fill_in 'Password Confirmation', with: @user.password
     click_button 'Sign up'
   end
-  
+
   scenario 'and filled with valid credentials' do
     fill_in 'First Name', with: @profile.first_name
     fill_in 'Last Name', with: @profile.last_name
@@ -26,11 +25,11 @@ RSpec.feature 'Profile created upon signup' do
     select(@profile.age_urinary_malfunction, from: 'profile_age_urinary_malfunction')
     select(@profile.age_bladder_infection, from: 'profile_age_bladder_infection')
     fill_in 'Your Story', with: @profile.story
-    
+
     click_button 'Create Profile'
     expect(page).to have_content('Your profile has been successfully created')
   end
-    
+
   scenario 'with no credentials filled' do
     click_button 'Create Profile'
     expect(page).to have_content("First Name can't be blank")

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Users sign out' do
-  
   scenario do
     @user = FactoryGirl.create(:user)
     login_as(@user)

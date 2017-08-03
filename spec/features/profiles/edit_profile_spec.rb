@@ -6,7 +6,7 @@ RSpec.feature 'Editing Profle' do
     @profile = FactoryGirl.create(:profile, user: @owner)
     login_as(@owner)
   end
-  
+
   scenario 'with valid inputs' do
     visit '/'
     click_link @owner.username
@@ -18,6 +18,3 @@ RSpec.feature 'Editing Profle' do
     expect(page).not_to have_content(old_first_name)
   end
 end
-    
-    
-    

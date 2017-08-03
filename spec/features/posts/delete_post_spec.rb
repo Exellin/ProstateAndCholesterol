@@ -24,11 +24,10 @@ RSpec.feature 'Deleting a Post' do
     visit topic_path(@topic)
     expect(page).not_to have_content('[deleted]')
   end
-  
+
   scenario 'as another user' do
     login_as(@user)
     visit topic_post_path(@topic, @post)
     expect(page).not_to have_content('delete post')
   end
 end
-    
