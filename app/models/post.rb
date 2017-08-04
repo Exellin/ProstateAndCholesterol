@@ -9,6 +9,6 @@ class Post < ApplicationRecord
   validates :topic_id, presence: true
 
   def direct_replies
-    self.comments.select { |comment| comment.parent_comment.nil? }
+    comments.select { |comment| comment.parent_comment.nil? }
   end
 end

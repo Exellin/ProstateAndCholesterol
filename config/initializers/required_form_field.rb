@@ -12,6 +12,6 @@ class ActionView::Helpers::FormBuilder
       options[:class] = ((options[:class] || '') + ' required').split(' ').uniq.join(' ')
     end
 
-    self.orig_label(method, text, options, &block)
+    orig_label(method, text, options, &block)
   end
 end

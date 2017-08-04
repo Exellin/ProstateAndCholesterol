@@ -216,16 +216,6 @@ Style/EmptyMethod:
     - 'app/controllers/profiles_controller.rb'
     - 'app/controllers/psa_histories_controller.rb'
 
-# Offense count: 8
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/comments_controller.rb'
-    - 'app/controllers/concerns/profile_access.rb'
-    - 'app/controllers/concerns/user_access.rb'
-    - 'app/controllers/posts_controller.rb'
-    - 'app/models/comment.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: Strict.
@@ -255,37 +245,6 @@ Style/PredicateName:
 Style/Proc:
   Exclude:
     - 'config/initializers/inline_form_errors.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowMultipleReturnValues.
-Style/RedundantReturn:
-  Exclude:
-    - 'app/models/comment.rb'
-
-# Offense count: 5
-# Cop supports --auto-correct.
-Style/RedundantSelf:
-  Exclude:
-    - 'app/models/comment.rb'
-    - 'app/models/post.rb'
-    - 'app/models/profile.rb'
-    - 'config/initializers/required_form_field.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowAsExpressionSeparator.
-Style/Semicolon:
-  Exclude:
-    - 'app/controllers/country_state_controller.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStylesForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInLiteral:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
 
 # Offense count: 12
 # Cop supports --auto-correct.

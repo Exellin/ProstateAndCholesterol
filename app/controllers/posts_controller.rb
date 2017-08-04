@@ -60,16 +60,14 @@ class PostsController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @post.user
-      flash[:danger] = 'You can only edit or delete your own content'
-      redirect_to topic_post_path(@post)
-    end
+    return if current_user == @post.user
+    flash[:danger] = 'You can only edit or delete your own content'
+    redirect_to topic_post_path(@post)
   end
 
   def check_deleted
-    if @post.deleted?
-      flash[:danger] = 'This post is deleted'
-      redirect_to topic_post_path(@post)
-    end
+    return unless @post.deleted?
+    flash[:danger] = 'This post is deleted'
+    redirect_to topic_post_path(@post)
   end
 end

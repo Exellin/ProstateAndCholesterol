@@ -7,7 +7,7 @@ class CountryStateController < ApplicationController
   end
 
   def find_cities
-    cities_array = [];
+    cities_array = []
     cities = CS.cities(params[:id])
     cities.each do |city|
       cities_array.push([city, city])

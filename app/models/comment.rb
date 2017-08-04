@@ -11,26 +11,20 @@ class Comment < ApplicationRecord
   def get_ancestors_count(comment)
     @ancestors ||= 0
 
-    if comment.parent_comment.nil?
-      return @ancestors
-    else
-      @ancestors += 1
-      get_ancestors_count(comment.parent_comment)
-    end
+    return @ancestors if comment.parent_comment.nil?
+    @ancestors += 1
+    get_ancestors_count(comment.parent_comment)
   end
 
   def get_children_tree(comment, depth)
   @children_tree ||= []
 
     comment.child_comments.each do |child_comment|
-      if (child_comment.ancestor_count - @root.ancestor_count) > depth
-        return @children_tree
-      else
-        @children_tree << child_comment
-        get_children_tree(child_comment, depth)
-      end
+      return @children_tree if (child_comment.ancestor_count - @root.ancestor_count) > depth
+      @children_tree << child_comment
+      get_children_tree(child_comment, depth)
     end
-    return @children_tree
+    @children_tree
   end
 
   def ancestor_count
@@ -43,6 +37,6 @@ class Comment < ApplicationRecord
   end
 
   def has_hidden_replies(ancestor, depth)
-    (self.ancestor_count - ancestor.ancestor_count) >= depth && !self.child_comments.empty?
+    (ancestor_count - ancestor.ancestor_count) >= depth && !child_comments.empty?
   end
 end

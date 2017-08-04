@@ -57,9 +57,8 @@ class CommentsController < ApplicationController
   end
 
   def check_deleted
-    if @comment.deleted?
-      flash[:danger] = 'This comment is deleted'
-      redirect_to topic_post_comment_path(@comment)
-    end
+    return unless @comment.deleted?
+    flash[:danger] = 'This comment is deleted'
+    redirect_to topic_post_comment_path(@comment)
   end
 end
