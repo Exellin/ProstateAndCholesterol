@@ -10,29 +10,37 @@ class Profile < ApplicationRecord
 
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
-  validates :birth_year, presence: true, on: :update, inclusion: { in: 120.years.ago.year..18.years.ago.year,
-  message: 'must be between 120 and 18 years ago' }
+
+  validates :birth_year, presence: true, on: :update,
+                         inclusion: { in: 120.years.ago.year..18.years.ago.year,
+                                      message: 'must be between 120 and 18 years ago' }
+
   validates :city, presence: true, on: :update
   validates :administrative_division, presence: true, on: :update
   validates :country, presence: true, on: :update
-  validates :years_in_current_locale, presence: true, on: :update, inclusion: { in: 0..120,
-  message: 'must be between 0 and 120' }
+
+  validates :years_in_current_locale, presence: true, on: :update,
+                                      inclusion: { in: 0..120, message: 'must be between 0 and 120' }
+
   validates :race, presence: true, on: :update
-  validates :age_noticed_symptoms, inclusion: { in: 18..120,
-  message: 'must be between 18 and 120' }, allow_blank: true
-  validates :age_urinary_malfunction, inclusion: { in: 18..120,
-  message: 'must be between 18 and 120' }, allow_blank: true
-  validates :age_bladder_infection, inclusion: { in: 18..120,
-  message: 'must be between 18 and 120' }, allow_blank: true
+
+  validates :age_noticed_symptoms, inclusion: { in: 18..120, message: 'must be between 18 and 120' },
+                                   allow_blank: true
+
+  validates :age_urinary_malfunction, inclusion: { in: 18..120, message: 'must be between 18 and 120' },
+                                      allow_blank: true
+
+  validates :age_bladder_infection, inclusion: { in: 18..120, message: 'must be between 18 and 120' },
+                                    allow_blank: true
 
   def empty?
-    ignored_attrs = { 'id' => 1 , 'user_id' => 1, 'created_at' => 1, 'updated_at' => 1 }
-    attributes.all?{ |key, value| value.blank? || ignored_attrs[key] }
+    ignored_attrs = { 'id' => 1, 'user_id' => 1, 'created_at' => 1, 'updated_at' => 1 }
+    attributes.all? { |key, value| value.blank? || ignored_attrs[key] }
   end
 
   def set_countries
     countries_array = CS.countries.to_a.sort_by { |a| a[1] }
-    remove_index = countries_array.index(countries_array.detect{ |country| country.include?('country_name') })
+    remove_index = countries_array.index(countries_array.detect { |country| country.include?('country_name') })
     countries_array.delete_at(remove_index)
     countries_array.collect { |country| [country[1], country[0]] }
   end

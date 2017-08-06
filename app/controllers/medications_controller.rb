@@ -6,8 +6,7 @@ class MedicationsController < ApplicationController
   before_action { require_same_user(@profile) }
   before_action :require_filled_profile
 
-  def index
-  end
+  def index; end
 
   private
 

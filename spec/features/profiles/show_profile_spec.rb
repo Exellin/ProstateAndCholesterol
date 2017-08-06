@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Viewing a users profile' do
-
   before do
     @owner = FactoryGirl.create(:user)
     @profile = FactoryGirl.create(:profile, user: @owner)

@@ -17,7 +17,7 @@ class Comment < ApplicationRecord
   end
 
   def get_children_tree(comment, depth)
-  @children_tree ||= []
+    @children_tree ||= []
 
     comment.child_comments.each do |child_comment|
       return @children_tree if (child_comment.ancestor_count - @root.ancestor_count) > depth

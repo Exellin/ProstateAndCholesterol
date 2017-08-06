@@ -14,48 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Layout/AlignArray:
-  Exclude:
-    - 'app/controllers/profiles_controller.rb'
-    - 'app/helpers/application_helper.rb'
-
-# Offense count: 12
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedHashRocketStyle, SupportedHashRocketStyles, EnforcedColonStyle, SupportedColonStyles, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
-# SupportedHashRocketStyles: key, separator, table
-# SupportedColonStyles: key, separator, table
-# SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
-Layout/AlignHash:
-  Exclude:
-    - 'app/controllers/profiles_controller.rb'
-    - 'app/models/cholesterol_history.rb'
-    - 'app/models/medication.rb'
-    - 'app/models/profile.rb'
-    - 'app/models/psa_history.rb'
-    - 'app/models/user.rb'
-
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
-# SupportedStyles: with_first_parameter, with_fixed_indentation
-Layout/AlignParameters:
-  Exclude:
-    - 'app/controllers/profiles_controller.rb'
-    - 'bin/_guard-core'
-    - 'bin/guard'
-    - 'bin/rspec'
-    - 'spec/features/comments/listing_comments_spec.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentOneStep, IndentationWidth.
-# SupportedStyles: case, end
-Layout/CaseIndentation:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Layout/EmptyLineAfterMagicComment:
@@ -64,95 +22,12 @@ Layout/EmptyLineAfterMagicComment:
     - 'bin/guard'
     - 'bin/rspec'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Layout/EmptyLines:
-  Exclude:
-    - 'Gemfile'
-    - 'db/migrate/20161228210650_devise_create_users.rb'
-    - 'spec/features/profiles/show_profile_spec.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Layout/EmptyLinesAroundAccessModifier:
   Exclude:
     - 'app/controllers/comments_controller.rb'
     - 'app/controllers/posts_controller.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'db/schema.rb'
-    - 'spec/features/profiles/show_profile_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines
-Layout/EmptyLinesAroundModuleBody:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
-# Offense count: 7
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Layout/ExtraSpacing:
-  Exclude:
-    - 'Guardfile'
-    - 'db/schema.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: normal, rails
-Layout/IndentationConsistency:
-  Exclude:
-    - 'app/models/comment.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: Width, IgnoredPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - 'app/models/comment.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
-# SupportedStyles: aligned, indented
-Layout/MultilineOperationIndentation:
-  Exclude:
-    - 'spec/support/alert_confirmer.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment.
-Layout/SpaceAroundOperators:
-  Exclude:
-    - 'spec/features/comments/listing_comments_spec.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: space, no_space
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'app/models/profile.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/SpaceBeforeComma:
-  Exclude:
-    - 'app/models/profile.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/SpaceBeforeComment:
-  Exclude:
-    - 'Gemfile'
 
 # Offense count: 1
 # Configuration parameters: AllowSafeAssignment.
@@ -201,20 +76,6 @@ Style/ClassVars:
 # Offense count: 39
 Style/Documentation:
   Enabled: false
-
-# Offense count: 7
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/cholesterol_histories_controller.rb'
-    - 'app/controllers/comments_controller.rb'
-    - 'app/controllers/medications_controller.rb'
-    - 'app/controllers/pages_controller.rb'
-    - 'app/controllers/posts_controller.rb'
-    - 'app/controllers/profiles_controller.rb'
-    - 'app/controllers/psa_histories_controller.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.

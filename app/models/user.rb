@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, presence: true,
-            uniqueness: { case_sensitive: false },
-            length: { minimum: 3, maximum: 25 }
+                       uniqueness: { case_sensitive: false },
+                       length: { minimum: 3, maximum: 25 }
 
   has_one :profile, dependent: :destroy
   before_create :build_profile
