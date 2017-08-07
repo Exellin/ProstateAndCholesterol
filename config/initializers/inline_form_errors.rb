@@ -1,4 +1,4 @@
-ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+ActionView::Base.field_error_proc = proc do |html_tag, instance|
   html = ''
   elements = Nokogiri::HTML::DocumentFragment.parse(html_tag).css 'label, input, textarea'
 

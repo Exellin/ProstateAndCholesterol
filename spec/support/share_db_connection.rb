@@ -1,3 +1,5 @@
+# From https://github.com/railscasts/391-testing-javascript-with-phantomjs/blob/master/checkout-after/spec/support/share_db_connection.rb
+
 class ActiveRecord::Base
   mattr_accessor :shared_connection
   @@shared_connection = nil

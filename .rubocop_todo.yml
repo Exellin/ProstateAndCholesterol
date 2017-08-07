@@ -14,27 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Layout/EmptyLineAfterMagicComment:
-  Exclude:
-    - 'bin/_guard-core'
-    - 'bin/guard'
-    - 'bin/rspec'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Layout/EmptyLinesAroundAccessModifier:
-  Exclude:
-    - 'app/controllers/comments_controller.rb'
-    - 'app/controllers/posts_controller.rb'
-
-# Offense count: 1
-# Configuration parameters: AllowSafeAssignment.
-Lint/AssignmentInCondition:
-  Exclude:
-    - 'bin/spring'
-
 # Offense count: 6
 Metrics/AbcSize:
   Max: 22
@@ -59,58 +38,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 8
 
-# Offense count: 3
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'config/initializers/required_form_field.rb'
-    - 'spec/support/share_db_connection.rb'
-    - 'test/test_helper.rb'
-
-# Offense count: 1
-Style/ClassVars:
-  Exclude:
-    - 'spec/support/share_db_connection.rb'
-
 # Offense count: 39
 Style/Documentation:
   Enabled: false
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: Strict.
-Style/NumericLiterals:
-  MinDigits: 15
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'Guardfile'
-    - 'config/spring.rb'
-
-# Offense count: 1
-# Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
-# NamePrefix: is_, has_, have_
-# NamePrefixBlacklist: is_, has_, have_
-# NameWhitelist: is_a?
-Style/PredicateName:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/models/comment.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/Proc:
-  Exclude:
-    - 'config/initializers/inline_form_errors.rb'
-
-# Offense count: 12
-# Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles, WordRegex.
-# SupportedStyles: percent, brackets
-Style/WordArray:
-  EnforcedStyle: percent
-  MinSize: 3

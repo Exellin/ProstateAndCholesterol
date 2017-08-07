@@ -16,3 +16,15 @@ Style/SymbolArray:
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'config/initializers/required_form_field.rb'
+    - 'spec/support/share_db_connection.rb'
+
+Style/ClassVars:
+  Exclude:
+    - 'spec/support/share_db_connection.rb'
+
+Style/WordArray:
+  EnforcedStyle: brackets
