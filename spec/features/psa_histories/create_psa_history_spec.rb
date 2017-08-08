@@ -24,9 +24,9 @@ RSpec.feature 'Creating PSA History' do
       click_button 'Update PSA History'
       expect(page).to have_content('Your PSA History has been successfully updated')
       click_link 'edit psa history'
-      expect(find("input[name$='[psa]']").value).to eq @psa_history.psa.to_s
-      expect(find("select[name$='[year]']").find('option[selected]').text).to eq @psa_history.year.to_s
-      expect(find("select[name$='[month]']").find('option[selected]').text).to eq @psa_history.month
+      expect(find("input[name$='[psa]']").value).to eq(@psa_history.psa.to_s)
+      expect(find("select[name$='[year]']").find('option[selected]').text).to eq(@psa_history.year.to_s)
+      expect(find("select[name$='[month]']").find('option[selected]').text).to eq(@psa_history.month)
     end
 
     scenario 'with invalid inputs' do

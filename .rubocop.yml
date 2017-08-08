@@ -8,23 +8,51 @@ AllCops:
 Style/ConditionalAssignment:
   EnforcedStyle: assign_inside_condition
   Exclude:
-   - 'config/initializers/devise.rb'
+   - config/initializers/devise.rb
 
 Style/SymbolArray:
   EnforcedStyle: brackets
 
 Style/BlockComments:
   Exclude:
-    - 'spec/spec_helper.rb'
+    - spec/spec_helper.rb
 
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'config/initializers/required_form_field.rb'
-    - 'spec/support/share_db_connection.rb'
+    - config/initializers/required_form_field.rb
+    - spec/support/share_db_connection.rb
 
 Style/ClassVars:
   Exclude:
-    - 'spec/support/share_db_connection.rb'
+    - spec/support/share_db_connection.rb
 
 Style/WordArray:
   EnforcedStyle: brackets
+  
+Metrics/BlockLength:
+  Exclude:
+   - spec/**/*
+   - Guardfile
+
+# 112 is the longest line in rails generated files
+Metrics/LineLength:
+  Max: 112
+  Exclude:
+    - config/initializers/devise.rb
+
+Metrics/MethodLength:
+  Exclude:
+   - spec/support/alert_confirmer.rb
+   - app/controllers/profiles_controller.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+   - app/controllers/profiles_controller.rb
+
+Metrics/AbcSize:
+  Exclude:
+   - app/controllers/profiles_controller.rb
+   - spec/support/alert_confirmer.rb
+
+Style/Documentation:
+  Enabled: false

@@ -30,14 +30,22 @@ RSpec.feature 'Creating Medication' do
       click_button 'Update Medications'
       expect(page).to have_content('Your Medications have been successfully updated')
       click_link 'edit medications'
-      expect(find("select[name$='[purpose]']").find('option[selected]').text).to eq @medication.purpose
-      expect(find("input[name$='[name]']").value).to eq @medication.name
-      expect(find("input[name$='[strength]']").value).to eq @medication.strength.to_s
-      expect(find("input[name$='[dosage]']").value).to eq @medication.dosage.to_s
-      expect(find("select[name$='[age_recommended]']").find('option[selected]').text).to eq @medication.age_recommended.to_s
-      expect(find("select[name$='[age_prescribed]']").find('option[selected]').text).to eq @medication.age_prescribed.to_s
-      expect(find("select[name$='[month_last_used]']").find('option[selected]').text).to eq @medication.month_last_used
-      expect(find("select[name$='[year_last_used]']").find('option[selected]').text).to eq @medication.year_last_used.to_s
+      expect(find("select[name$='[purpose]']").find('option[selected]').text).to eq(@medication.purpose)
+      expect(find("input[name$='[name]']").value).to eq(@medication.name)
+      expect(find("input[name$='[strength]']").value).to eq(@medication.strength.to_s)
+      expect(find("input[name$='[dosage]']").value).to eq(@medication.dosage.to_s)
+      expect(find("select[name$='[age_recommended]']").find('option[selected]').text).to eq(
+        @medication.age_recommended.to_s
+      )
+      expect(find("select[name$='[age_prescribed]']").find('option[selected]').text).to eq(
+        @medication.age_prescribed.to_s
+      )
+      expect(find("select[name$='[month_last_used]']").find('option[selected]').text).to eq(
+        @medication.month_last_used
+      )
+      expect(find("select[name$='[year_last_used]']").find('option[selected]').text).to eq(
+        @medication.year_last_used.to_s
+      )
       if @medication.still_using
         expect(find("input[name$='[still_using]']")).to be_checked
       else

@@ -28,13 +28,15 @@ RSpec.feature 'Creating Cholesterol History' do
       click_button 'Update Cholesterol History'
       expect(page).to have_content('Your Cholesterol History has been successfully updated')
       click_link 'edit cholesterol history'
-      expect(find("input[name$='[total_cholesterol]']").value).to eq @cholesterol_history.total_cholesterol.to_s
-      expect(find("input[name$='[hdl]']").value).to eq @cholesterol_history.hdl.to_s
-      expect(find("input[name$='[ldl]']").value).to eq @cholesterol_history.ldl.to_s
-      expect(find("input[name$='[triglyceride]']").value).to eq @cholesterol_history.triglyceride.to_s
-      expect(find("input[name$='[glucose]']").value).to eq @cholesterol_history.glucose.to_s
-      expect(find("select[name$='[month]']").find('option[selected]').text).to eq @cholesterol_history.month
-      expect(find("select[name$='[year]']").find('option[selected]').text).to eq @cholesterol_history.year.to_s
+      expect(find("input[name$='[total_cholesterol]']").value).to eq(
+        @cholesterol_history.total_cholesterol.to_s
+      )
+      expect(find("input[name$='[hdl]']").value).to eq(@cholesterol_history.hdl.to_s)
+      expect(find("input[name$='[ldl]']").value).to eq(@cholesterol_history.ldl.to_s)
+      expect(find("input[name$='[triglyceride]']").value).to eq(@cholesterol_history.triglyceride.to_s)
+      expect(find("input[name$='[glucose]']").value).to eq(@cholesterol_history.glucose.to_s)
+      expect(find("select[name$='[month]']").find('option[selected]').text).to eq(@cholesterol_history.month)
+      expect(find("select[name$='[year]']").find('option[selected]').text).to eq(@cholesterol_history.year.to_s)
     end
 
     scenario 'with invalid inputs' do

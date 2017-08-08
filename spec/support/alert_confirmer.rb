@@ -27,7 +27,9 @@ module AlertConfirmer
     modal_called = "window.#{name}.called"
     page.execute_script "
     window.original_#{name}_function = window.#{name};
-    window.#{name} = function(msg) { window.#{name}Msg = msg; window.#{name}.called = true; return #{return_val}; };
+    window.#{name} = function(msg) {
+      window.#{name}Msg = msg; window.#{name}.called = true; return #{return_val};
+    };
     #{modal_called} = false;
     window.#{name}Msg = null;"
 
@@ -38,7 +40,8 @@ module AlertConfirmer
       timeout_after = Time.now + Capybara.default_wait_time
       loop do
         if page.evaluate_script(modal_called).nil?
-          raise 'appears that page has changed since this method has been called, please assert on page before calling this'
+          raise 'appears that page has changed since this method has been called,
+                 please assert on page before calling this'
         end
 
         break if page.evaluate_script(modal_called) || (timed_out = Time.now > timeout_after)
