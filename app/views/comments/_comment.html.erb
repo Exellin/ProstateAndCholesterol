@@ -1,20 +1,20 @@
 <% if @comment && @comment.parent_comment %>
-  <div class="comment margin-level-<%= comment.ancestor_count - @comment.parent_comment.ancestor_count %>">
+  <div class='comment margin-level-<%= comment.ancestor_count - @comment.parent_comment.ancestor_count %>'>
 <% else %>
-  <div class="comment margin-level-<%= comment.ancestor_count %>">
+  <div class='comment margin-level-<%= comment.ancestor_count %>'>
 <% end %>
   <p>
-    <%= link_to "#{comment.user.username}", profile_path(comment.user.profile) %> -
+    <%= link_to comment.user.username, profile_path(comment.user.profile) %> -
     <%= time_ago_in_words(comment.created_at) %> ago
   </p>
   <p><%= comment.content %></p>
-  <%= link_to "Reply to Comment", new_topic_post_comment_path(@post.topic, @post, :parent_comment_id => comment.id), 
-                                  class: "btn btn-primary btn-xs" %>
+  <%= link_to 'Reply to Comment', new_topic_post_comment_path(@post.topic, @post, :parent_comment_id => comment.id), 
+                                  class: 'btn btn-primary btn-xs' %>
   <% if comment.user == current_user && !comment.deleted %>
-    <%= link_to "edit comment", edit_topic_post_comment_path(@post.topic, @post, comment), 
-                                class: "btn btn-info btn-xs" %>
-    <%= link_to "delete comment", delete_topic_post_comment_path(@post.topic, @post, comment),
-                                  method: :put, data: { confirm: "Are you sure?" },
-                                  class: "btn btn-danger btn-xs" %>
+    <%= link_to 'edit comment', edit_topic_post_comment_path(@post.topic, @post, comment), 
+                                class: 'btn btn-info btn-xs' %>
+    <%= link_to 'delete comment', delete_topic_post_comment_path(@post.topic, @post, comment),
+                                  method: :put, data: { confirm: 'Are you sure?' },
+                                  class: 'btn btn-danger btn-xs' %>
   <% end %>
 </div>

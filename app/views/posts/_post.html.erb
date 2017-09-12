@@ -1,20 +1,20 @@
-<div class="post">
+<div class='post'>
   <h2><%= link_to post.title, topic_post_path(post.topic, post) %></h2>
-  <p><%= pluralize(post.comments.count, "comment") %></p>
+  <p><%= pluralize(post.comments.count, 'comment') %></p>
   <p>
     created <%= time_ago_in_words(post.created_at) %> ago by
-    <%= link_to "#{post.user.username}", profile_path(post.user.profile) %>
+    <%= link_to post.user.username, profile_path(post.user.profile) %>
   </p>
   <% if @topic %>
-    <%= link_to "expand", topic_post_path(@topic, post), remote: true, class: "btn btn-default" %>
+    <%= link_to 'expand', topic_post_path(@topic, post), remote: true, class: 'btn btn-default' %>
   <% else %>
     <%= render 'posts/content' %>
-    <%= link_to "reply to post", new_topic_post_comment_path(@post.topic, @post), class: "btn btn-primary btn-xs" %>
+    <%= link_to 'reply to post', new_topic_post_comment_path(@post.topic, @post), class: 'btn btn-primary btn-xs' %>
     <% if @post.user == current_user && !@post.deleted? %>
-      <%= link_to "edit post", edit_topic_post_path(@post.topic, @post), class: "btn btn-info btn-xs" %>
-      <%= link_to "delete post", delete_topic_post_path(@post.topic, @post), 
-                                 method: :put, data: { confirm: "Are you sure?" },
-                                 class: "btn btn-danger btn-xs" %>
+      <%= link_to 'edit post', edit_topic_post_path(@post.topic, @post), class: 'btn btn-info btn-xs' %>
+      <%= link_to 'delete post', delete_topic_post_path(@post.topic, @post), 
+                                 method: :put, data: { confirm: 'Are you sure?' },
+                                 class: 'btn btn-danger btn-xs' %>
     <% end %>
   <% end %>
 </div>

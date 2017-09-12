@@ -1,12 +1,12 @@
-<div class="row">
-  <div class="col-sm-3">
+<div class='row'>
+  <div class='col-sm-3'>
     <%= render 'shared/dashboard' %>
   </div>
-  <div class="col-sm-9">
+  <div class='col-sm-9'>
     <% if @profile.empty? %>
-      <h2 align="center">Create Your Profile</h2>
+      <h2 align='center'>Create Your Profile</h2>
     <% else %>
-      <h2 align="center">Edit Your Profile</h2>
+      <h2 align='center'>Edit Your Profile</h2>
     <% end %>
 
     <% if @profile.errors.any? %>
@@ -14,63 +14,63 @@
     <% end %>
 
     <%= form_for(@profile) do |f| %>
-      <%= f.label :first_name, "First Name" %>
-      <%= f.text_field :first_name, class: "form-control", placeholder: "First Name", autofocus:true %>
+      <%= f.label :first_name, 'First Name' %>
+      <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name', autofocus:true %>
 
-      <%= f.label :last_name, "Last Name" %>
-      <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+      <%= f.label :last_name, 'Last Name' %>
+      <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
 
-      <%= f.label :birth_year, "Birth Year" %>
-      <%= f.select(:birth_year, birth_year_select_array, {}, { class: "chosen-select" }) %>
+      <%= f.label :birth_year, 'Birth Year' %>
+      <%= f.select(:birth_year, birth_year_select_array, {}, { class: 'chosen-select' }) %>
 
-      <%= f.label :country, "Country" %>
-      <%= f.select(:country, @profile.set_countries, {}, { class: "chosen-select" }) %>
+      <%= f.label :country, 'Country' %>
+      <%= f.select(:country, @profile.set_countries, {}, { class: 'chosen-select' }) %>
 
-      <%= f.label :administrative_division, "State/Province/Region" %>
-      <%= f.select(:administrative_division, @profile.set_administrative_divisions, {}, { class: "chosen-select" }) %>
-      <div id="administrative_division_error_container" class="has-error"></div>
+      <%= f.label :administrative_division, 'State/Province/Region' %>
+      <%= f.select(:administrative_division, @profile.set_administrative_divisions, {}, { class: 'chosen-select' }) %>
+      <div id='administrative_division_error_container' class='has-error'></div>
 
-      <%= f.label :city, "City" %>
-      <%= f.select(:city, @profile.set_cities, {}, { class: "chosen-select" }) %>
-      <div id="city_error_container" class="has-error"></div>
+      <%= f.label :city, 'City' %>
+      <%= f.select(:city, @profile.set_cities, {}, { class: 'chosen-select' }) %>
+      <div id='city_error_container' class='has-error'></div>
 
-      <%= f.label :years_in_current_locale, "Years resided within 200 miles/320km of your current residence",
-                                            class: "control-label" %>
-      <%= f.select(:years_in_current_locale, years_ago_select_array, {}, { class: "chosen-select" }) %>
+      <%= f.label :years_in_current_locale, 'Years resided within 200 miles/320km of your current residence',
+                                            class: 'control-label' %>
+      <%= f.select(:years_in_current_locale, years_ago_select_array, {}, { class: 'chosen-select' }) %>
 
-      <%= f.label :race, "Race" %>
+      <%= f.label :race, 'Race' %>
       <%= f.select(:race, [['Caucasian'], ['Black'], ['Latino'], ['Middle Eastern'],
-      ['Asian'], ['Native Australian'], ['Native American']], {}, { class: "chosen-select" }) %>
+      ['Asian'], ['Native Australian'], ['Native American']], {}, { class: 'chosen-select' }) %>
 
-      <%= f.label :ancestral_descent, "Ancestral Descent" %>
-      <%= f.text_field :ancestral_descent, class: "form-control", placeholder: "Ancestral Descent",
-      data: {toggle: "tooltip", placement: "top"}, title: "If you are aware of your ancestral descent being strong\
- in one ancestry like Spanish, Italian, French, German, Cambodian, Brazilian, Nigerian, etc. Please enter it here" %>
+      <%= f.label :ancestral_descent, 'Ancestral Descent' %>
+      <%= f.text_field :ancestral_descent, class: 'form-control', placeholder: 'Ancestral Descent',
+      data: {toggle: 'tooltip', placement: 'top'}, title: 'If you are aware of your ancestral descent being strong\
+ in one ancestry like Spanish, Italian, French, German, Cambodian, Brazilian, Nigerian, etc. Please enter it here' %>
 
-      <%= f.label :age_noticed_symptoms, "Age Noticed Symptoms" %>
-      <%= f.select(:age_noticed_symptoms, age_select_array.unshift(""), {},
-      { class: "chosen-single chosen-single-with-deselect", data: {placeholder: "Age Noticed Symptoms"} }) %>
+      <%= f.label :age_noticed_symptoms, 'Age Noticed Symptoms' %>
+      <%= f.select(:age_noticed_symptoms, age_select_array.unshift(''), {},
+      { class: 'chosen-single chosen-single-with-deselect', data: {placeholder: 'Age Noticed Symptoms'} }) %>
 
-      <%= f.label :age_urinary_malfunction, "Age Urinary Malfunction" %>
-      <%= f.select(:age_urinary_malfunction, age_select_array.unshift(""), {},
-      { class: "chosen-single chosen-single-with-deselect", data: {placeholder: "Age Urinary Malfunction"} }) %>
+      <%= f.label :age_urinary_malfunction, 'Age Urinary Malfunction' %>
+      <%= f.select(:age_urinary_malfunction, age_select_array.unshift(''), {},
+      { class: 'chosen-single chosen-single-with-deselect', data: {placeholder: 'Age Urinary Malfunction'} }) %>
 
-      <%= f.label :age_bladder_infection, "Age Bladder Infection" %>
-      <%= f.select(:age_bladder_infection, age_select_array.unshift(""), {},
-      { class: "chosen-single chosen-single-with-deselect", data: {placeholder: "Age Bladder Infection"} }) %>
+      <%= f.label :age_bladder_infection, 'Age Bladder Infection' %>
+      <%= f.select(:age_bladder_infection, age_select_array.unshift(''), {},
+      { class: 'chosen-single chosen-single-with-deselect', data: {placeholder: 'Age Bladder Infection'} }) %>
 
-      <%= f.label :story, "Your Story" %>
-      <%= f.text_area :story, class: "form-control", placeholder: "Tell us your story" %>
+      <%= f.label :story, 'Your Story' %>
+      <%= f.text_area :story, class: 'form-control', placeholder: 'Tell us your story' %>
 
-      <%= content_tag "div", id: "country_data", data: {country: @profile.country,
+      <%= content_tag 'div', id: 'country_data', data: {country: @profile.country,
                                                         administrative_division: @profile.administrative_division,
                                                         city: @profile.city} do %>
       <% end %>
 
       <% if @profile.empty? %>
-        <%= f.submit "Create Profile", class: 'btn btn-primary btn-lg' %>
+        <%= f.submit 'Create Profile', class: 'btn btn-primary btn-lg' %>
       <% else %>
-        <%= f.submit "Update Profile", class: 'btn btn-primary btn-lg' %>
+        <%= f.submit 'Update Profile', class: 'btn btn-primary btn-lg' %>
       <% end %>
     <% end %>
   </div>

@@ -1,21 +1,21 @@
-<aside id="dashboard">
+<aside id='dashboard'>
   <ul>
     <% if @profile.empty? %>
       <li>
-        <%= link_to "Create Your Profile", edit_profile_path(@profile) %>
+        <%= link_to 'Create Your Profile', edit_profile_path(@profile) %>
       </li>
     <% else %>
       <li>
-        <%= link_to "Edit Your Profile", edit_profile_path(@profile) %>
+        <%= link_to 'Edit Your Profile', edit_profile_path(@profile) %>
       </li>
       <li>
-        <%= link_to "PSA History", profile_psa_histories_path(@profile) %>
+        <%= link_to 'PSA History', profile_psa_histories_path(@profile) %>
         </li>
       <li>
-        <%= link_to "Cholesterol History", profile_cholesterol_histories_path(@profile) %>
+        <%= link_to 'Cholesterol History', profile_cholesterol_histories_path(@profile) %>
       </li>
       <li>
-        <%= link_to "Medications", profile_medications_path(@profile) %>
+        <%= link_to 'Medications', profile_medications_path(@profile) %>
       </li>
     <% end %>
   </ul>
