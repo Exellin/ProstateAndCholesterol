@@ -1,10 +1,10 @@
 <% if @profile.empty? %>
-  <h2 align="center">This user hasn't created a profile yet</h2>
+  <h2 align='center'>This user hasn't created a profile yet</h2>
 <% else %>
-  <div class="card">
+  <div class='card'>
     <h1><%= @profile.user.username %> Profile</h1>
     <% if current_user == @profile.user %> 
-      <%= link_to "edit profile", edit_profile_path(@profile), class: "btn btn-xs btn-primary" %>
+      <%= link_to 'edit profile', edit_profile_path(@profile), class: 'btn btn-xs btn-primary' %>
     <% end %>
 
     <hr>
@@ -15,39 +15,39 @@
     <% end %>
 
     <% if current_user && (current_user == @profile.user || current_user.admin?) %>
-      <ul class="list-group">
-        <li class="list-group-item">
+      <ul class='list-group'>
+        <li class='list-group-item'>
           <strong>Name:</strong> <%= "#{@profile.first_name} #{@profile.last_name}" %>
         </li>
-        <li class="list-group-item">
+        <li class='list-group-item'>
           <strong>Birth Year:</strong> <%= @profile.birth_year %>
         </li>
-        <li class="list-group-item">
+        <li class='list-group-item'>
           <strong>Location:</strong> <%= "#{@profile.city}, #{@profile.state_name}, #{@profile.country_name}" %>
         </li>
-        <li class="list-group-item">
+        <li class='list-group-item'>
           <strong>Years in Current Locale:</strong> <%= @profile.years_in_current_locale %>
         </li>
-        <li class="list-group-item">
+        <li class='list-group-item'>
           <strong>Race:</strong> <%= @profile.race %>
         </li>
         <% unless @profile.ancestral_descent.blank? %>
-          <li class="list-group-item">
+          <li class='list-group-item'>
             <strong>Ancestral Descent:</strong> <%= @profile.ancestral_descent %>
           </li>
         <% end %>
         <% unless @profile.age_noticed_symptoms.blank? %>
-          <li class="list-group-item">
+          <li class='list-group-item'>
             <strong>Age Noticed Symptoms:</strong> <%= @profile.age_noticed_symptoms %>
           </li>
         <% end %>
         <% unless @profile.age_urinary_malfunction.blank? %>
-          <li class="list-group-item">
+          <li class='list-group-item'>
             <strong>Age Urinary Malfunction:</strong> <%= @profile.age_urinary_malfunction %>
           </li>
         <% end %>
         <% unless @profile.age_bladder_infection.blank? %>
-          <li class="list-group-item">
+          <li class='list-group-item'>
             <strong>Age Bladder Infection:</strong> <%= @profile.age_bladder_infection %>
           </li>
         <% end %>
@@ -56,57 +56,57 @@
   </div>
   
   <% unless current_user!= @profile.user && @profile.psa_histories.blank? %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
+    <div class='panel panel-default' id='psa_history'>
+      <div class='panel-heading'>
         <h3>PSA History</h3>
         <% if current_user == @profile.user %>
-          <%= link_to "edit psa history", "#{profile_psa_histories_path(@profile)}", class: "btn btn-xs btn-primary" %>
+          <%= link_to 'edit psa history', "#{profile_psa_histories_path(@profile)}", class: 'btn btn-xs btn-primary' %>
         <% end %>
       </div>
-      <div class="panel-body">
-        <%= content_tag "canvas", id: "psa_chart", data: {psa: @psa_histories} do %>
+      <div class='panel-body'>
+        <%= content_tag 'canvas', id: 'psa_chart', data: {psa: @psa_histories} do %>
         <% end %>
       </div>
     </div>
   <% end %>
 
   <% unless current_user!= @profile.user && @profile.cholesterol_histories.blank? %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
+    <div class='panel panel-default' id='cholesterol_history'>
+      <div class='panel-heading'>
         <h3>Cholesterol History</h3>
         <% if current_user == @profile.user %>
-          <%= link_to "edit cholesterol history", "#{profile_cholesterol_histories_path(@profile)}", class: "btn btn-xs btn-primary" %>
+          <%= link_to 'edit cholesterol history', "#{profile_cholesterol_histories_path(@profile)}", class: 'btn btn-xs btn-primary' %>
         <% end %>
       </div>
-      <div class="panel-body">
-        <%= content_tag "canvas", id: "total_cholesterol_chart", data: {totalcholesterol: @total_cholesterol_histories} do %>
+      <div class='panel-body'>
+        <%= content_tag 'canvas', id: 'total_cholesterol_chart', data: {totalcholesterol: @total_cholesterol_histories} do %>
         <% end %>
         
-        <%= content_tag "canvas", id: "hdl_chart", data: {hdl: @hdl_histories} do %>
+        <%= content_tag 'canvas', id: 'hdl_chart', data: {hdl: @hdl_histories} do %>
         <% end %>
         
-        <%= content_tag "canvas", id: "ldl_chart", data: {ldl: @ldl_histories} do %>
+        <%= content_tag 'canvas', id: 'ldl_chart', data: {ldl: @ldl_histories} do %>
         <% end %>
         
-        <%= content_tag "canvas", id: "triglyceride_chart", data: {triglyceride: @triglyceride_histories} do %>
+        <%= content_tag 'canvas', id: 'triglyceride_chart', data: {triglyceride: @triglyceride_histories} do %>
         <% end %>
         
-        <%= content_tag "canvas", id: "glucose_chart", data: {glucose: @glucose_histories} do %>
+        <%= content_tag 'canvas', id: 'glucose_chart', data: {glucose: @glucose_histories} do %>
         <% end %>
       </div>
     </div>
   <% end %>
   
   <% unless current_user != @profile.user && @profile.medications.blank? %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
+    <div class='panel panel-default' id='medications'>
+      <div class='panel-heading'>
         <h4>Medications</h4>
         <% if current_user == @profile.user %>
-          <%= link_to "edit medications", "#{profile_medications_path(@profile)}", class: "btn btn-xs btn-primary" %>
+          <%= link_to 'edit medications', "#{profile_medications_path(@profile)}", class: 'btn btn-xs btn-primary' %>
         <% end %>
       </div>
-      <div class="table-scroll">
-        <table class="table">
+      <div class='table-scroll'>
+        <table class='table'>
           <tr>
             <th>Purpose</th>
             <th>Name</th>
@@ -128,7 +128,7 @@
               <td><%= medication.age_prescribed %></td>
               <td><%= months_select_array[medication.month_last_used.to_i][0] %></td>
               <td><%= medication.year_last_used %></td>
-              <td><%= medication.still_using? ? "Yes" : "No" %></td>
+              <td><%= medication.still_using? ? 'Yes' : 'No' %></td>
             </tr>
           <% end %>
         </table>

@@ -20,15 +20,19 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    anchor_tag = ''
     if params[:profile][:psa_histories_attributes]
       message = 'Your PSA History has been successfully updated'
       render_path = 'psa_histories/index'
+      anchor_tag = '#psa_history'
     elsif params[:profile][:cholesterol_histories_attributes]
       message = 'Your Cholesterol History has been successfully updated'
       render_path = 'cholesterol_histories/index'
+      anchor_tag = '#cholesterol_history'
     elsif params[:profile][:medications_attributes]
       message = 'Your Medications have been successfully updated'
       render_path = 'medications/index'
+      anchor_tag = '#medications'
     elsif @profile.empty?
       message = 'Your profile has been successfully created'
       render_path = 'edit'
@@ -38,7 +42,7 @@ class ProfilesController < ApplicationController
     end
     if @profile.update(profile_params)
       flash[:success] = message
-      redirect_to profile_path(@profile)
+      redirect_to profile_path(@profile) + anchor_tag
     else
       render render_path
     end
