@@ -1,9 +1,9 @@
-<div class="row">
-  <div class="col-sm-3">
+<div class='row'>
+  <div class='col-sm-3'>
     <%= render 'shared/dashboard' %>
   </div>
-  <div class="col-sm-9">
-    <h2 align="center">Cholesterol History</h2>
+  <div class='col-sm-9'>
+    <h2 align='center'>Cholesterol History</h2>
 
     <% if @profile.errors.any? %>
       <%= render 'shared/errors', obj: @profile %>
@@ -12,20 +12,20 @@
     <%= form_for(@profile) do |f| %>
       <%= f.hidden_field :id %>
 
-      <div class="table-scroll">
+      <div class='table-scroll'>
         <table>
           <thead>
             <tr>
-              <th><%= f.label :total_cholesterol, "Total Cholesterol", nested_object_class: "CholesterolHistory" %></th>
-              <th><%= f.label :hdl, "HDL", nested_object_class: "CholesterolHistory" %></th>
-              <th><%= f.label :ldl, "LDL", nested_object_class: "CholesterolHistory" %></th>
-              <th><%= f.label :triglyceride, "Triglyceride", nested_object_class: "CholesterolHistory" %></th>
-              <th><%= f.label :glucose, "Glucose", nested_object_class: "CholesterolHistory" %></th>
-              <th><%= f.label :month, "Month", nested_object_class: "CholesterolHistory" %></th>
-              <th><%= f.label :year, "Year", nested_object_class: "CholesterolHistory" %></th>
+              <th><%= f.label :total_cholesterol, 'Total Cholesterol', nested_object_class: 'CholesterolHistory' %></th>
+              <th><%= f.label :hdl, 'HDL', nested_object_class: 'CholesterolHistory' %></th>
+              <th><%= f.label :ldl, 'LDL', nested_object_class: 'CholesterolHistory' %></th>
+              <th><%= f.label :triglyceride, 'Triglyceride', nested_object_class: 'CholesterolHistory' %></th>
+              <th><%= f.label :glucose, 'Glucose', nested_object_class: 'CholesterolHistory' %></th>
+              <th><%= f.label :month, 'Month', nested_object_class: 'CholesterolHistory' %></th>
+              <th><%= f.label :year, 'Year', nested_object_class: 'CholesterolHistory' %></th>
             </tr>
           </thead>
-          <tbody class="cholesterol_histories">
+          <tbody class='cholesterol_histories'>
             <%= f.fields_for :cholesterol_histories do |cholesterol_history| %>
               <%= render '/cholesterol_histories/cholesterol_history_fields', f: cholesterol_history %>
             <% end %>
@@ -33,12 +33,15 @@
         </table>
       </div>
 
-      <div class="links">
-        <%= link_to_add_association 'Add an entry', f, :cholesterol_histories, partial: 'cholesterol_histories/cholesterol_history_fields',
-        data: {"association-insertion-node" => "tbody.cholesterol_histories", "association-insertion-method" => "append" }%>
+      <div class='links'>
+        <%= link_to_add_association 'Add an entry', f, :cholesterol_histories,
+        partial: 'cholesterol_histories/cholesterol_history_fields', class: 'btn btn-primary btn-block',
+        data: { 'association-insertion-node': 'tbody.cholesterol_histories', 'association-insertion-method': 'append' } %>
       </div>
 
-      <%= f.submit "Update Cholesterol History", class: 'btn btn-primary btn-lg' %>
+      <hr>
+
+      <%= f.submit 'Update Cholesterol History', class: 'btn btn-primary btn-lg' %>
     <% end %>
   </div>
 </div>

@@ -1,9 +1,9 @@
-<div class="row">
-  <div class="col-sm-3">
+<div class='row'>
+  <div class='col-sm-3'>
     <%= render 'shared/dashboard' %>
   </div>
-  <div class="col-sm-9">
-    <h2 align="center">PSA History</h2>
+  <div class='col-sm-9'>
+    <h2 align='center'>PSA History</h2>
 
     <% if @profile.errors.any? %>
       <%= render 'shared/errors', obj: @profile %>
@@ -12,16 +12,16 @@
     <%= form_for(@profile) do |f| %>
       <%= f.hidden_field :id %>
 
-      <div class="table-scroll">
+      <div class='table-scroll'>
         <table>
           <thead>
             <tr>
-              <th><%= f.label :psa, "PSA", nested_object_class: "PsaHistory" %></th>
-              <th><%= f.label :month, "Month", nested_object_class: "PsaHistory" %></th>
-              <th><%= f.label :psa, "Year", nested_object_class: "PsaHistory" %></th>
+              <th><%= f.label :psa, 'PSA', nested_object_class: 'PsaHistory' %></th>
+              <th><%= f.label :month, 'Month', nested_object_class: 'PsaHistory' %></th>
+              <th><%= f.label :psa, 'Year', nested_object_class: 'PsaHistory' %></th>
             </tr>
           </thead>
-          <tbody class="psa_histories">
+          <tbody class='psa_histories'>
             <%= f.fields_for :psa_histories do |psa_history| %>
               <%= render '/psa_histories/psa_history_fields', f: psa_history %>
             <% end %>
@@ -29,12 +29,15 @@
         </table>
       </div>
 
-      <div class="links">
-        <%= link_to_add_association 'Add an entry', f, :psa_histories, partial: '/psa_histories/psa_history_fields',
-        data: {"association-insertion-node" => "tbody.psa_histories", "association-insertion-method" => "append" }%>
+      <div class='links'>
+        <%= link_to_add_association 'Add an entry', f, :psa_histories,
+        partial: '/psa_histories/psa_history_fields', class: 'btn btn-primary btn-block',
+        data: { 'association-insertion-node': 'tbody.psa_histories', 'association-insertion-method': 'append' } %>
       </div>
 
-      <%= f.submit "Update PSA History", class: 'btn btn-primary btn-lg' %>
+      <hr>
+
+      <%= f.submit 'Update PSA History', class: 'btn btn-primary btn-lg' %>
     <% end %>
   </div>
 </div>

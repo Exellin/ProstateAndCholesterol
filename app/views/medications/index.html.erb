@@ -1,9 +1,9 @@
-<div class="row">
-  <div class="col-sm-3">
+<div class='row'>
+  <div class='col-sm-3'>
     <%= render 'shared/dashboard' %>
   </div>
-  <div class="col-sm-9">
-    <h2 align="center">Medications</h2>
+  <div class='col-sm-9'>
+    <h2 align='center'>Medications</h2>
 
     <% if @profile.errors.any? %>
       <%= render 'shared/errors', obj: @profile %>
@@ -12,22 +12,22 @@
     <%= form_for(@profile) do |f| %>
       <%= f.hidden_field :id %>
 
-      <div class="table-scroll">
+      <div class='table-scroll'>
         <table>
           <thead>
             <tr>
-              <th><%= f.label :purpose, "Purpose", nested_object_class: "Medication" %></th>
-              <th><%= f.label :name, "Name", nested_object_class: "Medication" %></th>
-              <th><%= f.label :strength, "Strength (mg)", nested_object_class: "Medication" %></th>
-              <th><%= f.label :dosage, "Dosage (times per day)", nested_object_class: "Medication" %></th>
-              <th><%= f.label :age_recommended, "Age Recommended", nested_object_class: "Medication" %></th>
-              <th><%= f.label :age_prescribed, "Age Prescribed", nested_object_class: "Medication" %></th>
-              <th><%= f.label :month_last_used, "Month Last Used", nested_object_class: "Medication" %></th>
-              <th><%= f.label :year_last_used, "Year Last Used", nested_object_class: "Medication" %></th>
-              <th><%= f.label :still_using, "Are you still using this drug?", nested_object_class: "Medication" %></th>
+              <th><%= f.label :purpose, 'Purpose', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :name, 'Name', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :strength, 'Strength (mg)', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :dosage, 'Dosage (times per day)', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :age_recommended, 'Age Recommended', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :age_prescribed, 'Age Prescribed', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :month_last_used, 'Month Last Used', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :year_last_used, 'Year Last Used', nested_object_class: 'Medication' %></th>
+              <th><%= f.label :still_using, 'Are you still using this drug?', nested_object_class: 'Medication' %></th>
             </tr>
           </thead>
-          <tbody class="medications">
+          <tbody class='medications'>
             <%= f.fields_for :medications do |medication| %>
               <%= render '/medications/medication_fields', f: medication %>
             <% end %>
@@ -35,12 +35,15 @@
         </table>
       </div>
 
-      <div class="links">
-        <%= link_to_add_association 'Add an entry', f, :medications, partial: 'medications/medication_fields',
-        data: {"association-insertion-node" => "tbody.medications", "association-insertion-method" => "append" }%>
+      <div class='links'>
+        <%= link_to_add_association 'Add an entry', f, :medications,
+        partial: 'medications/medication_fields', class: 'btn btn-primary btn-block',
+        data: { 'association-insertion-node': 'tbody.medications', 'association-insertion-method': 'append' } %>
       </div>
 
-      <%= f.submit "Update Medications", class: 'btn btn-primary btn-lg' %>
+      <hr>
+
+      <%= f.submit 'Update Medications', class: 'btn btn-primary btn-lg' %>
     <% end %>
   </div>
 </div>
