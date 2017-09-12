@@ -7,7 +7,7 @@ end
 
 # Use Bootstrap as the HTML, CSS, and JS framework
 gem 'bootstrap-sass'
-# Use bootstra-will_paginate to as the pagination solution
+# Use bootstrap-will_paginate to as the pagination solution
 gem 'bootstrap-will_paginate'
 # Use Devise as the authentication solution
 gem 'devise'
