@@ -40,13 +40,13 @@ RSpec.feature 'Creating a Post' do
       click_link 'Forum'
       click_link @topic.name
       click_link 'New Post'
-      expect(page).to have_content('You must sign in or sign up to view this page')
+      expect(page).to have_content('You must sign in or register to view this page')
       expect(current_path).to eq(new_user_registration_path)
     end
 
     scenario 'by going directly to the route' do
       visit "/topics/#{@topic.id}/posts/new"
-      expect(page).to have_content('You must sign in or sign up to view this page')
+      expect(page).to have_content('You must sign in or register to view this page')
       expect(current_path).to eq(new_user_registration_path)
     end
   end

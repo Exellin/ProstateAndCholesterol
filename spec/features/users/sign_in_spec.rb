@@ -13,7 +13,7 @@ RSpec.feature 'Users sign in' do
     click_button 'Sign in'
     expect(page).to have_content('Signed in successfully')
     expect(page).not_to have_content('Sign in')
-    expect(page).not_to have_content('Sign up')
+    expect(page).not_to have_content('Register')
   end
 
   scenario 'fail with invalid credentials' do

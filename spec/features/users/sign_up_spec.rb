@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Users sign up' do
+RSpec.feature 'Users register' do
   before(:each) do
     @user = FactoryGirl.build(:user)
     visit '/'
@@ -12,7 +12,7 @@ RSpec.feature 'Users sign up' do
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
     fill_in 'Password Confirmation', with: @user.password
-    click_button 'Sign up'
+    click_button 'Register'
     expect(page).to have_content('You have signed up successfully')
     expect(page).to have_content('Create Your Profile')
   end
@@ -22,7 +22,7 @@ RSpec.feature 'Users sign up' do
     fill_in 'Email', with: ''
     fill_in 'Password', with: 'test'
     fill_in 'Password Confirmation', with: @user.password
-    click_button 'Sign up'
+    click_button 'Register'
 
     expect(page).to have_content('is too short (minimum is 3 characters)')
     expect(page).to have_content("can't be blank")

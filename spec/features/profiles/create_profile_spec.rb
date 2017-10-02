@@ -5,12 +5,12 @@ RSpec.feature 'Profile created upon signup' do
     @user = FactoryGirl.build(:user)
     @profile = FactoryGirl.build(:profile)
     visit '/'
-    click_link 'Sign up'
+    click_link 'Register'
     fill_in 'Username', with: @user.username
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
     fill_in 'Password Confirmation', with: @user.password
-    click_button 'Sign up'
+    click_button 'Register'
   end
 
   scenario 'and filled with valid credentials' do

@@ -1,6 +1,6 @@
 <div class='row'>
   <div class='col-md-4 col-md-offset-4'>
-    <h2>Sign Up</h2>
+    <h2>Register</h2>
 
     <% if resource.errors.any? %>
       <%= render 'shared/errors', obj: resource %>
@@ -12,19 +12,19 @@
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
-      
+
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control', placeholder: 'Password',
                                       autocomplete: 'off' %>
 
       <%= f.label :password_confirmation, 'Password Confirmation' %>
-      <%= f.password_field :password_confirmation, class: 'form-control', 
+      <%= f.password_field :password_confirmation, class: 'form-control',
       placeholder: 'Password Confirmation', autocomplete: 'off' %>
 
-      <%= f.submit 'Sign up', class: 'btn btn-lg btn-primary btn-block'%>
+      <%= f.submit 'Register', class: 'btn btn-lg btn-primary btn-block'%>
 
       <hr>
-  
+
       <%= render 'devise/shared/links' %>
     <% end %>
   </div>

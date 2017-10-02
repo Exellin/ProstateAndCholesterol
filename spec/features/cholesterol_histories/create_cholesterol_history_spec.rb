@@ -79,7 +79,7 @@ RSpec.feature 'Creating Cholesterol History' do
 
     scenario 'by going directly to the route' do
       visit "/profiles/#{@profile.id}/cholesterol_histories/"
-      expect(page).to have_content('You must sign in or sign up to view this page')
+      expect(page).to have_content('You must sign in or register to view this page')
       expect(current_path).to eq(new_user_registration_path)
     end
   end
