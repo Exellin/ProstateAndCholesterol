@@ -4,7 +4,7 @@ RSpec.feature 'Users sign up' do
   before(:each) do
     @user = FactoryGirl.build(:user)
     visit '/'
-    click_link 'Register and Tell Your Story'
+    click_link 'Register and tell your story'
   end
 
   scenario 'with all credentials' do
