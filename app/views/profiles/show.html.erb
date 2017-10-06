@@ -3,15 +3,15 @@
 <% else %>
   <div class='card'>
     <h1><%= @profile.user.username %> Profile</h1>
-    <% if current_user == @profile.user %> 
+    <% if current_user == @profile.user %>
       <%= link_to 'edit profile', edit_profile_path(@profile), class: 'btn btn-xs btn-primary' %>
     <% end %>
 
     <hr>
-    
+
     <% unless @profile.story.blank? %>
       <h4>Story</h4>
-      <p><%= @profile.story %></p>
+      <p><%= markdown(@profile.story) %></p>
     <% end %>
 
     <% if current_user && (current_user == @profile.user || current_user.admin?) %>
@@ -54,7 +54,7 @@
       </ul>
     <% end %>
   </div>
-  
+
   <% unless current_user!= @profile.user && @profile.psa_histories.blank? %>
     <div class='panel panel-default' id='psa_history'>
       <div class='panel-heading'>
@@ -81,22 +81,22 @@
       <div class='panel-body'>
         <%= content_tag 'canvas', id: 'total_cholesterol_chart', data: {totalcholesterol: @total_cholesterol_histories} do %>
         <% end %>
-        
+
         <%= content_tag 'canvas', id: 'hdl_chart', data: {hdl: @hdl_histories} do %>
         <% end %>
-        
+
         <%= content_tag 'canvas', id: 'ldl_chart', data: {ldl: @ldl_histories} do %>
         <% end %>
-        
+
         <%= content_tag 'canvas', id: 'triglyceride_chart', data: {triglyceride: @triglyceride_histories} do %>
         <% end %>
-        
+
         <%= content_tag 'canvas', id: 'glucose_chart', data: {glucose: @glucose_histories} do %>
         <% end %>
       </div>
     </div>
   <% end %>
-  
+
   <% unless current_user != @profile.user && @profile.medications.blank? %>
     <div class='panel panel-default' id='medications'>
       <div class='panel-heading'>

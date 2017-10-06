@@ -55,6 +55,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Use poltergeist as the javascript driver for capybara
   gem 'poltergeist'
+  # Use redcarpet for markdown
+  gem 'redcarpet'
   # Use rspec as the testing framework
   gem 'rspec-rails'
 end

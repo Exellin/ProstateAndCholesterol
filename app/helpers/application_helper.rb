@@ -7,6 +7,16 @@ module ApplicationHelper
     end
   end
 
+  def markdown(content)
+    renderer = Redcarpet::Render::HTML.new(hard_wrap: true)
+    options = {
+      autolink: true,
+      no_intra_emphasis: true,
+      lax_spacing: true
+    }
+    Redcarpet::Markdown.new(renderer, options).render(content).html_safe
+  end
+
   def months_select_array
     [['January', '0'], ['February', '1'], ['March', '2'], ['April', '3'], ['May', '4'],
      ['June', '5'], ['July', '6'], ['August', '7'], ['September', '8'], ['October', '9'],
