@@ -44,8 +44,8 @@
 
       <%= f.label :ancestral_descent, 'Ancestral Descent' %>
       <%= f.text_field :ancestral_descent, class: 'form-control', placeholder: 'Ancestral Descent',
-      data: {toggle: 'tooltip', placement: 'top'}, title: 'If you are aware of your ancestral descent being strong\
- in one ancestry like Spanish, Italian, French, German, Cambodian, Brazilian, Nigerian, etc. Please enter it here' %>
+      data: {toggle: 'tooltip', placement: 'top'},
+      title: 'If you are aware of your ancestral descent being strong in one ancestry like Spanish, Italian, French, German, Cambodian, Brazilian, Nigerian, etc. Please enter it here' %>
 
       <%= f.label :age_noticed_symptoms, 'Age Noticed Symptoms' %>
       <%= f.select(:age_noticed_symptoms, age_select_array.unshift(''), {},
