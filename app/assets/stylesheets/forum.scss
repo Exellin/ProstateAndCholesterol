@@ -2,10 +2,11 @@
 
 .topic, .post {
 	border-bottom: 1px solid #d1d1d1;
-	p {
-	  color: #888;
-	  font-size: small;
-	}
+}
+
+.forum-information {
+  color: #888;
+  font-size: small;
 }
 
 .comment:nth-child(even) {
