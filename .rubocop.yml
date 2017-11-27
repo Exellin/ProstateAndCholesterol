@@ -26,7 +26,7 @@ Style/ClassVars:
 
 Style/WordArray:
   EnforcedStyle: brackets
-  
+
 Metrics/BlockLength:
   Exclude:
    - spec/**/*
@@ -54,4 +54,7 @@ Metrics/AbcSize:
    - spec/support/alert_confirmer.rb
 
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
