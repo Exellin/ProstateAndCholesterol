@@ -39,6 +39,8 @@ gem 'momentjs-rails'
 gem 'city-state'
 # Use chosen-rails to create filteraable dropdowns
 gem 'chosen-rails'
+# Use redcarpet for markdown
+gem 'redcarpet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,8 +57,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Use poltergeist as the javascript driver for capybara
   gem 'poltergeist'
-  # Use redcarpet for markdown
-  gem 'redcarpet'
   # Use rspec as the testing framework
   gem 'rspec-rails'
 end
